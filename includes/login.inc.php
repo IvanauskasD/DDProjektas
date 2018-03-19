@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
             header("Location: ../index.php?login=forbiddenChar");
             exit();
         }
-        else if (!filter_var($uidLogin, FILTER_VALIDATE_EMAIL))
+        else if (!filter_var($uidLogin, FILTER_VALIDATE_EMAIL) && preg_match("/[.@]/", $uidLogin))
         {
             header("Location: ../index.php?login=email");
             exit();
