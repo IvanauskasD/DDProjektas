@@ -47,6 +47,21 @@ session_start();
                     //echo "<p class=error>Wrong username or password!</p>";
                     echo "<script>alert('Wrong username or password!')</script>";
                 }
+                elseif (strpos($fullUrl, "login=forbiddenChar") == true)
+                {
+                    //echo "<p class=error>Wrong username or password!</p>";
+                    echo "<script>alert('Forbidden characters in username!')</script>";
+                }
+                elseif (strpos($fullUrl, "login=email") == true)
+                {
+                    //echo "<p class=error>Wrong username or password!</p>";
+                    echo "<script>alert('Incorrect email!')</script>";
+                }
+                elseif (strpos($fullUrl, "login=error") == true)
+                {
+                    //echo "<p class=error>Wrong username or password!</p>";
+                    echo "<script>alert('Unexpected error!')</script>";
+                }
 
                 ?>
             </div>
