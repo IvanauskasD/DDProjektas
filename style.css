@@ -219,7 +219,10 @@ header .nav-login a {
     margin: 0 auto;
     padding-top: 30px;
 }
-
+.error{
+    color: red;
+    padding-top: 70px;
+}
 .signup-form input{
     width: 90%;
     height: 40px;
