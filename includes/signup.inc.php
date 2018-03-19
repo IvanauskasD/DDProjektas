@@ -7,8 +7,11 @@ if(isset($_POST['submit'])){
     $first = mysqli_real_escape_string($conn, $_POST['first']);
     $last = mysqli_real_escape_string($conn, $_POST['last']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $uid = mysqli_real_escape_string($conn, $_POST['uid']);
-    $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
+    $country= mysqli_real_escape_string($conn, $_POST['country']);
+    $city = mysqli_real_escape_string($conn, $_POST['city']);
+    $age = mysqli_real_escape_string($conn, $_POST['age']);
+    $uid = mysqli_real_escape_string($conn, $_POST['username']);
+    $pwd = mysqli_real_escape_string($conn, $_POST['password']);
 
     //Ar nera tusciu lauku
     if(empty($first) || empty($last) || empty($email) || empty($uid) || empty($pwd)){
@@ -16,7 +19,10 @@ if(isset($_POST['submit'])){
         exit();
     } else{
         //Ar irasyta info tinkama
-        if(!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last)){
+
+        if(!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last)
+            || !preg_match("/^[a-zA-Z]*$/", $country) || !preg_match("/^[a-zA-Z]*$/", $city)
+            || !preg_match("/^[0-9]*$/", $age)){
             header("Location: ../signup.php?signup=invalid");
             exit();
         } else{
@@ -25,7 +31,8 @@ if(isset($_POST['submit'])){
                 header("Location: ../signup.php?signup=invalidEmail");
                 exit();
             } else{
-                $sql = "SELECT * FROM users WHERE user_uid='$uid'";
+                $sql = "SELECT * FROM users WHERE username='$uid'";
+
                 $result = mysqli_query($conn, $sql);
                 $resultCheck = mysqli_num_rows($result);
 
@@ -36,10 +43,14 @@ if(isset($_POST['submit'])){
                     //Hashina slaptazodi
                     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
                     //Prideti vartotoja i database
-                    $sql = "INSERT INTO users (user_first, user_last,
-                            user_email, user_uid, user_pwd) VALUES ('$first', '$last',
-                            '$email', '$uid', '$hashedPwd');";
+
+                    $sql = "INSERT INTO users (firstname, lastname,
+                            email, country, city, age) VALUES ('$first', '$last',
+                            '$email', '$country', '$city', '$age');";
                     mysqli_query($conn, $sql);
+                    $sql1 = "INSERT INTO users_login (username, email, password) VALUES ('$uid', '$email', '$hashedPwd');";
+                    mysqli_query($conn, $sql1);
+
                     header("Location: ../signup.php?signup=success");
                     exit();
                 }
