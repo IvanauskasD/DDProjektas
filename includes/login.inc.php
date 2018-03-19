@@ -38,7 +38,6 @@ if(isset($_POST['submit'])){
                     $_SESSION['u_country'] = $row['country'];
                     $_SESSION['u_city'] = $row['city'];
                     $_SESSION['u_age'] = $row['age'];
-
                     header("Location: ../index.php?login=success");
                     exit();
                 }

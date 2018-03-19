@@ -15,11 +15,11 @@ if(isset($_POST['submit'])){
 
     //Ar nera tusciu lauku
     if(empty($first) || empty($last) || empty($email) || empty($uid) || empty($pwd)){
-        echo "Prasome uzpildyti tuscius laukus!";
         header("Location: ../signup.php?signup=empty");
         exit();
     } else{
         //Ar irasyta info tinkama
+
         if(!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last)
             || !preg_match("/^[a-zA-Z]*$/", $country) || !preg_match("/^[a-zA-Z]*$/", $city)
             || !preg_match("/^[0-9]*$/", $age)){
@@ -32,6 +32,7 @@ if(isset($_POST['submit'])){
                 exit();
             } else{
                 $sql = "SELECT * FROM users WHERE username='$uid'";
+
                 $result = mysqli_query($conn, $sql);
                 $resultCheck = mysqli_num_rows($result);
 
@@ -42,6 +43,7 @@ if(isset($_POST['submit'])){
                     //Hashina slaptazodi
                     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
                     //Prideti vartotoja i database
+
                     $sql = "INSERT INTO users (firstname, lastname,
                             email, country, city, age) VALUES ('$first', '$last',
                             '$email', '$country', '$city', '$age');";
