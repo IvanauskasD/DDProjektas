@@ -5,6 +5,7 @@
     <section class="main-container">
         <div class="main-wrapper">
 
+
             <?php
             include_once 'includes/dbh.inc.php';
 
@@ -25,6 +26,7 @@
                             }
                         }
                     }
+
             } else echo '<image src="stranger.gif" class="ima"></image>';
             ?>
 
