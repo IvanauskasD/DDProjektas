@@ -9,13 +9,15 @@ include_once 'header.php';
                 <input type="text" name="first" placeholder="Firstname">
                 <input type="text" name="last" placeholder="Lastname">
                 <input type="text" name="email" placeholder="Email">
-                <input type="text" name="uid" placeholder="Username">
-                <input type="password" name="pwd" placeholder="Password">
+                <input type="text" name="age" placeholder="Age">
+                <input type="text" name="country" placeholder="Country">
+                <input type="text" name="city" placeholder="City">
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
                 <button type="submit" name="submit">Sign up</button>
             </form>
         </div>
     </section>
-if (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['action']) && (!empty($_POST['action'])))
 
 <?php
 include_once 'footer.php';
