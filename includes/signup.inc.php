@@ -50,6 +50,13 @@ if(isset($_POST['submit'])){
                     mysqli_query($conn, $sql);
                     $sql1 = "INSERT INTO users_login (username, email, password) VALUES ('$uid', '$email', '$hashedPwd');";
                     mysqli_query($conn, $sql1);
+<<<<<<< Updated upstream
+=======
+                   // echo "<script>alert('Registration successful, redirecting to Home page');
+                    //document.location='../index.php'</script>";
+                    header("Location: ../signup.php?signup=success");
+				    exit();
+>>>>>>> Stashed changes
 
                     header("Location: ../signup.php?signup=success");
                     exit();
