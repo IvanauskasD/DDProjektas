@@ -31,6 +31,39 @@ session_start();
                 <a href="signup.php">Sign up</a>';
                     }
                 ?>
+
+                <?php
+
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                if (strpos($fullUrl, "login=empty") == true)
+                {
+                    //echo "<p class=error>Login field is empty!</p>";
+                    echo "<script>alert('Login field is empty!')</script>";
+                }
+
+                elseif (strpos($fullUrl, "login=userNotFound") == true)
+                {
+                    //echo "<p class=error>Wrong username or password!</p>";
+                    echo "<script>alert('Wrong username or password!')</script>";
+                }
+                elseif (strpos($fullUrl, "login=forbiddenChar") == true)
+                {
+                    //echo "<p class=error>Wrong username or password!</p>";
+                    echo "<script>alert('Forbidden characters in username!')</script>";
+                }
+                elseif (strpos($fullUrl, "login=email") == true)
+                {
+                    //echo "<p class=error>Wrong username or password!</p>";
+                    echo "<script>alert('Incorrect email!')</script>";
+                }
+                elseif (strpos($fullUrl, "login=error") == true)
+                {
+                    //echo "<p class=error>Wrong username or password!</p>";
+                    echo "<script>alert('Unexpected error!')</script>";
+                }
+
+                ?>
             </div>
         </div>
     </nav>

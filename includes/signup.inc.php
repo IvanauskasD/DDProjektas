@@ -43,11 +43,13 @@ if(isset($_POST['submit'])){
                     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
                     //Prideti vartotoja i database
 
-                    $sql = "INSERT INTO users (user_first, user_last,
-                            user_email, user_uid, user_pwd) VALUES ('$first', '$last',
-                            '$email', '$uid', '$hashedPwd');";
+                    $sql = "INSERT INTO users (firstname, lastname,
+                            email, country, city, age) VALUES ('$first', '$last',
+                            '$email', '$country', '$city', '$age');";
                     mysqli_query($conn, $sql);
-                    echo "<script>alert('Registration successful, redirecting to Home page');document.location='../index.php?login=empty'</script>";
+                    $sql1 = "INSERT INTO users_login (username, email, password) VALUES ('$uid', '$email', '$hashedPwd');";
+                    mysqli_query($conn, $sql1);
+                    echo "<script>alert('Registration successful, redirecting to Home page');document.location='../index.php'</script>";
 				    exit();
 
                 }
