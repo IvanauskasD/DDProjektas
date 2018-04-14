@@ -1,0 +1,14 @@
+#index:
+#    path: /
+#    defaults: { _controller: 'App\Controller\DefaultController::index' }
+homepage:
+    path: /
+    controller: App\Controller\HomeController::index
+    defaults:
+        template: homepage.html.twig
+
+signup:
+    path: /signup
+    controller: App\Controller\SignupController::index
+    defaults:
+        template: signup.html.twig
