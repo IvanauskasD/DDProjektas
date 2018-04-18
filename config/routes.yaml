@@ -11,4 +11,4 @@ signup:
     path: /signup
     controller: App\Controller\SignupController::index
     defaults:
-        template: signup.html.twig
+        template: registration.html.twig

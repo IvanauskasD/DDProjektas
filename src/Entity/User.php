@@ -37,6 +37,9 @@ class User implements UserInterface
      */
     private $password;
 
+
+    private $plainPassword;
+
     /**
      * @return string
      */
@@ -100,6 +103,24 @@ class User implements UserInterface
     {
         $this->email = $email;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
+
 
     /**
      * Returns the roles granted to the user.

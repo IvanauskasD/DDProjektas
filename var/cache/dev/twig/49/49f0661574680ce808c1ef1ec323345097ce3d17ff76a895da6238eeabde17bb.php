@@ -47,12 +47,12 @@ class __TwigTemplate_b34658598d996fc1ccb01d0cca2dae779cb782a022e7e40d0044b25e2e8
         ";
         // line 9
         $this->displayBlock('body', $context, $blocks);
-        // line 10
+        // line 12
         echo "
         ";
-        // line 11
+        // line 13
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 12
+        // line 14
         echo "    </body>
 </html>
 ";
@@ -108,6 +108,9 @@ class __TwigTemplate_b34658598d996fc1ccb01d0cca2dae779cb782a022e7e40d0044b25e2e8
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
+        // line 10
+        echo "
+        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -116,7 +119,7 @@ class __TwigTemplate_b34658598d996fc1ccb01d0cca2dae779cb782a022e7e40d0044b25e2e8
 
     }
 
-    // line 11
+    // line 13
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -140,7 +143,7 @@ class __TwigTemplate_b34658598d996fc1ccb01d0cca2dae779cb782a022e7e40d0044b25e2e8
 
     public function getDebugInfo()
     {
-        return array (  120 => 11,  103 => 9,  86 => 6,  68 => 5,  56 => 12,  54 => 11,  51 => 10,  49 => 9,  45 => 7,  43 => 6,  39 => 5,  33 => 1,);
+        return array (  123 => 13,  112 => 10,  103 => 9,  86 => 6,  68 => 5,  56 => 14,  54 => 13,  51 => 12,  49 => 9,  45 => 7,  43 => 6,  39 => 5,  33 => 1,);
     }
 
     public function getSourceContext()
@@ -153,7 +156,9 @@ class __TwigTemplate_b34658598d996fc1ccb01d0cca2dae779cb782a022e7e40d0044b25e2e8
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+
+        {% endblock %}
 
         {% block javascripts %}{% endblock %}
     </body>

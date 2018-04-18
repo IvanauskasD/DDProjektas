@@ -38,6 +38,11 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'App\\Controller\\LoginController::logoutAction',  '_route' => 'app_login_logout',);
         }
 
+        // registration
+        if ('/register' === $pathinfo) {
+            return array (  '_controller' => 'App\\Controller\\SignupController::registerAction',  '_route' => 'registration',);
+        }
+
         if (0 === strpos($pathinfo, '/_')) {
             // _twig_error_test
             if (0 === strpos($pathinfo, '/_error') && preg_match('#^/_error/(?P<code>\\d+)(?:\\.(?P<_format>[^/]++))?$#sD', $pathinfo, $matches)) {
@@ -134,7 +139,7 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         // signup
         if ('/signup' === $pathinfo) {
-            return array (  'template' => 'signup.html.twig',  '_controller' => 'App\\Controller\\SignupController::index',  '_route' => 'signup',);
+            return array (  'template' => 'registration.html.twig',  '_controller' => 'App\\Controller\\SignupController::index',  '_route' => 'signup',);
         }
 
         if ('/' === $pathinfo && !$allow) {
