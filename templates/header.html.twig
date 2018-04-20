@@ -13,15 +13,7 @@
                 <li><a href="{{ path('homepage') }}">Home</a></li>
             </ul>
             <div class="nav-login">
-                {% if app.session.get('u_id') %}
-                {{ 'logout button' }}
-                {% else %}
-                {{ 'include login somtheing' }}
-                <input type="text" name="uid" placeholder="Username/email">
-                <input type="password" name="pwd" placeholder="Password">
-                <button type="submit" name="submit">Login</button>
-                {% endif %}
-
+                <a href="{{ path('login') }}">Login</a>
                 </form>
                 <a href="{{ path('signup') }}">Sign up</a>
             </div>

@@ -534,6 +534,14 @@
     <service id="App\Controller\LoginController" class="App\Controller\LoginController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
+    <service id="App\Controller\SignupCompanyController" class="App\Controller\SignupCompanyController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <tag name="container.service_subscriber.locator" id="service_locator.yscbjmj.App\Controller\SignupCompanyController"/>
+      <call method="setContainer">
+        <argument type="service" id="service_locator.yscbjmj.App\Controller\SignupCompanyController"/>
+      </call>
+    </service>
     <service id="App\Controller\SignupController" class="App\Controller\SignupController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -542,8 +550,23 @@
         <argument type="service" id="service_locator.yscbjmj.App\Controller\SignupController"/>
       </call>
     </service>
+    <service id="App\Controller\SignupUserController" class="App\Controller\SignupUserController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <tag name="container.service_subscriber.locator" id="service_locator.yscbjmj.App\Controller\SignupUserController"/>
+      <call method="setContainer">
+        <argument type="service" id="service_locator.yscbjmj.App\Controller\SignupUserController"/>
+      </call>
+    </service>
+    <service id="App\Form\CompanyForm" class="App\Form\CompanyForm" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\UserForm" class="App\Form\UserForm" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
+    </service>
+    <service id="App\Repository\CompanyRepository" class="App\Repository\CompanyRepository" public="false" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" public="false" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -565,7 +588,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.sr6ctxe"/>
+      <argument type="service" id="service_locator.of5eyxb"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -811,6 +834,7 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\CompanyForm</argument>
         <argument>App\Form\UserForm</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -1020,7 +1044,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.eby2uc6"/>
+      <argument type="service" id="service_locator.pbyhiiw"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -2351,14 +2375,6 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
-        <argument>console.command</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument type="service" id="router_listener"/>
@@ -3385,6 +3401,12 @@
             <argument>13</argument>
           </argument>
         </argument>
+        <argument key="App\Entity\Company" type="collection">
+          <argument key="class">Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder</argument>
+          <argument key="arguments" type="collection">
+            <argument>13</argument>
+          </argument>
+        </argument>
       </argument>
     </service>
     <service id="security.user_password_encoder.generic" class="Symfony\Component\Security\Core\Encoder\UserPasswordEncoder" public="false">
@@ -3979,6 +4001,7 @@
       <argument type="service" id="security.encoder_factory.generic"/>
       <argument type="collection">
         <argument>App\Entity\User</argument>
+        <argument>App\Entity\Company</argument>
       </argument>
       <call method="setName">
         <argument>security:encode-password</argument>
@@ -4104,17 +4127,15 @@
       <argument type="collection">
         <argument key="driver">pdo_mysql</argument>
         <argument key="charset">utf8mb4</argument>
+        <argument key="dbname">ddprojektas</argument>
+        <argument key="host">den1.mysql6.gear.host</argument>
+        <argument key="user">ddprojektas</argument>
+        <argument key="password">Db8E96p~W~8h</argument>
         <argument key="url">%env(resolve:DATABASE_URL)%</argument>
-        <argument key="host">localhost</argument>
         <argument key="port">null</argument>
-        <argument key="user">root</argument>
-        <argument key="password">null</argument>
         <argument key="driverOptions" type="collection"/>
         <argument key="serverVersion">5.7</argument>
-        <argument key="defaultTableOptions" type="collection">
-          <argument key="charset">utf8mb4</argument>
-          <argument key="collate">utf8mb4_unicode_ci</argument>
-        </argument>
+        <argument key="defaultTableOptions" type="collection"/>
       </argument>
       <argument type="service" id="doctrine.dbal.default_connection.configuration"/>
       <argument type="service" id="doctrine.dbal.default_connection.event_manager"/>
@@ -4139,7 +4160,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id="service_locator.hdc0bro"/>
+      <argument type="service" id="service_locator.ytl9ll4"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4708,11 +4729,21 @@
     <service id="abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\LoginController" class="App\Controller\LoginController" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Controller\LoginController" class="App\Controller\LoginController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\SignupCompanyController" class="App\Controller\SignupCompanyController" public="false" autowire="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SignupCompanyController" class="App\Controller\SignupCompanyController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\SignupCompanyController" class="App\Controller\SignupCompanyController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\SignupController" class="App\Controller\SignupController" public="false" autowire="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SignupController" class="App\Controller\SignupController" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Controller\SignupController" class="App\Controller\SignupController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\SignupUserController" class="App\Controller\SignupUserController" public="false" autowire="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SignupUserController" class="App\Controller\SignupUserController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\SignupUserController" class="App\Controller\SignupUserController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CompanyForm" class="App\Form\CompanyForm" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Form\CompanyForm" class="App\Form\CompanyForm" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserForm" class="App\Form\UserForm" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Form\UserForm" class="App\Form\UserForm" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CompanyRepository" class="App\Repository\CompanyRepository" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Repository\CompanyRepository" class="App\Repository\CompanyRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="maker.auto_command.make_auth" class="Symfony\Bundle\MakerBundle\Command\MakerCommand">
@@ -4835,9 +4866,26 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id="service_locator.sr6ctxe" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.hazzr0s" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="encoder" type="service" id="security.user_password_encoder.generic" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id="service_locator.jecnx6k" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="encoder" type="service" id="security.user_password_encoder.generic" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id="service_locator.of5eyxb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\SignupCompanyController:registerAction" type="service" id="service_locator.hazzr0s"/>
+        <argument key="App\Controller\SignupUserController:registerAction" type="service" id="service_locator.jecnx6k"/>
+        <argument key="App\Controller\SignupCompanyController::registerAction" type="service" id="service_locator.hazzr0s"/>
+        <argument key="App\Controller\SignupUserController::registerAction" type="service" id="service_locator.jecnx6k"/>
+      </argument>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id="service_locator.cgupok5"/>
@@ -4999,18 +5047,20 @@
         <argument key="inline" type="service" id="fragment.renderer.inline"/>
       </argument>
     </service>
-    <service id="service_locator.eby2uc6" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.pbyhiiw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\CompanyForm" type="service" id="App\Form\CompanyForm"/>
         <argument key="App\Form\UserForm" type="service" id="App\Form\UserForm"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service" id="form.type.form"/>
       </argument>
     </service>
-    <service id="service_locator.hdc0bro" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.ytl9ll4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\CompanyRepository" type="service" id="App\Repository\CompanyRepository"/>
         <argument key="App\Repository\UserRepository" type="service" id="App\Repository\UserRepository"/>
       </argument>
     </service>
@@ -5181,8 +5231,18 @@
       <argument type="service" id="service_container"/>
       <factory service="service_locator.yscbjmj" method="withContext"/>
     </service>
+    <service id="service_locator.yscbjmj.App\Controller\SignupCompanyController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <argument>App\Controller\SignupCompanyController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service="service_locator.yscbjmj" method="withContext"/>
+    </service>
     <service id="service_locator.yscbjmj.App\Controller\SignupController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <argument>App\Controller\SignupController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service="service_locator.yscbjmj" method="withContext"/>
+    </service>
+    <service id="service_locator.yscbjmj.App\Controller\SignupUserController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <argument>App\Controller\SignupUserController</argument>
       <argument type="service" id="service_container"/>
       <factory service="service_locator.yscbjmj" method="withContext"/>
     </service>

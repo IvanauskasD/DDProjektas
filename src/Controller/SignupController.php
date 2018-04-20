@@ -11,7 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,17 +22,13 @@ class SignupController extends AbstractController
 {
 
     /**
-     * @Route("/register", name="registration")
-     * @return Response
+     * @Route("/signup", name="registration")
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \LogicException
      */
     public function registerAction()
     {
-        $user = new User();
 
-        $form = $this->createForm(UserForm::class, $user);
-
-        return $this->render('registration/registration.html.twig', [
-            'registration_form' => $form->createView(),
-        ]);
+        return $this->render('registration/registration.html.twig');
     }
 }

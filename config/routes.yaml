@@ -12,3 +12,16 @@ signup:
     controller: App\Controller\SignupController::index
     defaults:
         template: registration.html.twig
+
+
+signupUser:
+    path: /signupUser
+    controller: App\Controller\SignupUserController::index
+    defaults:
+        template: registrationUsers.html.twig
+
+signupCompany:
+    path: /signupCompany
+    controller: App\Controller\SignupCompanyController::index
+    defaults:
+        template: registrationCompanies.html.twig

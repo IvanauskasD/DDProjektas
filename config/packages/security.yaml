@@ -1,9 +1,7 @@
 security:
-    providers:
-        db_provider:
-            entity:
-                class: App\Entity\User
-                property: username
+    encoders:
+        App\Entity\User: bcrypt
+        App\Entity\Company: bcrypt
 
     firewalls:
         dev:
@@ -22,5 +20,10 @@ security:
                 target: /
 
 
-    encoders:
-        App\Entity\User: bcrypt
+    providers:
+        db_provider:
+            entity:
+                class: App\Entity\User
+                property: username
+
+

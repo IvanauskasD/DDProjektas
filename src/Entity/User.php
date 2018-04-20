@@ -41,6 +41,13 @@ class User implements UserInterface
     private $plainPassword;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(name="registerToken", type="string", length=255, nullable=true)
+     */
+    private $registerToken;
+
+    /**
      * @return string
      */
     public function getUsername()
@@ -120,27 +127,30 @@ class User implements UserInterface
         $this->plainPassword = $plainPassword;
     }
 
-
+    /**
+     * @return null|string
+     */
+    public function getRegisterToken()
+    {
+        return $this->registerToken;
+    }
 
     /**
-     * Returns the roles granted to the user.
-     *
-     * <code>
-     * public function getRoles()
-     * {
-     *     return array('ROLE_USER');
-     * }
-     * </code>
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return (Role|string)[] The user roles
+     * @param null|string $registerToken
      */
+    public function setRegisterToken($registerToken)
+    {
+        $this->registerToken = $registerToken;
+    }
+
+
+
+
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return [
+            'ROLE_USER',
+        ];
     }
 
     /**
@@ -152,7 +162,7 @@ class User implements UserInterface
      */
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        return null;
     }
 
     /**
@@ -163,8 +173,10 @@ class User implements UserInterface
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        $this->plainPassword = null;
     }
+
+
 
 
 }
