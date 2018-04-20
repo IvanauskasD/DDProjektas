@@ -47,29 +47,13 @@ class __TwigTemplate_9c682c44a4d36302dde1555a603a544d381817281851b99dbc804d556a8
         echo "\">Home</a></li>
             </ul>
             <div class=\"nav-login\">
-                ";
+                <a href=\"";
         // line 16
-        if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 16, $this->source); })()), "session", array()), "get", array(0 => "u_id"), "method")) {
-            // line 17
-            echo "                ";
-            echo "logout button";
-            echo "
-                ";
-        } else {
-            // line 19
-            echo "                ";
-            echo "include login somtheing";
-            echo "
-                <input type=\"text\" name=\"uid\" placeholder=\"Username/email\">
-                <input type=\"password\" name=\"pwd\" placeholder=\"Password\">
-                <button type=\"submit\" name=\"submit\">Login</button>
-                ";
-        }
-        // line 24
-        echo "
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
+        echo "\">Login</a>
                 </form>
                 <a href=\"";
-        // line 26
+        // line 18
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signup");
         echo "\">Sign up</a>
             </div>
@@ -96,7 +80,7 @@ class __TwigTemplate_9c682c44a4d36302dde1555a603a544d381817281851b99dbc804d556a8
 
     public function getDebugInfo()
     {
-        return array (  73 => 26,  69 => 24,  60 => 19,  54 => 17,  52 => 16,  46 => 13,  35 => 5,  29 => 1,);
+        return array (  57 => 18,  52 => 16,  46 => 13,  35 => 5,  29 => 1,);
     }
 
     public function getSourceContext()
@@ -116,15 +100,7 @@ class __TwigTemplate_9c682c44a4d36302dde1555a603a544d381817281851b99dbc804d556a8
                 <li><a href=\"{{ path('homepage') }}\">Home</a></li>
             </ul>
             <div class=\"nav-login\">
-                {% if app.session.get('u_id') %}
-                {{ 'logout button' }}
-                {% else %}
-                {{ 'include login somtheing' }}
-                <input type=\"text\" name=\"uid\" placeholder=\"Username/email\">
-                <input type=\"password\" name=\"pwd\" placeholder=\"Password\">
-                <button type=\"submit\" name=\"submit\">Login</button>
-                {% endif %}
-
+                <a href=\"{{ path('login') }}\">Login</a>
                 </form>
                 <a href=\"{{ path('signup') }}\">Sign up</a>
             </div>

@@ -38,12 +38,40 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'App\\Controller\\LoginController::logoutAction',  '_route' => 'app_login_logout',);
         }
 
-        // registration
-        if ('/register' === $pathinfo) {
-            return array (  '_controller' => 'App\\Controller\\SignupController::registerAction',  '_route' => 'registration',);
+        if (0 === strpos($pathinfo, '/signup')) {
+            // registrationCompany
+            if ('/signupCompany' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\SignupCompanyController::registerAction',  '_route' => 'registrationCompany',);
+            }
+
+            // registration
+            if ('/signup' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\SignupController::registerAction',  '_route' => 'registration',);
+            }
+
+            // registrationUser
+            if ('/signupUser' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\SignupUserController::registerAction',  '_route' => 'registrationUser',);
+            }
+
+            // signup
+            if ('/signup' === $pathinfo) {
+                return array (  'template' => 'registration.html.twig',  '_controller' => 'App\\Controller\\SignupController::index',  '_route' => 'signup',);
+            }
+
+            // signupUser
+            if ('/signupUser' === $pathinfo) {
+                return array (  'template' => 'registrationUsers.html.twig',  '_controller' => 'App\\Controller\\SignupUserController::index',  '_route' => 'signupUser',);
+            }
+
+            // signupCompany
+            if ('/signupCompany' === $pathinfo) {
+                return array (  'template' => 'registrationCompanies.html.twig',  '_controller' => 'App\\Controller\\SignupCompanyController::index',  '_route' => 'signupCompany',);
+            }
+
         }
 
-        if (0 === strpos($pathinfo, '/_')) {
+        elseif (0 === strpos($pathinfo, '/_')) {
             // _twig_error_test
             if (0 === strpos($pathinfo, '/_error') && preg_match('#^/_error/(?P<code>\\d+)(?:\\.(?P<_format>[^/]++))?$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => '_twig_error_test')), array (  '_controller' => 'twig.controller.preview_error:previewErrorPageAction',  '_format' => 'html',));
@@ -136,11 +164,6 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $ret;
         }
         not_homepage:
-
-        // signup
-        if ('/signup' === $pathinfo) {
-            return array (  'template' => 'registration.html.twig',  '_controller' => 'App\\Controller\\SignupController::index',  '_route' => 'signup',);
-        }
 
         if ('/' === $pathinfo && !$allow) {
             throw new Symfony\Component\Routing\Exception\NoConfigurationException();

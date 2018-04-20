@@ -50,9 +50,16 @@ class __TwigTemplate_e185638a5caecb930913cf44d84c2f21d8b737ff9e89a73f8603cf035c0
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    ";
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registration_form"]) || array_key_exists("registration_form", $context) ? $context["registration_form"] : (function () { throw new Twig_Error_Runtime('Variable "registration_form" does not exist.', 4, $this->source); })()), 'form');
-        echo "
+        echo "    <label>Register as user</label>
+    <a href=\"";
+        // line 5
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signupUser");
+        echo "\">For users</a>
+    <label>Register as company</label>
+    <a href=\"";
+        // line 7
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signupCompany");
+        echo "\">For companies</a>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -74,7 +81,7 @@ class __TwigTemplate_e185638a5caecb930913cf44d84c2f21d8b737ff9e89a73f8603cf035c0
 
     public function getDebugInfo()
     {
-        return array (  53 => 4,  44 => 3,  15 => 1,);
+        return array (  61 => 7,  56 => 5,  53 => 4,  44 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -82,7 +89,10 @@ class __TwigTemplate_e185638a5caecb930913cf44d84c2f21d8b737ff9e89a73f8603cf035c0
         return new Twig_Source("{% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form(registration_form) }}
+    <label>Register as user</label>
+    <a href=\"{{ path('signupUser') }}\">For users</a>
+    <label>Register as company</label>
+    <a href=\"{{ path('signupCompany') }}\">For companies</a>
 {% endblock %}", "registration/registration.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\templates\\Registration\\registration.html.twig");
     }
 }
