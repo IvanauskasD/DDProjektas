@@ -9,7 +9,7 @@ include_once $this->targetDirs[3].'\\vendor\\symfony\\console\\Command\\Command.
 include_once $this->targetDirs[3].'\\vendor\\symfony\\framework-bundle\\Command\\ContainerAwareCommand.php';
 include_once $this->targetDirs[3].'\\vendor\\symfony\\security-bundle\\Command\\UserPasswordEncoderCommand.php';
 
-$this->services['security.command.user_password_encoder'] = $instance = new \Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand(${($_ = isset($this->services['security.encoder_factory']) ? $this->services['security.encoder_factory'] : $this->load('getSecurity_EncoderFactoryService.php')) && false ?: '_'}, array(0 => 'App\\Entity\\User'));
+$this->services['security.command.user_password_encoder'] = $instance = new \Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand(${($_ = isset($this->services['security.encoder_factory']) ? $this->services['security.encoder_factory'] : $this->load('getSecurity_EncoderFactoryService.php')) && false ?: '_'}, array(0 => 'App\\Entity\\User', 1 => 'App\\Entity\\Company'));
 
 $instance->setName('security:encode-password');
 

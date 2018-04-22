@@ -59,7 +59,7 @@ class SignupCompanyController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('registration/registrationCompanies.html.twig', [
+        return $this->render('Registration/registrationCompanies.html.twig', [
             'registration_form' => $form->createView(),
         ]);
     }

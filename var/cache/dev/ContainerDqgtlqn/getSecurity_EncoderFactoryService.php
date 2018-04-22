@@ -8,4 +8,4 @@ use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 include_once $this->targetDirs[3].'\\vendor\\symfony\\security\\Core\\Encoder\\EncoderFactoryInterface.php';
 include_once $this->targetDirs[3].'\\vendor\\symfony\\security\\Core\\Encoder\\EncoderFactory.php';
 
-return $this->services['security.encoder_factory'] = new \Symfony\Component\Security\Core\Encoder\EncoderFactory(array('App\\Entity\\User' => array('class' => 'Symfony\\Component\\Security\\Core\\Encoder\\BCryptPasswordEncoder', 'arguments' => array(0 => 13))));
+return $this->services['security.encoder_factory'] = new \Symfony\Component\Security\Core\Encoder\EncoderFactory(array('App\\Entity\\User' => array('class' => 'Symfony\\Component\\Security\\Core\\Encoder\\BCryptPasswordEncoder', 'arguments' => array(0 => 13)), 'App\\Entity\\Company' => array('class' => 'Symfony\\Component\\Security\\Core\\Encoder\\BCryptPasswordEncoder', 'arguments' => array(0 => 13))));
