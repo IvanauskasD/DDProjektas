@@ -1,0 +1,53 @@
+body{background-color: burlywood}
+h1{
+    background-color: deepskyblue;
+    width: 100%;
+    font-size: 20px;
+    height: 70px;
+
+
+}
+
+label{
+    font-weight: bold;
+}
+a:hover{
+    color: red;
+}
+button[id=Home]{
+    background-color: transparent;
+    position: fixed;
+    bottom: 92%;
+    left: 3%;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+
+}
+img{
+    width: 20px;
+}
+button[id=Login]{
+    background-color: green;
+    position: fixed;
+    bottom: 92%;
+    left: 80%;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+button[id=Register]{
+    background-color: green;
+    position: fixed;
+    bottom: 92%;
+    left: 85%;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}

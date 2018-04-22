@@ -1,0 +1,19 @@
+
+<link rel="stylesheet" type="text/css" href="styleRegistration.css" />
+
+    <h1>
+        <button id="Home"><img src="../Home-Button-Repair.png">Home</button>
+        <button id="Register">Register</button>
+        <button id="Login">Login</button>
+    </h1>
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h2>
+        <label id="RegistrationType">Chose registration type:</label>
+
+    </h2>
+    <label >Register as user</label>
+    <a id="signupUser" href="{{ path('signupUser') }}">For users</a>
+    <label >Register as company</label>
+    <a id="signupCompany" href="{{ path('signupCompany') }}">For companies</a>
+{% endblock %}

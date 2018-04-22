@@ -1,0 +1,16 @@
+<link rel="stylesheet" type="text/css" href="../styleBase.css" />
+<head></head>
+
+    <h1>
+        <button id="Home"><img src="../Home-Button-Repair.png">Home</button>
+        <button id="Register">Register</button>
+        <button id="Login">Login</button>
+    </h1>
+
+{% extends 'base.html.twig' %}
+<body>
+
+{% block body %}
+    {{ form(registration_form) }}
+{%  endblock %}
+</body>
