@@ -49,17 +49,13 @@ class SignupCompanyController extends AbstractController
             $em->persist($company);
             $em->flush();
 
-            $registerToken = base64_encode(random_bytes(20));
-            $registerToken = str_replace("/","",$registerToken);
-            $company->setRegisterToken($registerToken);
-
 
 
 
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('registration/registrationCompanies.html.twig', [
+        return $this->render('Registration/registrationCompanies.html.twig', [
             'registration_form' => $form->createView(),
         ]);
     }

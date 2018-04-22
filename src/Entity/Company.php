@@ -53,12 +53,6 @@ class Company implements UserInterface
      */
     private $phoneNumber;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="registerToken", type="string", length=255, nullable=true)
-     */
-    private $registerToken;
 
     /**
      * @return string
@@ -171,22 +165,7 @@ class Company implements UserInterface
     {
         $this->companyName = $companyName;
     }
-
-    /**
-     * @return null|string
-     */
-    public function getRegisterToken()
-    {
-        return $this->registerToken;
-    }
-
-    /**
-     * @param null|string $registerToken
-     */
-    public function setRegisterToken($registerToken)
-    {
-        $this->registerToken = $registerToken;
-    }
+    
 
 
 

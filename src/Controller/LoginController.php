@@ -15,7 +15,7 @@ class LoginController extends Controller
      */
     public function loginAction()
     {
-        return $this->render('login/login.html.twig', [
+        return $this->render('Login/login.html.twig', [
 
         ]);
     }

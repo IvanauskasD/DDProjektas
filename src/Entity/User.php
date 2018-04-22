@@ -40,12 +40,6 @@ class User implements UserInterface
 
     private $plainPassword;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="registerToken", type="string", length=255, nullable=true)
-     */
-    private $registerToken;
 
     /**
      * @return string
@@ -125,22 +119,6 @@ class User implements UserInterface
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getRegisterToken()
-    {
-        return $this->registerToken;
-    }
-
-    /**
-     * @param null|string $registerToken
-     */
-    public function setRegisterToken($registerToken)
-    {
-        $this->registerToken = $registerToken;
     }
 
 

@@ -49,17 +49,13 @@ class SignupUserController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            $registerToken = base64_encode(random_bytes(20));
-            $registerToken = str_replace("/","",$registerToken);
-            $user->setRegisterToken($registerToken);
-
 
 
 
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('registration/registrationUsers.html.twig', [
+        return $this->render('Registration/registrationUsers.html.twig', [
             'registration_form' => $form->createView(),
         ]);
     }
