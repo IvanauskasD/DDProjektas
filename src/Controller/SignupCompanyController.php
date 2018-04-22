@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Company;
+use App\Entity\User;
+use App\Utils\Errors;
 use Symfony\Component\HttpFoundation\Response;
 use App\Events;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -34,7 +36,10 @@ class SignupCompanyController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $userExists = $repository->findBy(['email' => $company->getEmail()]);
+
+        if($form->isSubmitted() && $form->isValid() && !$userExists)
         {
             $password = $encoder
                 ->encodePassword(
@@ -54,9 +59,13 @@ class SignupCompanyController extends AbstractController
 
             return $this->redirectToRoute('homepage');
         }
-
-        return $this->render('Registration/registrationCompanies.html.twig', [
-            'registration_form' => $form->createView(),
-        ]);
+        $error = '';
+        if ($userExists)
+        {
+            $error = "This email is already taken";
+        }
+        return $this->render('Registration/registrationCompanies.html.twig', array('error' => $error,
+            'registration_form' => $form->createView()));
     }
 }
+
