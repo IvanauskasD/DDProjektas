@@ -51,7 +51,6 @@ class SignupUserController extends AbstractController
 
 
 
-
             return $this->redirectToRoute('homepage');
         }
 

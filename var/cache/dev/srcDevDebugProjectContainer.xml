@@ -534,6 +534,9 @@
     <service id="App\Controller\LoginController" class="App\Controller\LoginController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
+    <service id="App\Controller\LoginUserController" class="App\Controller\LoginUserController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
     <service id="App\Controller\SignupCompanyController" class="App\Controller\SignupCompanyController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -4737,6 +4740,8 @@
     <service id="abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\LoginController" class="App\Controller\LoginController" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Controller\LoginController" class="App\Controller\LoginController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\LoginUserController" class="App\Controller\LoginUserController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\LoginUserController" class="App\Controller\LoginUserController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\SignupCompanyController" class="App\Controller\SignupCompanyController" public="false" autowire="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SignupCompanyController" class="App\Controller\SignupCompanyController" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Controller\SignupCompanyController" class="App\Controller\SignupCompanyController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
