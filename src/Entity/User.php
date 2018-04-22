@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -35,31 +38,19 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255, nullable=false)
-     */
-    private $username;
-    /**
-     * @var string
-     *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255, unique=true)
      */
     private $password;
 
 
     private $plainPassword;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="registerToken", type="string", length=255, nullable=true)
-     */
-    private $registerToken;
 
     /**
      * @return string
@@ -92,25 +83,6 @@ class User implements UserInterface
     {
         $this->lastname = $lastname;
     }
-
-    /**
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @param string $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-
-
 
     /**
      * @return string
@@ -176,21 +148,6 @@ class User implements UserInterface
         $this->plainPassword = $plainPassword;
     }
 
-    /**
-     * @return null|string
-     */
-    public function getRegisterToken()
-    {
-        return $this->registerToken;
-    }
-
-    /**
-     * @param null|string $registerToken
-     */
-    public function setRegisterToken($registerToken)
-    {
-        $this->registerToken = $registerToken;
-    }
 
 
 

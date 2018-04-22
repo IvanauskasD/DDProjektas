@@ -144,3 +144,12 @@ e96421,127.0.0.1,GET,http://127.0.0.1:8000/,1524424935,,200
 648a0c,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1524425464,,404
 ae8528,127.0.0.1,GET,http://127.0.0.1:8000/signup,1524425465,,200
 c14e3e,127.0.0.1,GET,http://127.0.0.1:8000/signupUser,1524425470,,200
+a60d98,127.0.0.1,GET,http://localhost:8000/signup,1524427624,,200
+626af8,127.0.0.1,GET,http://localhost:8000/signupUser,1524427625,,200
+f78ee4,127.0.0.1,GET,http://localhost:8000/signupUser,1524427630,4c2d9e,200
+4c2d9e,127.0.0.1,POST,http://localhost:8000/signupUser,1524427630,,500
+822079,127.0.0.1,GET,http://localhost:8000/signupUser,1524427719,133fd1,200
+133fd1,127.0.0.1,POST,http://localhost:8000/signupUser,1524427719,,500
+5c50b9,127.0.0.1,POST,http://localhost:8000/signupUser,1524427895,,302
+c203ae,127.0.0.1,GET,http://localhost:8000/,1524427895,,200
+7dd6d1,127.0.0.1,GET,http://localhost:8000/login,1524427897,,200
