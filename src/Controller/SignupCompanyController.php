@@ -49,10 +49,6 @@ class SignupCompanyController extends AbstractController
             $em->persist($company);
             $em->flush();
 
-            $registerToken = base64_encode(random_bytes(20));
-            $registerToken = str_replace("/","",$registerToken);
-            $company->setRegisterToken($registerToken);
-
 
 
 
