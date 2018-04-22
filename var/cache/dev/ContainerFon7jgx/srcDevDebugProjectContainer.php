@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerXoa572o;
+namespace ContainerFon7jgx;
 
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
@@ -38,6 +38,7 @@ class srcDevDebugProjectContainer extends Container
         $this->normalizedIds = array(
             'app\\controller\\homecontroller' => 'App\\Controller\\HomeController',
             'app\\controller\\logincontroller' => 'App\\Controller\\LoginController',
+            'app\\controller\\loginusercontroller' => 'App\\Controller\\LoginUserController',
             'app\\controller\\signupcompanycontroller' => 'App\\Controller\\SignupCompanyController',
             'app\\controller\\signupcontroller' => 'App\\Controller\\SignupController',
             'app\\controller\\signupusercontroller' => 'App\\Controller\\SignupUserController',
@@ -141,6 +142,7 @@ class srcDevDebugProjectContainer extends Container
         $this->fileMap = array(
             'App\\Controller\\HomeController' => 'getHomeControllerService.php',
             'App\\Controller\\LoginController' => 'getLoginControllerService.php',
+            'App\\Controller\\LoginUserController' => 'getLoginUserControllerService.php',
             'App\\Controller\\SignupCompanyController' => 'getSignupCompanyControllerService.php',
             'App\\Controller\\SignupController' => 'getSignupControllerService.php',
             'App\\Controller\\SignupUserController' => 'getSignupUserControllerService.php',
@@ -1514,6 +1516,9 @@ class srcDevDebugProjectContainer extends Container
             return ${($_ = isset($this->services['data_collector.request']) ? $this->services['data_collector.request'] : $this->services['data_collector.request'] = new \Symfony\Bundle\FrameworkBundle\DataCollector\RequestDataCollector()) && false ?: '_'};
         }, 1 => 'onKernelResponse'), 0);
         $instance->addListener('kernel.request', array(0 => function () {
+            return ${($_ = isset($this->services['debug.debug_handlers_listener']) ? $this->services['debug.debug_handlers_listener'] : $this->getDebug_DebugHandlersListenerService()) && false ?: '_'};
+        }, 1 => 'configure'), 2048);
+        $instance->addListener('console.command', array(0 => function () {
             return ${($_ = isset($this->services['debug.debug_handlers_listener']) ? $this->services['debug.debug_handlers_listener'] : $this->getDebug_DebugHandlersListenerService()) && false ?: '_'};
         }, 1 => 'configure'), 2048);
         $instance->addListener('kernel.request', array(0 => function () {
