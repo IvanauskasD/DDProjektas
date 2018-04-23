@@ -1,9 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div style="text-align: center">
-    <a href="{{ path('signupUser') }}"><button id="signupUser" type="button" class="btn btn-outline-primary">Register as user</button></a>
-    <label id="or">or</label>
-    <a href="{{ path('signupCompany') }}"><button id="signupCompany" type="button" class="btn btn-outline-primary">Register as company</button></a>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <body>
+
+    <div class="w3-container1" style="text-align: center">
+        <h2>Choose registration type:</h2>
+        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Register</button>
+
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom w3-transparent" style="width: 500px;position: fixed;top: 50%">
+                <div class="w3-container">
+
+                    <button id="registerUser"><a href="{{ path('signupUser') }}">Register as user</a></button>
+                    <button id="registerCompany"><a href="{{ path('signupCompany') }}">Register as company</a></button>
+                </div>
+            </div>
+        </div>
     </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    </body>
 {% endblock %}

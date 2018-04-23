@@ -50,17 +50,41 @@ class __TwigTemplate_b54d6a7f841b25ca28231dcf62a3c0f31109e8b144a8d0b4f3cb6276042
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <div style=\"text-align: center\">
-    <a href=\"";
-        // line 5
+        echo "    <link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">
+    <body>
+
+    <div class=\"w3-container1\" style=\"text-align: center\">
+        <h2>Choose registration type:</h2>
+        <button onclick=\"document.getElementById('id01').style.display='block'\" class=\"w3-button w3-black\">Register</button>
+
+        <div id=\"id01\" class=\"w3-modal\">
+            <div class=\"w3-modal-content w3-animate-zoom w3-transparent\" style=\"width: 500px;position: fixed;top: 50%\">
+                <div class=\"w3-container\">
+
+                    <button id=\"registerUser\"><a href=\"";
+        // line 15
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signupUser");
-        echo "\"><button id=\"signupUser\" type=\"button\" class=\"btn btn-outline-primary\">Register as user</button></a>
-    <label id=\"or\">or</label>
-    <a href=\"";
-        // line 7
+        echo "\">Register as user</a></button>
+                    <button id=\"registerCompany\"><a href=\"";
+        // line 16
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signupCompany");
-        echo "\"><button id=\"signupCompany\" type=\"button\" class=\"btn btn-outline-primary\">Register as company</button></a>
+        echo "\">Register as company</a></button>
+                </div>
+            </div>
+        </div>
     </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = \"none\";
+            }
+        }
+    </script>
+    </body>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -82,7 +106,7 @@ class __TwigTemplate_b54d6a7f841b25ca28231dcf62a3c0f31109e8b144a8d0b4f3cb6276042
 
     public function getDebugInfo()
     {
-        return array (  61 => 7,  56 => 5,  53 => 4,  44 => 3,  15 => 1,);
+        return array (  70 => 16,  66 => 15,  53 => 4,  44 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -90,11 +114,35 @@ class __TwigTemplate_b54d6a7f841b25ca28231dcf62a3c0f31109e8b144a8d0b4f3cb6276042
         return new Twig_Source("{% extends 'base.html.twig' %}
 
 {% block body %}
-    <div style=\"text-align: center\">
-    <a href=\"{{ path('signupUser') }}\"><button id=\"signupUser\" type=\"button\" class=\"btn btn-outline-primary\">Register as user</button></a>
-    <label id=\"or\">or</label>
-    <a href=\"{{ path('signupCompany') }}\"><button id=\"signupCompany\" type=\"button\" class=\"btn btn-outline-primary\">Register as company</button></a>
+    <link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">
+    <body>
+
+    <div class=\"w3-container1\" style=\"text-align: center\">
+        <h2>Choose registration type:</h2>
+        <button onclick=\"document.getElementById('id01').style.display='block'\" class=\"w3-button w3-black\">Register</button>
+
+        <div id=\"id01\" class=\"w3-modal\">
+            <div class=\"w3-modal-content w3-animate-zoom w3-transparent\" style=\"width: 500px;position: fixed;top: 50%\">
+                <div class=\"w3-container\">
+
+                    <button id=\"registerUser\"><a href=\"{{ path('signupUser') }}\">Register as user</a></button>
+                    <button id=\"registerCompany\"><a href=\"{{ path('signupCompany') }}\">Register as company</a></button>
+                </div>
+            </div>
+        </div>
     </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = \"none\";
+            }
+        }
+    </script>
+    </body>
 {% endblock %}", "Registration/registration.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\templates\\Registration\\registration.html.twig");
     }
 }

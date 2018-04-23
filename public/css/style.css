@@ -275,3 +275,20 @@ button[id=signupUser]{
     padding: 10px;
 
 }
+
+button[id=registerUser]{
+border-radius: 10px;
+    position: fixed;
+    left: 40%;
+}
+button[id=registerCompany]{
+    border-radius: 10px;
+    position: fixed;
+    left: 50%;
+}
+button[id=registerCompany]:hover{
+    background-color: green;
+}
+button[id=registerUser]:hover{
+    background-color: green;
+}
