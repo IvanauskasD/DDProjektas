@@ -86,6 +86,7 @@ final class Versions
   'symfony/web-link' => 'v3.4.8@c7da19175bea0eff7d9ffee7ec7e30c93dadb61f',
   'symfony/webpack-encore-pack' => 'v1.0.2@f9f4e91659e5f55de370d6aebe77e64bce35e4d3',
   'symfony/yaml' => 'v3.4.8@a42f9da85c7c38d59f5e53f076fe81a091f894d0',
+  'twbs/bootstrap' => 'v4.1.0@8f7bd419935adfcd53c471a0202083464800619e',
   'twig/twig' => 'v2.4.8@7b604c89da162034bdf4bb66310f358d313dd16d',
   'webmozart/assert' => '1.3.0@0df1908962e7a3071564e857d86874dad1ef204a',
   'zendframework/zend-code' => '3.1.0@2899c17f83a7207f2d7f53ec2f421204d3beea27',
@@ -103,7 +104,7 @@ final class Versions
   'symfony/var-dumper' => 'v3.4.8@951643091b39a6fd40fce56cd16e21e12bef3feb',
   'symfony/web-profiler-bundle' => 'v3.4.8@a6a1390c444d11bdb9dcabe42237dc584c2ef20e',
   'symfony/web-server-bundle' => 'v3.4.8@44a6b2deb1c58b2dfd3592139db9091d7cfce8ed',
-  '__root__' => 'dev-domantas@f5bc46780edfd5e13704758cb7bdc7e641cfaf19',
+  '__root__' => 'dev-Ignas@3f261df8c1d001f89b23509e5188e88dc40213ec',
 );
 
     private function __construct()
