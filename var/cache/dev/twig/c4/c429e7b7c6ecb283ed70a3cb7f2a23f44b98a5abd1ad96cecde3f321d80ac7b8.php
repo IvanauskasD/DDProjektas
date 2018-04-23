@@ -1248,6 +1248,6 @@ class __TwigTemplate_ad091f8308f04a30fa0e1f297bc997c00beafd28f9a9e16cef32729d690
         display: none;
     }
 }
-", "@WebProfiler/Profiler/toolbar.css.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\toolbar.css.twig");
+", "@WebProfiler/Profiler/toolbar.css.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\toolbar.css.twig");
     }
 }

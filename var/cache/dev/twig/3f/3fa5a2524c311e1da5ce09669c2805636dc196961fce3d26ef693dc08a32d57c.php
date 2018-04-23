@@ -137,6 +137,6 @@ class __TwigTemplate_2cf2a6df891da152a7cdceffa59a9d0257e32aac50431cb77c756991cda
     {{ filename|file_excerpt(line, -1) }}
 </div>
 {% endblock %}
-", "@WebProfiler/Profiler/open.html.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\open.html.twig");
+", "@WebProfiler/Profiler/open.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\open.html.twig");
     }
 }

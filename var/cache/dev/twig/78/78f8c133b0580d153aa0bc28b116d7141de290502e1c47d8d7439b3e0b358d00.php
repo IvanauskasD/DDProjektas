@@ -49,6 +49,6 @@ class __TwigTemplate_92a74f4b526502b8af81f484abf73595b83dfb25872760981a628ca3193
     public function getSourceContext()
     {
         return new Twig_Source("</body>
-</html>", "footer.html.twig", "C:\\wamp64\\www\\DDProjektas\\templates\\footer.html.twig");
+</html>", "footer.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\templates\\footer.html.twig");
     }
 }

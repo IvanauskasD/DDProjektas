@@ -98,6 +98,6 @@ class __TwigTemplate_0034f23fef7fd0d4e3362424b92738f9f96a1b94f0471b79cb26c799fb9
 {% endfor %}
 </pre>
 {% endif %}
-", "@Twig/Exception/traces.txt.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces.txt.twig");
+", "@Twig/Exception/traces.txt.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces.txt.twig");
     }
 }

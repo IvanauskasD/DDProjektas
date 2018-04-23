@@ -1053,6 +1053,6 @@ class __TwigTemplate_fa58e0cb7c595d3b3769f40d8bf53311214530ab442af48e2055fcfdc02
         <span>{{ route|default(controller) }}</span>
     {%- endif %}
 {% endmacro %}
-", "WebProfilerBundle:Collector:request.html.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\web-profiler-bundle/Resources/views/Collector/request.html.twig");
+", "WebProfilerBundle:Collector:request.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\web-profiler-bundle/Resources/views/Collector/request.html.twig");
     }
 }

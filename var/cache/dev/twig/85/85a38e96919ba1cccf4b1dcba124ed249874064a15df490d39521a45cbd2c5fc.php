@@ -95,6 +95,6 @@ class __TwigTemplate_11ca5a41751002ee129c930bf1b2f2cd02b83a9ee1386231fc6720b8a5a
         </div>
     </body>
 </html>
-", "TwigBundle:Exception:error.html.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\twig-bundle/Resources/views/Exception/error.html.twig");
+", "TwigBundle:Exception:error.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\twig-bundle/Resources/views/Exception/error.html.twig");
     }
 }
