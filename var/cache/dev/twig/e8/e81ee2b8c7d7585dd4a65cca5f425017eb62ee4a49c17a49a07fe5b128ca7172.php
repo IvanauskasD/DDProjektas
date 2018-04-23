@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /* Registration\registrationUsers.html.twig */
+=======
+/* Registration/registrationUsers.html.twig */
+>>>>>>> 023d7194d353b1c0b80d78514980d6a61affa6b9
 class __TwigTemplate_4c875c855aa4ab701fa1e6fd6f22b608d5f498b289926bbfa16588ce2ba56771 extends Twig_Template
 {
     private $source;
@@ -12,7 +16,11 @@ class __TwigTemplate_4c875c855aa4ab701fa1e6fd6f22b608d5f498b289926bbfa16588ce2ba
         $this->source = $this->getSourceContext();
 
         // line 1
+<<<<<<< HEAD
         $this->parent = $this->loadTemplate("base.html.twig", "Registration\\registrationUsers.html.twig", 1);
+=======
+        $this->parent = $this->loadTemplate("base.html.twig", "Registration/registrationUsers.html.twig", 1);
+>>>>>>> 023d7194d353b1c0b80d78514980d6a61affa6b9
         $this->blocks = array(
             'body' => array($this, 'block_body'),
         );
@@ -26,10 +34,17 @@ class __TwigTemplate_4c875c855aa4ab701fa1e6fd6f22b608d5f498b289926bbfa16588ce2ba
     protected function doDisplay(array $context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+<<<<<<< HEAD
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "Registration\\registrationUsers.html.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "Registration\\registrationUsers.html.twig"));
+=======
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "Registration/registrationUsers.html.twig"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "Registration/registrationUsers.html.twig"));
+>>>>>>> 023d7194d353b1c0b80d78514980d6a61affa6b9
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
@@ -64,7 +79,11 @@ class __TwigTemplate_4c875c855aa4ab701fa1e6fd6f22b608d5f498b289926bbfa16588ce2ba
 
     public function getTemplateName()
     {
+<<<<<<< HEAD
         return "Registration\\registrationUsers.html.twig";
+=======
+        return "Registration/registrationUsers.html.twig";
+>>>>>>> 023d7194d353b1c0b80d78514980d6a61affa6b9
     }
 
     public function isTraitable()
@@ -83,6 +102,10 @@ class __TwigTemplate_4c875c855aa4ab701fa1e6fd6f22b608d5f498b289926bbfa16588ce2ba
 
 {% block body %}
     {{ form(registration_form) }}
+<<<<<<< HEAD
 {%  endblock %}", "Registration\\registrationUsers.html.twig", "C:\\wamp64\\www\\DDProjektas\\templates\\Registration\\registrationUsers.html.twig");
+=======
+{%  endblock %}", "Registration/registrationUsers.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\templates\\Registration\\registrationUsers.html.twig");
+>>>>>>> 023d7194d353b1c0b80d78514980d6a61affa6b9
     }
 }

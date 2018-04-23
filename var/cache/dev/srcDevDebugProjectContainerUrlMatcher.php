@@ -28,16 +28,20 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             $canonicalMethod = 'GET';
         }
 
-        // login
-        if ('/login' === $pathinfo) {
-            return array (  '_controller' => 'App\\Controller\\LoginController::loginAction',  '_route' => 'login',);
+        if (0 === strpos($pathinfo, '/login')) {
+            // login
+            if ('/login' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\LoginController::loginAction',  '_route' => 'login',);
+            }
+
+            // login_user
+            if ('/login/user' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\LoginUserController::index',  '_route' => 'login_user',);
+            }
+
         }
 
-        // app_login_logout
-        if ('/logout' === $pathinfo) {
-            return array (  '_controller' => 'App\\Controller\\LoginController::logoutAction',  '_route' => 'app_login_logout',);
-        }
-
+<<<<<<< HEAD
         if (0 === strpos($pathinfo, '/profile')) {
             // profile_index
             if ('/profile' === $trimmedPathinfo) {
@@ -109,6 +113,8 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+=======
+>>>>>>> 023d7194d353b1c0b80d78514980d6a61affa6b9
         elseif (0 === strpos($pathinfo, '/signup')) {
             // registrationCompany
             if ('/signupCompany' === $pathinfo) {

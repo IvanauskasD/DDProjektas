@@ -12,20 +12,13 @@ class LoginController extends Controller
 
     /**
      * @Route("/login", name="login")
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \LogicException
      */
     public function loginAction()
     {
-        return $this->render('login/login.html.twig', [
+        return $this->render('Login/login.html.twig', [
 
         ]);
-    }
-
-    /**
-     * @Route("/logout")
-     * @throws \RuntimeException
-     */
-    public function logoutAction()
-    {
-        throw new \RuntimeException("This should never be called directly");
     }
 }
