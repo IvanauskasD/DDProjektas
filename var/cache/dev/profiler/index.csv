@@ -201,3 +201,11 @@ ce88a9,127.0.0.1,GET,http://localhost:8000/,1524434062,,200
 d5d903,127.0.0.1,GET,http://localhost:8000/signup,1524434063,,200
 f5c3d4,127.0.0.1,GET,http://localhost:8000/signupUser,1524434064,,200
 97699c,127.0.0.1,POST,http://localhost:8000/signupUser,1524434070,,200
+a8078b,127.0.0.1,GET,http://localhost:8000/,1524489278,,200
+a88dff,127.0.0.1,GET,http://localhost:8000/profile,1524489285,,301
+4a20c4,127.0.0.1,GET,http://localhost:8000/profile/,1524489290,,200
+0b4c3f,127.0.0.1,GET,http://localhost:8000/profile/3,1524489309,,200
+20c418,127.0.0.1,GET,http://localhost:8000/profile/,1524489314,,200
+b26c1d,127.0.0.1,GET,http://localhost:8000/profile/new,1524489332,,200
+260276,127.0.0.1,POST,http://localhost:8000/profile/new,1524489373,,302
+f1dd2b,127.0.0.1,GET,http://localhost:8000/profile/,1524489376,,200
