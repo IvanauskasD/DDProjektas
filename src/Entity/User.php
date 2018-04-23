@@ -57,6 +57,9 @@ class User implements UserInterface
     private $plainPassword;
 
 
+    /**
+     * @return string
+     */
     public function getFirstname()
     {
         return $this->firstname;
@@ -151,8 +154,7 @@ class User implements UserInterface
     }
 
 
-    public function __toString() {
-        return (string) $this->id; }
+
 
 
     public function getRoles()

@@ -1,6 +1,6 @@
 <?php
 
-/* Registration\registrationCompanies.html.twig */
+/* registration/registrationCompanies.html.twig */
 class __TwigTemplate_fd39e52c1e762f6350f4715ab49d01895ce31ecb6aacad2ea2544224fca92d85 extends Twig_Template
 {
     private $source;
@@ -12,7 +12,7 @@ class __TwigTemplate_fd39e52c1e762f6350f4715ab49d01895ce31ecb6aacad2ea2544224fca
         $this->source = $this->getSourceContext();
 
         // line 1
-        $this->parent = $this->loadTemplate("base.html.twig", "Registration\\registrationCompanies.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "registration/registrationCompanies.html.twig", 1);
         $this->blocks = array(
             'body' => array($this, 'block_body'),
         );
@@ -26,10 +26,10 @@ class __TwigTemplate_fd39e52c1e762f6350f4715ab49d01895ce31ecb6aacad2ea2544224fca
     protected function doDisplay(array $context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "Registration\\registrationCompanies.html.twig"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "registration/registrationCompanies.html.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "Registration\\registrationCompanies.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "registration/registrationCompanies.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
@@ -64,7 +64,7 @@ class __TwigTemplate_fd39e52c1e762f6350f4715ab49d01895ce31ecb6aacad2ea2544224fca
 
     public function getTemplateName()
     {
-        return "Registration\\registrationCompanies.html.twig";
+        return "registration/registrationCompanies.html.twig";
     }
 
     public function isTraitable()
@@ -83,6 +83,6 @@ class __TwigTemplate_fd39e52c1e762f6350f4715ab49d01895ce31ecb6aacad2ea2544224fca
 
 {% block body %}
     {{ form(registration_form) }}
-{%  endblock %}", "Registration\\registrationCompanies.html.twig", "C:\\wamp64\\www\\DDProjektas\\templates\\Registration\\registrationCompanies.html.twig");
+{%  endblock %}", "registration/registrationCompanies.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\templates\\Registration\\registrationCompanies.html.twig");
     }
 }

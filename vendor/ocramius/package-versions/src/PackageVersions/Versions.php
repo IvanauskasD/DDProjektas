@@ -103,7 +103,7 @@ final class Versions
   'symfony/var-dumper' => 'v3.4.8@951643091b39a6fd40fce56cd16e21e12bef3feb',
   'symfony/web-profiler-bundle' => 'v3.4.8@a6a1390c444d11bdb9dcabe42237dc584c2ef20e',
   'symfony/web-server-bundle' => 'v3.4.8@44a6b2deb1c58b2dfd3592139db9091d7cfce8ed',
-  '__root__' => 'dev-Dalius@ec4e9d2e03c4b886f803f51f6dd003d28941572f',
+  '__root__' => 'dev-domantas@f5bc46780edfd5e13704758cb7bdc7e641cfaf19',
 );
 
     private function __construct()

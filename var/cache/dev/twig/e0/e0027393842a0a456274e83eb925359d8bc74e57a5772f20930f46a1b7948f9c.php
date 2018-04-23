@@ -78,6 +78,6 @@ class __TwigTemplate_c896afebc5da28505478c7c3a2d0a644a27cdd3afb3a76b338518cfd2b6
         </div>
     </section>
 
-", "homepage.html.twig", "C:\\wamp64\\www\\DDProjektas\\templates\\homepage.html.twig");
+", "homepage.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\templates\\homepage.html.twig");
     }
 }

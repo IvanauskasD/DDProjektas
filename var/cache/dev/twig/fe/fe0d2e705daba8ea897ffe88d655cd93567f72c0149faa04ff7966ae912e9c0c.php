@@ -417,6 +417,6 @@ class __TwigTemplate_73196b262e2d25544b14fbf416f5c3c64e06ac604f5e60c24a5f547e115
     });
 
 /*]]>*/</script>
-", "TwigBundle::base_js.html.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\twig-bundle/Resources/views/base_js.html.twig");
+", "TwigBundle::base_js.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\twig-bundle/Resources/views/base_js.html.twig");
     }
 }
