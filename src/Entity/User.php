@@ -44,7 +44,7 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="registerToken", type="string", length=255, nullable=true)
-     */
+    */
     private $registerToken;
 
     /**
@@ -143,7 +143,8 @@ class User implements UserInterface
         $this->registerToken = $registerToken;
     }
 
-
+    public function __toString() {
+        return (string) $this->id; }
 
 
     public function getRoles()

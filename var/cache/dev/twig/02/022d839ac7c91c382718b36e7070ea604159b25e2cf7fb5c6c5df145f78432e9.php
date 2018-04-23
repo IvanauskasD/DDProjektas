@@ -207,6 +207,6 @@ class __TwigTemplate_15cd4535f4932b376f7645a2a80e74531e5281449743765793fb2295f55
         {{ include('@Twig/base_js.html.twig') }}
     </body>
 </html>
-", "@Twig/layout.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\twig-bundle\\Resources\\views\\layout.html.twig");
+", "@Twig/layout.html.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\twig-bundle\\Resources\\views\\layout.html.twig");
     }
 }

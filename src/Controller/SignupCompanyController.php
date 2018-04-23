@@ -54,8 +54,6 @@ class SignupCompanyController extends AbstractController
             $company->setRegisterToken($registerToken);
 
 
-
-
             return $this->redirectToRoute('homepage');
         }
 

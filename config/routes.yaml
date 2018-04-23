@@ -13,7 +13,6 @@ signup:
     defaults:
         template: registration.html.twig
 
-
 signupUser:
     path: /signupUser
     controller: App\Controller\SignupUserController::index

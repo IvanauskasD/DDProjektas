@@ -106,6 +106,6 @@ class __TwigTemplate_9c682c44a4d36302dde1555a603a544d381817281851b99dbc804d556a8
             </div>
         </div>
     </nav>
-</header>", "header.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\templates\\header.html.twig");
+</header>", "header.html.twig", "C:\\wamp64\\www\\DDProjektas\\templates\\header.html.twig");
     }
 }

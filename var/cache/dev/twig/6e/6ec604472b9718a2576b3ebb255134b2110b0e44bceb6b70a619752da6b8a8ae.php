@@ -57,6 +57,6 @@ class __TwigTemplate_cccd9ba653581d29c02be1758fb632562a3e7492fe9c8165d8c7a541ea9
     C0.9,2,0.8,2.8,1.6,3.6L4,6L1.6,8.4C0.8,9.2,0.9,10,1.4,10.6c0.6,0.6,1.4,0.6,2.2-0.2L6,8l2.4,2.4c0.8,0.8,1.6,0.7,2.2,0.2
     C11.1,10,11.2,9.2,10.4,8.4z\"/>
 </svg>
-", "@WebProfiler/Icon/no.svg", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Icon\\no.svg");
+", "@WebProfiler/Icon/no.svg", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Icon\\no.svg");
     }
 }
