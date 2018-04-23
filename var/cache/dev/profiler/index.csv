@@ -241,3 +241,8 @@ b6da42,127.0.0.1,GET,http://localhost:8000/,1524511738,,200
 face85,127.0.0.1,GET,http://localhost:8000/signup,1524511743,,200
 ce1ce6,127.0.0.1,GET,http://localhost:8000/login,1524511745,,200
 dfb710,127.0.0.1,GET,http://localhost:8000/,1524511746,,200
+f6f541,127.0.0.1,GET,http://localhost:8000/,1524517001,,200
+1596c4,127.0.0.1,GET,http://localhost:8000/signup,1524517005,,200
+a0baae,127.0.0.1,GET,http://localhost:8000/signup,1524517265,,200
+23675c,127.0.0.1,GET,http://localhost:8000/signupUser,1524517271,,200
+abda31,127.0.0.1,GET,http://localhost:8000/signupCompany,1524517275,,200
