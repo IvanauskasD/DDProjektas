@@ -55,6 +55,6 @@ class __TwigTemplate_6b84b41094abff65f2ec4cc32676e4dd2a8cfeddb6ba91d59489b7cfc26
     public function getSourceContext()
     {
         return new Twig_Source("{{ include('@Twig/Exception/exception.xml.twig', { exception: exception }) }}
-", "TwigBundle:Exception:exception.atom.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\twig-bundle/Resources/views/Exception/exception.atom.twig");
+", "TwigBundle:Exception:exception.atom.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\twig-bundle/Resources/views/Exception/exception.atom.twig");
     }
 }

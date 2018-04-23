@@ -140,6 +140,6 @@ array_key_exists("token", $context)) ? (_twig_default_filter((isset($context["to
     <h2>{{ messages[about].title }}</h2>
     <p>{{ messages[about].message }}</p>
 {% endblock %}
-", "WebProfilerBundle:Profiler:info.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\web-profiler-bundle/Resources/views/Profiler/info.html.twig");
+", "WebProfilerBundle:Profiler:info.html.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\web-profiler-bundle/Resources/views/Profiler/info.html.twig");
     }
 }

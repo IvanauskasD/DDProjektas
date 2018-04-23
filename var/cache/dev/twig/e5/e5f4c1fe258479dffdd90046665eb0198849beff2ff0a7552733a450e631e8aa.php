@@ -53,6 +53,6 @@ class __TwigTemplate_d145caad73527ff8ca50e0ac3de424560ca4509423d09fca34557ec74c5
         return new Twig_Source("id=\"<?php echo \$view->escape(\$id) ?>\" name=\"<?php echo \$view->escape(\$full_name) ?>\"<?php if (\$disabled): ?> disabled=\"disabled\"<?php endif ?>
 <?php if (\$required): ?> required=\"required\"<?php endif ?>
 <?php echo \$attr ? ' '.\$view['form']->block(\$form, 'attributes') : '' ?>
-", "@Framework/Form/widget_attributes.html.php", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\widget_attributes.html.php");
+", "@Framework/Form/widget_attributes.html.php", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\widget_attributes.html.php");
     }
 }

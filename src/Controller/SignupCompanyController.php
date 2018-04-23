@@ -55,8 +55,6 @@ class SignupCompanyController extends AbstractController
             $em->flush();
 
 
-
-
             return $this->redirectToRoute('homepage');
         }
         $error = '';

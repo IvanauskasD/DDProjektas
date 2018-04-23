@@ -55,6 +55,6 @@ class __TwigTemplate_24b6d52231f2b271061f505f98d67246546eb1966b539a5412014d0b0d3
     public function getSourceContext()
     {
         return new Twig_Source("{{ { 'error': { 'code': status_code, 'message': status_text, 'exception': exception.toarray } }|json_encode|raw }}
-", "@Twig/Exception/exception.json.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\exception.json.twig");
+", "@Twig/Exception/exception.json.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\exception.json.twig");
     }
 }

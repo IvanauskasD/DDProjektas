@@ -130,6 +130,6 @@ class __TwigTemplate_eb8553410b207b3c745db0b07c795ec6e9cdc12cb11d42bb96068b7a690
         </div>
     </div>
 {% endblock %}
-", "WebProfilerBundle:Profiler:toolbar_redirect.html.twig", "C:\\xampp\\htdocs\\DDProjektas\\vendor\\symfony\\web-profiler-bundle/Resources/views/Profiler/toolbar_redirect.html.twig");
+", "WebProfilerBundle:Profiler:toolbar_redirect.html.twig", "C:\\wamp64\\www\\DDProjektas\\vendor\\symfony\\web-profiler-bundle/Resources/views/Profiler/toolbar_redirect.html.twig");
     }
 }
