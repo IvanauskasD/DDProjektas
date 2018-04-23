@@ -1,17 +1,10 @@
-
-<link rel="stylesheet" type="text/css" href="styleBase.css" />
-<h1>
-    <button id="Home"><img src="Home-Button-Repair.png">Home</button>
-    <button id="Register">Register</button>
-    <button id="Login">Login</button>
-</h1>
-{% include 'header.html.twig' %}
-    <section class="main-container">
-        <div class="main-wrapper">
-
-
-
-
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"><img src="{{ asset('Images/stranger.gif') }}" alt="Symfony!" /></div>
+            <div class="col"></div>
         </div>
-    </section>
-
+    </div>
+{% endblock %}

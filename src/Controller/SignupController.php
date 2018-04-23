@@ -29,6 +29,6 @@ class SignupController extends AbstractController
     public function registerAction()
     {
 
-        return $this->render('registration/registration.html.twig');
+        return $this->render('Registration/registration.html.twig');
     }
 }

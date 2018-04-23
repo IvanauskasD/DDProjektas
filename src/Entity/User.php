@@ -4,9 +4,17 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(
+ * fields="email",
+ * errorPath="wrong",
+ * message="This email is already taken"
+ *)
  */
 class User implements UserInterface
 {
@@ -21,9 +29,17 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255, nullable=false)
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
      */
-    private $username;
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
+     */
+    private $lastname;
+
     /**
      * @var string
      *
@@ -33,34 +49,44 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255, unique=true)
      */
     private $password;
 
 
     private $plainPassword;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="registerToken", type="string", length=255, nullable=true)
-     */
-    private $registerToken;
 
     /**
      * @return string
      */
-    public function getUsername()
+    public function getFirstname()
     {
-        return $this->username;
+        return $this->firstname;
     }
 
     /**
-     * @param string $username
+     * @param string $firstname
      */
-    public function setUsername($username)
+    public function setFirstname($firstname)
     {
-        $this->username = $username;
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param mixed $lastname
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
     }
 
     /**
@@ -126,24 +152,6 @@ class User implements UserInterface
     {
         $this->plainPassword = $plainPassword;
     }
-
-    /**
-     * @return null|string
-     */
-    public function getRegisterToken()
-    {
-        return $this->registerToken;
-    }
-
-    /**
-     * @param null|string $registerToken
-     */
-    public function setRegisterToken($registerToken)
-    {
-        $this->registerToken = $registerToken;
-    }
-
-
 
 
     public function getRoles()

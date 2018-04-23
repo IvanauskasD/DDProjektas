@@ -28,17 +28,91 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             $canonicalMethod = 'GET';
         }
 
-        // login
-        if ('/login' === $pathinfo) {
-            return array (  '_controller' => 'App\\Controller\\LoginController::loginAction',  '_route' => 'login',);
+        if (0 === strpos($pathinfo, '/login')) {
+            // login
+            if ('/login' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\LoginController::loginAction',  '_route' => 'login',);
+            }
+
+            // login_user
+            if ('/login/user' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\LoginUserController::index',  '_route' => 'login_user',);
+            }
+
         }
 
-        // app_login_logout
-        if ('/logout' === $pathinfo) {
-            return array (  '_controller' => 'App\\Controller\\LoginController::logoutAction',  '_route' => 'app_login_logout',);
+        elseif (0 === strpos($pathinfo, '/profile')) {
+            // profile_index
+            if ('/profile' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'App\\Controller\\ProfileController::index',  '_route' => 'profile_index',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_profile_index;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'profile_index'));
+                }
+
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_profile_index;
+                }
+
+                return $ret;
+            }
+            not_profile_index:
+
+            // profile_new
+            if ('/profile/new' === $pathinfo) {
+                $ret = array (  '_controller' => 'App\\Controller\\ProfileController::new',  '_route' => 'profile_new',);
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_profile_new;
+                }
+
+                return $ret;
+            }
+            not_profile_new:
+
+            // profile_show
+            if (preg_match('#^/profile/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'profile_show')), array (  '_controller' => 'App\\Controller\\ProfileController::show',));
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_profile_show;
+                }
+
+                return $ret;
+            }
+            not_profile_show:
+
+            // profile_edit
+            if (preg_match('#^/profile/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'profile_edit')), array (  '_controller' => 'App\\Controller\\ProfileController::edit',));
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_profile_edit;
+                }
+
+                return $ret;
+            }
+            not_profile_edit:
+
+            // profile_delete
+            if (preg_match('#^/profile/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'profile_delete')), array (  '_controller' => 'App\\Controller\\ProfileController::delete',));
+                if (!in_array($requestMethod, array('DELETE'))) {
+                    $allow = array_merge($allow, array('DELETE'));
+                    goto not_profile_delete;
+                }
+
+                return $ret;
+            }
+            not_profile_delete:
+
         }
 
-        if (0 === strpos($pathinfo, '/signup')) {
+        elseif (0 === strpos($pathinfo, '/signup')) {
             // registrationCompany
             if ('/signupCompany' === $pathinfo) {
                 return array (  '_controller' => 'App\\Controller\\SignupCompanyController::registerAction',  '_route' => 'registrationCompany',);
