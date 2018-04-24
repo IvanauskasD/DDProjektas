@@ -288,7 +288,7 @@ button[id=signupUser]{
 button[id=registerUser]{
     border-radius: 10px;
     position: fixed;
-    left: 40%;
+    left: 20%;
 }
 button[id=registerCompany]{
     border-radius: 10px;

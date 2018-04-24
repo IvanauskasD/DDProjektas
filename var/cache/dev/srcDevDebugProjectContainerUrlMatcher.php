@@ -28,20 +28,12 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             $canonicalMethod = 'GET';
         }
 
-        if (0 === strpos($pathinfo, '/login')) {
-            // login
-            if ('/login' === $pathinfo) {
-                return array (  '_controller' => 'App\\Controller\\LoginController::loginAction',  '_route' => 'login',);
-            }
-
-            // login_user
-            if ('/login/user' === $pathinfo) {
-                return array (  '_controller' => 'App\\Controller\\LoginUserController::index',  '_route' => 'login_user',);
-            }
-
+        // login
+        if ('/login' === $pathinfo) {
+            return array (  '_controller' => 'App\\Controller\\LoginController::loginAction',  '_route' => 'login',);
         }
 
-        elseif (0 === strpos($pathinfo, '/profile')) {
+        if (0 === strpos($pathinfo, '/profile')) {
             // profile_index
             if ('/profile' === $trimmedPathinfo) {
                 $ret = array (  '_controller' => 'App\\Controller\\ProfileController::index',  '_route' => 'profile_index',);
