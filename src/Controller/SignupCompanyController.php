@@ -57,14 +57,17 @@ class SignupCompanyController extends AbstractController
 
 
 
-            return $this->redirectToRoute('homepage');
+            return $this->render('Registration/registrationCompanies.html.twig', array('error' => "", 'success' => true, 'tried' => true,
+                'registration_form' => $form->createView()));
         }
         $error = '';
+        $tried = false;
         if ($userExists)
         {
             $error = "This email is already taken";
+            $tried = true;
         }
-        return $this->render('Registration/registrationCompanies.html.twig', array('error' => $error,
+        return $this->render('Registration/registrationCompanies.html.twig', array('error' => $error, 'success' => false, 'tried' => $tried,
             'registration_form' => $form->createView()));
     }
 }

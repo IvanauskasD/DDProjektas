@@ -82,6 +82,8 @@ class Company implements UserInterface
         $this->adress = $adress;
     }
 
+
+
     /**
      * @return mixed
      */
