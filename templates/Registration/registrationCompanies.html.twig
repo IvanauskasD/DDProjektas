@@ -8,10 +8,11 @@
             <div class="col"></div>
             <div class="col-5">
                 <h1>Company registration</h1>
-
+                <div style="color: red">
                 {% for message in error %}
                     {{ message }}<br>
                 {% endfor %}
+                </div>
                 {{ form(registration_form) }}
             </div>
             <div class="col"></div>
