@@ -9,16 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CompanyRepository")
- * @UniqueEntity(
- * fields="email",
- * errorPath="wrong",
- * message=""
- *)
- * @UniqueEntity(
- * fields="companyName",
- * errorPath="wrong",
- * message="This name is already taken"
- *)
+
  */
 class Company implements UserInterface
 {

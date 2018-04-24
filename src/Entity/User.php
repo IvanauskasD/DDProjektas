@@ -10,11 +10,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(
- * fields="email",
- * errorPath="wrong",
- * message=""
- *)
  */
 class User implements UserInterface
 {

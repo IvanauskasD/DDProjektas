@@ -41,7 +41,7 @@ class SignupUserController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(User::class);
         $userExists = $repository->findBy(['email' => $user->getEmail()]);
 
-        if($form->isSubmitted() && $form->isValid() && !$companyExists)
+        if($form->isSubmitted() && $form->isValid() && !$companyExists && !$userExists)
         {
             $password = $encoder
                 ->encodePassword(
