@@ -38,6 +38,9 @@ class SignupUserController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Company::class);
         $companyExists = $repository->findBy(['email' => $user->getEmail()]);
 
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $userExists = $repository->findBy(['email' => $user->getEmail()]);
+
         if($form->isSubmitted() && $form->isValid() && !$companyExists)
         {
             $password = $encoder
@@ -55,15 +58,19 @@ class SignupUserController extends AbstractController
 
 
 
-            return $this->redirectToRoute('homepage');
+            return $this->render('Registration/registrationUsers.html.twig',
+                array('error' => "", 'tried' => true, 'success' => true, 'registration_form' => $form->createView(),
+                ));
         }
         $error = '';
-        if ($companyExists)
+        $tried = false;
+        if ($companyExists || $userExists)
         {
             $error = "This email is already taken";
+            $tried = true;
         }
         return $this->render('Registration/registrationUsers.html.twig',
-            array('error' => $error, 'registration_form' => $form->createView(),
+            array('error' => $error, 'tried' => $tried, 'success' => false, 'registration_form' => $form->createView(),
         ));
     }
 }

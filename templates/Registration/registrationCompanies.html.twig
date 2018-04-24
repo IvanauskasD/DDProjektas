@@ -42,13 +42,13 @@
 
 
     {%   if tried == true %}
-        {%   if error == "" %}
+        {%   if success == true %}
             <script>alertSuccess()</script>
         {% else %}
             <script>alertFailure()</script>
 
         {% endif %}
-        
+
     {% endif %}
 
     </body>

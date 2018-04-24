@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity(
  * fields="email",
  * errorPath="wrong",
- * message="This email is already taken"
+ * message=""
  *)
  */
 class User implements UserInterface

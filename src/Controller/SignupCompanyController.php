@@ -39,6 +39,10 @@ class SignupCompanyController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(User::class);
         $userExists = $repository->findBy(['email' => $company->getEmail()]);
 
+        $repository = $this->getDoctrine()->getRepository(Company::class);
+        $company1Exists = $repository->findBy(['email' => $company->getEmail()]);
+        $company2Exists = $repository->findBy(['companyName' => $company->getCompanyName()]);
+
         if($form->isSubmitted() && $form->isValid() && !$userExists)
         {
             $password = $encoder
@@ -62,9 +66,9 @@ class SignupCompanyController extends AbstractController
         }
         $error = '';
         $tried = false;
-        if ($userExists)
+        if ($userExists || $company1Exists || $company2Exists)
         {
-            $error = "This email is already taken";
+            if ($userExists) $error = "This email is already taken";
             $tried = true;
         }
         return $this->render('Registration/registrationCompanies.html.twig', array('error' => $error, 'success' => false, 'tried' => $tried,
