@@ -39,11 +39,7 @@ class SignupCompanyController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(User::class);
         $userExists = $repository->findBy(['email' => $company->getEmail()]);
 
-        $repository = $this->getDoctrine()->getRepository(Company::class);
-        $company1Exists = $repository->findBy(['email' => $company->getEmail()]);
-        $company2Exists = $repository->findBy(['companyName' => $company->getCompanyName()]);
-
-        if($form->isSubmitted() && $form->isValid() && !$userExists && !$company1Exists && !$company1Exists)
+        if($form->isSubmitted() && $form->isValid() && !$userExists)
         {
             $password = $encoder
                 ->encodePassword(
@@ -61,18 +57,14 @@ class SignupCompanyController extends AbstractController
 
 
 
-            return $this->render('Registration/registrationCompanies.html.twig', array('error' => "", 'success' => true, 'tried' => true,
-                'registration_form' => $form->createView()));
+            return $this->redirectToRoute('homepage');
         }
-        $error = array();
-        $tried = false;
-        if ($userExists || $company1Exists || $company2Exists)
+        $error = '';
+        if ($userExists)
         {
-            if ($userExists || $company1Exists) array_push($error, "This email is already taken");
-            if ($company2Exists) array_push($error, "This name is already taken");
-            $tried = true;
+            $error = "This email is already taken";
         }
-        return $this->render('Registration/registrationCompanies.html.twig', array('error' => $error, 'success' => false, 'tried' => $tried,
+        return $this->render('Registration/registrationCompanies.html.twig', array('error' => $error,
             'registration_form' => $form->createView()));
     }
 }

@@ -1,15 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block title %}<title>Login</title>{% endblock %}
 {% block body %}
-<div class="text-center">
+
     <form class="form-signin" action="{{ path('login') }}" method="POST">
-        <div style="position:fixed;right: 43%">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        </div>
+        <h1 class="h3 mb-3 font-weight-normal" style="width: 20%;margin: auto">Please sign in</h1>
+
         <label for="_username" class="sr-only">Username</label>
 
         <input type="text"
-
+               style="width: 20%;margin: auto"
                id="_username"
                name="_username"
                class="form-control"
@@ -19,13 +18,15 @@
         <label for="_password" class="sr-only">Password</label>
 
         <input type="password"
+               style="width: 20%;margin: auto;"
                id="_password"
                name="_password"
                class="form-control"
                placeholder="Password"
                required>
-
-        <button class="btn btn-sm btn-primary" style="position: absolute;top: 50%" type="submit">Sign in</button>
-    </form>
+<div class="text-center ">
+        <button class="btn btn-sm btn-primary" type="submit">Sign in</button>
 </div>
+    </form>
+
 {% endblock %}
