@@ -39,6 +39,11 @@ class Profile
 
     private $phoneNumber;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Car", mappedBy="profile")
+     */
+    private $cars;
+
     public function getId()
     {
         return $this->id;
@@ -107,4 +112,22 @@ class Profile
     {
         $this->phoneNumber = $phoneNumber;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCars()
+    {
+        return $this->cars;
+    }
+
+    /**
+     * @param mixed $cars
+     */
+    public function setCars($cars)
+    {
+        $this->cars = $cars;
+    }
+
+
 }

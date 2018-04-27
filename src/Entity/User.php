@@ -59,6 +59,27 @@ class User implements UserInterface, \Serializable
 
     private $plainPassword;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Profile", mappedBy="user")
+     */
+    private $profile;
+
+    /**
+     * @return mixed
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
+
+    /**
+     * @param mixed $profile
+     */
+    public function setProfile($profile)
+    {
+        $this->profile = $profile;
+    }
+
 
 
     /**
