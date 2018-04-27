@@ -20,10 +20,13 @@ security:
                 target: /
 
 
+    access_control:
+        - { path: ^/main, roles: IS_AUTHENTICATED_FULLY }
     providers:
         db_provider:
             entity:
                 class: App\Entity\User
-                property: username
+
+
 
 

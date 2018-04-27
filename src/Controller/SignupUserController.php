@@ -17,6 +17,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use App\Form\UserForm;
 
 class SignupUserController extends AbstractController
@@ -27,8 +28,14 @@ class SignupUserController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \LogicException
      */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $encoder)
+    public function registerAction(Request $request, UserPasswordEncoderInterface $encoder, AuthorizationCheckerInterface $authChecker)
     {
+
+        if ($authChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('homepage');
+        }
+
+
         $user = new User();
 
         $form = $this->createForm(UserForm::class, $user);
@@ -58,9 +65,7 @@ class SignupUserController extends AbstractController
 
 
 
-            return $this->render('Registration/registrationUsers.html.twig',
-                array('error' => "", 'tried' => true, 'success' => true, 'registration_form' => $form->createView(),
-                ));
+            return $this->redirectToRoute('login');
         }
         $error = '';
         $tried = false;
