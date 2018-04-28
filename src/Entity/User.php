@@ -32,7 +32,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255, nullable=true)
      */
     private $username;
 
@@ -52,7 +52,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255, unique=true)
+     * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
 
@@ -62,23 +62,24 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Profile", mappedBy="user")
      */
-    private $profile;
+    private $profileOfUser;
 
     /**
      * @return mixed
      */
-    public function getProfile()
+    public function getProfileOfUser()
     {
-        return $this->profile;
+        return $this->profileOfUser;
     }
 
     /**
-     * @param mixed $profile
+     * @param mixed $profileOfUser
      */
-    public function setProfile($profile)
+    public function setProfileOfUser($profileOfUser)
     {
-        $this->profile = $profile;
+        $this->profileOfUser = $profileOfUser;
     }
+
 
 
 

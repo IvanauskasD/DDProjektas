@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\Collection;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProfileRepository")
  */
@@ -40,9 +40,16 @@ class Profile
     private $phoneNumber;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Car", mappedBy="profile")
+     * @ORM\OneToMany(targetEntity="App\Entity\Car", mappedBy="profileOfUser")
      */
     private $cars;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="profile")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     public function getId()
     {
@@ -114,7 +121,7 @@ class Profile
     }
 
     /**
-     * @return mixed
+     * @return Collection|Car[]
      */
     public function getCars()
     {
@@ -127,6 +134,22 @@ class Profile
     public function setCars($cars)
     {
         $this->cars = $cars;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
 
