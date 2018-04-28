@@ -10,10 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Car
 {
     /**
-     * @ORM\Id()
+     * @var int
+     *
      * @ORM\Column(type="integer")
+     * @ORM\Id
      */
-    private $id;
+    private $carId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -25,15 +27,6 @@ class Car
      */
     private $model;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $service;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $subService;
 
     /**
      * @ORM\Column(type="integer")
@@ -110,17 +103,17 @@ class Car
     /**
      * @return mixed
      */
-    public function getId()
+    public function getCarId()
     {
-        return $this->id;
+        return $this->carId;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $carId
      */
-    public function setId($id)
+    public function setCarId($carId)
     {
-        $this->id = $id;
+        $this->carId = $carId;
     }
 
     /**
@@ -187,21 +180,6 @@ class Car
         $this->service = $service;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSubService()
-    {
-        return $this->subService;
-    }
-
-    /**
-     * @param mixed $subService
-     */
-    public function setSubService($subService)
-    {
-        $this->subService = $subService;
-    }
 
     /**
      * @return mixed
@@ -218,6 +196,5 @@ class Car
     {
         $this->transmission = $transmission;
     }
-
 
 }

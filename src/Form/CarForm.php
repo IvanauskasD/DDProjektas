@@ -16,6 +16,9 @@ class CarForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('carId', TextType::class, array(
+                'label' => 'carId'
+            ))
             ->add('maker', ChoiceType::class, array(
                 'choices' => array(
                     'BMW' => 'BMW',
@@ -24,12 +27,6 @@ class CarForm extends AbstractType
             ))
             ->add('model', TextType::class, array(
                 'label' => 'Model'
-            ))
-            ->add('service', ChoiceType::class, array(
-                'choices' => array(
-                    'Tire replacement' => 'Tire replacement',
-                    'Brakes replacement' => 'Brakes replacement'),
-                'label' => 'service'
             ))
             ->add('carYear', ChoiceType::class, array(
                 'choices' => array(
@@ -53,6 +50,7 @@ class CarForm extends AbstractType
                 'label' => 'Save car'
             ))
         ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
