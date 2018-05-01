@@ -59,8 +59,6 @@ class SignupUserController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-
-
             return $this->redirectToRoute('login');
         }
         $error = '';

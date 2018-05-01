@@ -4,6 +4,7 @@ namespace App\Form;
 use App\Entity\User;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,8 +20,9 @@ class UserForm extends AbstractType
         $builder
             ->add('firstname', TextType::class)
             ->add('lastname', TextType::class)
-    //        ->add('username', TextType::class)
+        //    ->add('username', TextType::class)
             ->add('email', EmailType::class)
+            ->add('phoneNumber', TextType::class)
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options'  => [
@@ -30,7 +32,9 @@ class UserForm extends AbstractType
                     'label' => 'Repeat Password'
                     ]
             ])
-            ->add('submit', SubmitType::class);
+            ->add('submit', SubmitType::class, array(
+                'label' => 'Save'
+            ));
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

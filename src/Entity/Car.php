@@ -27,7 +27,6 @@ class Car
      */
     private $model;
 
-
     /**
      * @ORM\Column(type="integer")
      */
@@ -46,11 +45,12 @@ class Car
      */
     private $city;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Profile")
-     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $profileOfUser;
+    private $user;
 
     /**
      * @return mixed
@@ -151,22 +151,6 @@ class Car
     /**
      * @return mixed
      */
-    public function getProfileOfUser()
-    {
-        return $this->profileOfUser;
-    }
-
-    /**
-     * @param mixed $profileOfUser
-     */
-    public function setProfileOfUser($profileOfUser)
-    {
-        $this->profileOfUser = $profileOfUser;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getService()
     {
         return $this->service;
@@ -195,6 +179,22 @@ class Car
     public function setTransmission($transmission)
     {
         $this->transmission = $transmission;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
 }

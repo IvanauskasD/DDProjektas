@@ -49,6 +49,14 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phoneNumber", type="string", length=255, nullable=false)
+     */
+    private $phoneNumber;
+
     /**
      * @var string
      *
@@ -60,28 +68,9 @@ class User implements UserInterface, \Serializable
     private $plainPassword;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Profile", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Car", mappedBy="user")
      */
-    private $profileOfUser;
-
-    /**
-     * @return mixed
-     */
-    public function getProfileOfUser()
-    {
-        return $this->profileOfUser;
-    }
-
-    /**
-     * @param mixed $profileOfUser
-     */
-    public function setProfileOfUser($profileOfUser)
-    {
-        $this->profileOfUser = $profileOfUser;
-    }
-
-
-
+    private $cars;
 
     /**
      * @return string
@@ -161,6 +150,38 @@ class User implements UserInterface, \Serializable
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param string $phoneNumber
+     */
+    public function setPhoneNumber(string $phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCars()
+    {
+        return $this->cars;
+    }
+
+    /**
+     * @param mixed $cars
+     */
+    public function setCars($cars)
+    {
+        $this->cars = $cars;
     }
 
     /**
