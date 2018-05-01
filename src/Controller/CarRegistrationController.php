@@ -20,24 +20,17 @@ class CarRegistrationController extends Controller
         $user = $this->getUser();
         $newCar = new Car();
         $form = $this->createForm(CarForm::class, $newCar);
-        $profile = $user->getProfileOfUser();
         $form->handleRequest($request);
-
-
 
         if($form->isSubmitted() && $form->isValid())
         {
-
-
-            $newCar->setProfileOfUser($profile);
+            $newCar->setUser($user);
 
             $em = $this->getDoctrine()->getManager();
             $cars = $this->getDoctrine()->getRepository(Car::class)->find($newCar->getCarId());
 
             $em->persist($cars);
             $em->flush();
-
-
 
             return $this->redirectToRoute('homepage');
         }

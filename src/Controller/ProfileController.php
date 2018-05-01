@@ -1,14 +1,12 @@
 <?php
-
 namespace App\Controller;
-
-use App\Entity\Profile;
-use App\Form\ProfileType;
-use App\Repository\ProfileRepository;
+use App\Entity\User;
+use App\Form\UserForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * @Route("/profile")
@@ -16,77 +14,33 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfileController extends Controller
 {
     /**
-     * @Route("/", name="profile_index", methods="GET")
+     * @Route("/", name="profile_index")
      */
-    public function index(ProfileRepository $profileRepository): Response
+    public function index(AuthorizationCheckerInterface $authorizationChecker)
     {
-        return $this->render('profile/index.html.twig', ['profiles' => $profileRepository->findAll()]);
-    }
-
-    /**
-     * @Route("/new", name="profile_new", methods="GET|POST")
-     */
-    public function new(Request $request): Response
-    {
-        $profile = new Profile();
-        $form = $this->createForm(ProfileType::class, $profile);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($profile);
-            $em->flush();
-
-            return $this->redirectToRoute('profile_index');
+        if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')){
+            return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('profile/new.html.twig', [
-            'profile' => $profile,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('profile/index.html.twig',
+            ['error' => null]);
     }
 
-    /**
-     * @Route("/{id}", name="profile_show", methods="GET")
-     */
-    public function show(Profile $profile): Response
-    {
-        return $this->render('profile/show.html.twig', ['profile' => $profile]);
-    }
 
     /**
      * @Route("/{id}/edit", name="profile_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Profile $profile): Response
+    public function edit(Request $request, User $user): Response
     {
-        $form = $this->createForm(ProfileType::class, $profile);
+        $form = $this->createForm(UserForm::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('profile_edit', ['id' => $profile->getId()]);
+            return $this->redirectToRoute('profile_index', ['id' => $user->getId()]);
         }
-
         return $this->render('profile/edit.html.twig', [
-            'profile' => $profile,
+            'profile' => $user,
             'form' => $form->createView(),
         ]);
-    }
-
-    /**
-     * @Route("/{id}", name="profile_delete", methods="DELETE")
-     */
-    public function delete(Request $request, Profile $profile): Response
-    {
-        if (!$this->isCsrfTokenValid('delete'.$profile->getId(), $request->request->get('_token'))) {
-            return $this->redirectToRoute('profile_index');
-        }
-
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($profile);
-        $em->flush();
-
-        return $this->redirectToRoute('profile_index');
     }
 }
