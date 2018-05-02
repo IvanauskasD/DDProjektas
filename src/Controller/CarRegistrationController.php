@@ -17,8 +17,12 @@ class CarRegistrationController extends Controller
      */
     public function carRegisterAction(Request $request, AuthorizationCheckerInterface $authChecker)
     {
+        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $newCar = new Car();
+
+
+
         $form = $this->createForm(CarForm::class, $newCar);
         $form->handleRequest($request);
 
@@ -26,10 +30,11 @@ class CarRegistrationController extends Controller
         {
             $newCar->setUser($user);
 
-            $em = $this->getDoctrine()->getManager();
-            $cars = $this->getDoctrine()->getRepository(Car::class)->find($newCar->getCarId());
 
-            $em->persist($cars);
+            $car = $this->getDoctrine()->getRepository(Car::class)->find($newCar->getCarId());
+
+            $newCar->setUser($user);
+            $em->persist($newCar);
             $em->flush();
 
             return $this->redirectToRoute('homepage');
