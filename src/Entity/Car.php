@@ -36,7 +36,7 @@ class Car
      */
     private $transmission;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=255)
      */
     private $engineVolume;
 
