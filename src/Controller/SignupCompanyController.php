@@ -61,8 +61,7 @@ class SignupCompanyController extends AbstractController
 
 
 
-            return $this->render('Registration/registrationCompanies.html.twig', array('error' => "", 'success' => true, 'tried' => true,
-                'registration_form' => $form->createView()));
+            return $this->redirectToRoute('login');
         }
         $error = array();
         $tried = false;

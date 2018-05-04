@@ -4,10 +4,15 @@
 
 {% block body %}
     <h1>Edit Profile</h1>
-
-    {{ include('profile/_form.html.twig', {'button_label': 'Update'}) }}
+    <div id ="user">
+        {{ form_start(form) }}
+        First name:  {{ form_widget(form.firstname, {'value' : app.user.firstName }) }}<br/>
+        Last name:  {{ form_widget(form.lastname, {'value' : app.user.lastName }) }}<br/>
+        Email:  {{ form_widget(form.email, {'value' : app.user.email }) }}<br/>
+        PhoneNumber:  {{ form_widget(form.phoneNumber, {'value' : app.user.phoneNumber }) }}<br/>
+    </div>
+    {{ form_end(form) }}
 
     <a href="{{ path('profile_index') }}">back to list</a>
 
-    {{ include('profile/_delete_form.html.twig') }}
-{% endblock %}
+    {% endblock %}

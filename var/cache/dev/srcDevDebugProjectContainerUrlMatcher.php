@@ -28,9 +28,19 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             $canonicalMethod = 'GET';
         }
 
+        // CarRegistration
+        if ('/carRegistration' === $pathinfo) {
+            return array (  '_controller' => 'App\\Controller\\CarRegistrationController::carRegisterAction',  '_route' => 'CarRegistration',);
+        }
+
         // login
         if ('/login' === $pathinfo) {
             return array (  '_controller' => 'App\\Controller\\LoginController::loginAction',  '_route' => 'login',);
+        }
+
+        // logout
+        if ('/logout' === $pathinfo) {
+            return array (  '_controller' => 'App\\Controller\\LoginController::logout',  '_route' => 'logout',);
         }
 
         if (0 === strpos($pathinfo, '/profile')) {
@@ -45,38 +55,9 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return array_replace($ret, $this->redirect($rawPathinfo.'/', 'profile_index'));
                 }
 
-                if (!in_array($canonicalMethod, array('GET'))) {
-                    $allow = array_merge($allow, array('GET'));
-                    goto not_profile_index;
-                }
-
                 return $ret;
             }
             not_profile_index:
-
-            // profile_new
-            if ('/profile/new' === $pathinfo) {
-                $ret = array (  '_controller' => 'App\\Controller\\ProfileController::new',  '_route' => 'profile_new',);
-                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                    $allow = array_merge($allow, array('GET', 'POST'));
-                    goto not_profile_new;
-                }
-
-                return $ret;
-            }
-            not_profile_new:
-
-            // profile_show
-            if (preg_match('#^/profile/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'profile_show')), array (  '_controller' => 'App\\Controller\\ProfileController::show',));
-                if (!in_array($canonicalMethod, array('GET'))) {
-                    $allow = array_merge($allow, array('GET'));
-                    goto not_profile_show;
-                }
-
-                return $ret;
-            }
-            not_profile_show:
 
             // profile_edit
             if (preg_match('#^/profile/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
@@ -89,18 +70,6 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $ret;
             }
             not_profile_edit:
-
-            // profile_delete
-            if (preg_match('#^/profile/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'profile_delete')), array (  '_controller' => 'App\\Controller\\ProfileController::delete',));
-                if (!in_array($requestMethod, array('DELETE'))) {
-                    $allow = array_merge($allow, array('DELETE'));
-                    goto not_profile_delete;
-                }
-
-                return $ret;
-            }
-            not_profile_delete:
 
         }
 

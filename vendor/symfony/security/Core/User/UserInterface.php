@@ -71,11 +71,11 @@ interface UserInterface
     public function getSalt();
 
     /**
-     * Returns the email used to authenticate the user.
+     * Returns the username used to authenticate the user.
      *
      * @return string The username
      */
-    public function getEmail();
+    public function getUsername();
 
     /**
      * Removes sensitive data from the user.

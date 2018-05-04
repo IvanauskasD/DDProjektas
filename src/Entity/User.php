@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -28,6 +28,14 @@ class User implements UserInterface
      */
     private $firstname;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255, nullable=true)
+     */
+    private $username;
+
     /**
      * @var string
      *
@@ -41,16 +49,28 @@ class User implements UserInterface
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255, unique=true)
+     * @ORM\Column(name="phoneNumber", type="string", length=255)
+     */
+    private $phoneNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
 
 
     private $plainPassword;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Car", mappedBy="user")
+     */
+    private $cars;
 
     /**
      * @return string
@@ -133,6 +153,38 @@ class User implements UserInterface
     }
 
     /**
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param string $phoneNumber
+     */
+    public function setPhoneNumber(string $phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCars()
+    {
+        return $this->cars;
+    }
+
+    /**
+     * @param mixed $cars
+     */
+    public function setCars($cars)
+    {
+        $this->cars = $cars;
+    }
+
+    /**
      * @return mixed
      */
     public function getPlainPassword()
@@ -147,6 +199,23 @@ class User implements UserInterface
     {
         $this->plainPassword = $plainPassword;
     }
+
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
 
 
     public function getRoles()
@@ -177,6 +246,30 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         $this->plainPassword = null;
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized);
     }
 
 
