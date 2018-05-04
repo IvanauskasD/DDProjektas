@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
     <head>
@@ -94,3 +95,89 @@
     </body>
 
 </html>
+||||||| merged common ancestors
+=======
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}<title>Autobot system</title>{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        {% endblock %}
+        {% block navigation %}
+
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a href={{ path('homepage') }} class="navbar-brand">Home</a>
+
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+
+
+                    <ul class="nav navbar-nav ml-auto">
+                        {% if app.user %}
+                            <li class="nav-item">
+                                <a class="btn btn-secondary" href="{{ path('profile_index') }}">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-secondary" href="{{ path('CarRegistration') }}">Car Reg</a>
+                            </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-secondary" href="{{ path('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-secondary" href="{{ path('signup') }}">Signup</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        <div class="bg-light" style="height: ">
+        {% block overlap %}
+        <div class="container" style="height: 60px">
+        </div>
+        {% endblock %}
+    </head>
+    <body>
+        {% block body  %}
+
+        {% endblock %}
+        <div style="height: 800px">
+        </div>
+
+
+
+
+
+        {% block footer %}
+        <div class="footer bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col"> </div>
+                    <div class="col">Made by AutoBot team </div>
+                    <div class="col"> </div>
+                </div>
+
+            </div>
+        </div>
+        {% endblock %}
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            <script src={{ asset('scripts/sweetalert2.all.js') }}></script>
+
+
+        {% endblock %}
+
+        </div>
+    </body>
+
+</html>
+>>>>>>> master
