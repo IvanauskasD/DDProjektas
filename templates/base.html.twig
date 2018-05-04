@@ -28,9 +28,22 @@
                         <li class="nav-item">
                             <a class="btn btn-secondary" href="{{ path('login') }}">Login</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="btn btn-secondary" href="{{ path('signup') }}">Signup</a>
-                        </li>
+                            <li class="nav-item">
+                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Register</button>
+                                <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body" >
+                                                <button id="registerUser"><a href="{{ path('signupUser') }}">Register as user</a></button>
+                                                <button id="registerCompany"><a href="{{ path('signupCompany') }}">Register as company</a></button>
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
                         {% endif %}
                     </ul>
 
