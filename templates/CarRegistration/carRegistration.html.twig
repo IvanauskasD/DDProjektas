@@ -1,4 +1,13 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    {{ form(car_form) }}
+    {{ form_start(car_form) }}
+    Car ID: {{ form_widget(car_form.carId, {'attr': {'class': 'Car'}}) }}</br>
+    Maker: {{ form_widget(car_form.maker, {'attr': {'class': 'Car'}}) }}</br>
+    Model: {{ form_widget(car_form.model, {'attr': {'class': 'Car'}}) }}</br>
+    Car Year: {{ form_widget(car_form.carYear, {'attr': {'class': 'Car'}}) }}</br>
+    Transmission: {{ form_widget(car_form.transmission, {'attr': {'class': 'Car'}}) }}</br>
+    Engine volume: {{ form_widget(car_form.engineVolume, {'attr': {'class': 'Car'}}) }}</br>
+    City: {{ form_widget(car_form.city, {'attr': {'class': 'Car'}}) }}</br>
+    {{ form_widget(car_form.submit, { 'label': 'Register car' }) }}
+    {{ form_end(car_form) }}
 {% endblock %}
