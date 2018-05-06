@@ -22,10 +22,17 @@ security:
 
     access_control:
         - { path: ^/main, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/company/, role: ROLE_COMPANY }
+
     providers:
-        db_provider:
-            entity:
-                class: App\Entity\User
+        chain_provider:
+            chain:
+                providers: [user, company]
+        user:
+            entity: { class: App\Entity\User }
+        company:
+            entity: { class: App\Entity\Company, property: email }
+
 
 
 

@@ -5,44 +5,19 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Events;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends Controller
 {
 
     /**
      * @Route("/login", name="login")
-     * @param AuthenticationUtils $authenticationUtils
-     * @param AuthorizationCheckerInterface $authChecker
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \LogicException
      */
-    public function loginAction(AuthorizationCheckerInterface $authChecker, AuthenticationUtils $authenticationUtils)
+    public function loginAction()
     {
 
-        if ($authChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return $this->redirectToRoute('homepage');
-        }
-
-        $errors = $authenticationUtils->getLastAuthenticationError();
-
-        $lastUserName=  $authenticationUtils->getLastUsername();
-        if ($errors == true)
-        {
-            $errors = "Incorrect username and/or password";
-        }
-        return $this->render('Login/login.html.twig', [
-            'errors'=>$errors,
-            '$lastUserName' =>$lastUserName
-        ]);
+        return $this->render('Login/login.html.twig');
     }
 
-    /**
-     * @Route("/logout", name="logout")
-     */
-    public function logout()
-    {
-
-    }
 }

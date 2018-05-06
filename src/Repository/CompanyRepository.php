@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Company;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
 /**
  * @method Company|null find($id, $lockMode = null, $lockVersion = null)
@@ -12,14 +13,14 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Company[]    findAll()
  * @method Company[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CompanyRepository extends ServiceEntityRepository
+class CompanyRepository extends ServiceEntityRepository implements UserLoaderInterface
 {
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Company::class);
     }
 
-    public function loadCompanyByUsername($username)
+    public function loadUserByUsername($username)
     {
         return $this->createQueryBuilder('u')
             ->where('u.username = :username OR u.email = :email')

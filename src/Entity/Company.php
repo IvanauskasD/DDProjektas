@@ -194,7 +194,7 @@ class Company implements UserInterface
     public function getRoles()
     {
         return [
-            'ROLE_USER',
+            'ROLE_COMPANY',
         ];
     }
 
