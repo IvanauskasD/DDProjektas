@@ -57,6 +57,8 @@ class Company implements UserInterface
     private $phoneNumber;
 
 
+
+
     /**
      * @return string
      */

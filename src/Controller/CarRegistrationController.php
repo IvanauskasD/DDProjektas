@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Profile;
 use App\Entity\Car;
 use App\Form\CarForm;
 use Symfony\Component\Routing\Annotation\Route;
