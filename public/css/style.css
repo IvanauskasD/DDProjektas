@@ -285,21 +285,16 @@ button[id=signupUser]{
 
 }
 
-button[id=registerUser]{
+button[id=log_reg_user]{
     border-radius: 10px;
     position: fixed;
     left: 20%;
+    color: black;
 }
-button[id=registerCompany]{
+button[id=log_reg_company]{
     border-radius: 10px;
     position: fixed;
     left: 50%;
-}
-button[id=registerCompany]:hover{
-    background-color: green;
-}
-button[id=registerUser]:hover{
-    background-color: green;
 }
 input[id=_username]{
     width: 20%;text-align: center;position: absolute;top: 30%;right: 38%;

@@ -22,27 +22,40 @@
                                 <a class="btn btn-secondary" href="{{ path('profile_index') }}">Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-secondary" href="{{ path('CarRegistration') }}">Car Reg</a>
+                                <a class="btn btn-secondary" href="{{ path('CarRegistration') }}">Car registration</a>
                             </li>
                             {% elseif is_granted('ROLE_COMPANY') %}
                                 <li class="nav-item">
                                     <a class="btn btn-secondary" href="{{ path('companyProfile') }}">Profile</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="btn btn-secondary" href="{{ path('registerService') }}">RegService</a>
+                                <a class="btn btn-secondary" href="{{ path('registerService') }}">Register service</a>
                                 </li>
                                 {% else %}
                         <li class="nav-item">
-                            <a class="btn btn-secondary" href="{{ path('login') }}">Login</a>
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#LoginModal">Login</button>
+                            <div id="LoginModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body" >
+                                            <button id="log_reg_user"><a href="{{ path('loginUser') }}">Login as user</a></button>
+                                            <button id="log_reg_company"><a href="{{ path('loginCompany') }}">Login as company</a></button>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </li>
                             <li class="nav-item">
-                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Register</button>
-                                <div id="myModal" class="modal fade" role="dialog">
+                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#RegisterModal">Register</button>
+                                <div id="RegisterModal" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-body" >
-                                                <button id="registerUser"><a href="{{ path('signupUser') }}">Register as user</a></button>
-                                                <button id="registerCompany"><a href="{{ path('signupCompany') }}">Register as company</a></button>
+                                                <button id="log_reg_user"><a href="{{ path('signupUser') }}">Register as user</a></button>
+                                                <button id="log_reg_company"><a href="{{ path('signupCompany') }}">Register as company</a></button>
                                             </div>
                                             <div class="modal-footer">
                                             </div>
