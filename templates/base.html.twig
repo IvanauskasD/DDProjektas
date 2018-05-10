@@ -18,19 +18,29 @@
 
                     <ul class="nav navbar-nav ml-auto">
                         {% if is_granted('ROLE_USER') %}
-                            <li class="nav-item">
-                                <a class="btn btn-secondary" href="{{ path('profile_index') }}">Profile</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="{{ path('profile_index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.firstName  }}</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ path('profile_index') }}">Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Log out</a>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="btn btn-secondary" href="{{ path('CarRegistration') }}">Car registration</a>
-                            </li>
+                            <div id="mySidenav" class="sidenav">
+                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                <a href="{{ path('CarRegistration') }}">Car registration</a>
+                            </div>
+                            <button id="Menu" onclick="openNav()">Menu</button>
+
                             {% elseif is_granted('ROLE_COMPANY') %}
                                 <li class="nav-item">
                                     <a class="btn btn-secondary" href="{{ path('companyProfile') }}">Profile</a>
                                 </li>
-                                <li class="nav-item">
-                                <a class="btn btn-secondary" href="{{ path('registerService') }}">Register service</a>
-                                </li>
+                                    <div id="mySidenav" class="sidenav">
+                                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                        <a href="{{ path('registerService') }}">Register service</a>
+                                    </div>
+                                    <button id="Menu" onclick="openNav()">Menu</button>
                                 {% else %}
                         <li class="nav-item">
                             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#LoginModal">Login</button>
@@ -106,7 +116,15 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
             <script src={{ asset('scripts/sweetalert2.all.js') }}></script>
+            <script>
+                function openNav() {
+                    document.getElementById("mySidenav").style.width = "250px";
+                }
 
+                function closeNav() {
+                    document.getElementById("mySidenav").style.width = "0";
+                }
+            </script>
 
         {% endblock %}
 
