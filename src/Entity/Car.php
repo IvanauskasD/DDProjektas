@@ -11,7 +11,7 @@ class Car
 {
     /**
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="id", type="string", length=255)
      * @ORM\Id
      */
     private $carId;
