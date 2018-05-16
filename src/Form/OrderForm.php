@@ -8,9 +8,9 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use App\Entity\Service;
+use App\Entity\Order;
 
-class ServiceForm extends AbstractType
+class OrderForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -22,6 +22,7 @@ class ServiceForm extends AbstractType
                     'Padangos' => 'Padangos'),
                 'label' => 'serviceCategory'
             ))
+
             ->add('ServiceName', TextType::class)
             ->add('submit', SubmitType::class, array(
                 'label' => 'Submit service'
@@ -31,7 +32,7 @@ class ServiceForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Service::class,
+            'data_class' => Order::class,
         ));
     }
 }

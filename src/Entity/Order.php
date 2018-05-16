@@ -12,24 +12,36 @@ class Order
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="id", type="integer", unique=true)
      */
     private $id;
 
     /**
-     * @ORM\Column(name="startDate", type="datetime", nullable=false)
+     * @ORM\Column(name="startDate", type="datetime", nullable=true)
      */
     private $startDate;
 
     /**
-     * @ORM\Column(name="finishDate", type="datetime", nullable=false)
+     * @ORM\Column(name="finishDate", type="datetime", nullable=true)
      */
     private $finishDate;
 
     /**
-     * @ORM\Column(name="duration", type="integer", nullable=false)
+     * @ORM\Column(name="duration", type="integer", nullable=true)
      */
     private $duration;
+
+    /**
+     * @var string
+     * @ORM\Column(name="orderCat",type="string", length=255, nullable=false)
+     */
+    private $serviceCategory;
+
+    /**
+     * @var string
+     * @ORM\Column(name="orderName",type="string", length=255, nullable=false)
+     */
+    private $serviceName;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="orders")
@@ -39,7 +51,7 @@ class Order
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Car", inversedBy="orders")
-     * @ORM\JoinColumn(name="car_id", referencedColumnName="car_id")
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
 
@@ -138,4 +150,38 @@ class Order
     {
         $this->car = $car;
     }
+
+    /**
+     * @return string
+     */
+    public function getServiceCategory()
+    {
+        return $this->serviceCategory;
+    }
+
+    /**
+     * @param string $serviceCategory
+     */
+    public function setServiceCategory($serviceCategory)
+    {
+        $this->serviceCategory = $serviceCategory;
+    }
+
+    /**
+     * @return string
+     */
+    public function getServiceName()
+    {
+        return $this->serviceName;
+    }
+
+    /**
+     * @param string $serviceName
+     */
+    public function setServiceName($serviceName)
+    {
+        $this->serviceName = $serviceName;
+    }
+
+
 }
