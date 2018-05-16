@@ -20,8 +20,6 @@ class RegisterServiceController extends Controller
         $company = $this->getUser();
         $service = new Service();
 
-
-
         $form = $this->createForm(ServiceForm::class, $service);
         $form->handleRequest($request);
 

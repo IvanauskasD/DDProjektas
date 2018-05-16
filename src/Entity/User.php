@@ -64,13 +64,17 @@ class User implements UserInterface, \Serializable
      */
     private $password;
 
-
     private $plainPassword;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Car", mappedBy="user")
      */
     private $cars;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="user")
+     */
+    private $orders;
 
     /**
      * @return string
@@ -214,6 +218,22 @@ class User implements UserInterface, \Serializable
     public function setUsername($username)
     {
         $this->username = $username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @param mixed $orders
+     */
+    public function setOrders($orders)
+    {
+        $this->orders = $orders;
     }
 
 

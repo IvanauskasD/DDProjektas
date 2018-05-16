@@ -10,9 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Car
 {
     /**
-     * @var int
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      * @ORM\Id
      */
     private $carId;
@@ -45,12 +44,16 @@ class Car
      */
     private $city;
 
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="car")
+     */
+    private $orders;
 
     /**
      * @return mixed
@@ -195,6 +198,22 @@ class Car
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @param mixed $orders
+     */
+    public function setOrders($orders)
+    {
+        $this->orders = $orders;
     }
 
 }
