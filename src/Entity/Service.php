@@ -28,6 +28,10 @@ class Service
      */
     private $serviceName;
 
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $cost;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Company")
@@ -96,9 +100,19 @@ class Service
         $this->company = $company;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
 
-
-
-
-    // add your own fields
+    /**
+     * @param mixed $cost
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+    }
 }
