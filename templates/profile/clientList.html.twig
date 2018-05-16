@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+            <h1>Client list</h1>
+            <table align="center" bgcolor= "gray">
+                <tr>
+                    <th>User ID</th>
+                    <th></th>
+                    <th>Username</th>
+                    <th></th>
+                    <th>Email</th>
+                    <th></th>
+                    <th>Phone Number</th>
+                </tr>
+                {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td></td>
+                            <td>{{ user.firstName }}</td>
+                            <td></td>
+                            <td>{{ user.email}}</td>
+                            <td></td>
+                            <td>{{ user.phoneNumber }}</td>
+                        </tr>
+                {% endfor %}
+            </table>
+    </div>
+{% endblock %}
