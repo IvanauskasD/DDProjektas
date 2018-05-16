@@ -26,16 +26,16 @@ class ProfileController extends Controller
             ['error' => null]);
     }
 
-
     /**
-     * @Route("/{id}/edit", name="profile_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="profile_edit")
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, User $user)
     {
         $form = $this->createForm(UserForm::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em ->flush();
             return $this->redirectToRoute('profile_index', ['id' => $user->getId()]);
         }
         return $this->render('profile/edit.html.twig', [

@@ -14,7 +14,6 @@ class ClientListController extends Controller
      */
     public function index(AuthorizationCheckerInterface $authorizationChecker)
     {
-
         if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('homepage');
         }
