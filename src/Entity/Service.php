@@ -17,6 +17,11 @@ class Service
     private $id;
 
     /**
+     * @ORM\Column(name="company_id", type="integer", nullable=false)
+     */
+    private $companyId;
+
+    /**
      * @var string
      * @ORM\Column(type="string", length=255, nullable=false)
      */
@@ -73,11 +78,24 @@ class Service
     }
 
     /**
-     * @param string $serviceName
+     * @param string $service_name
      */
     public function setServiceName($serviceName)
     {
         $this->serviceName = $serviceName;
+    }
+
+    public function getCompanyId()
+    {
+        return $this->companyId;
+    }
+
+    /**
+     * @param int $service_name
+     */
+    public function setCompanyId($companyId)
+    {
+        $this->companyId = $companyId;
     }
 
     /**
