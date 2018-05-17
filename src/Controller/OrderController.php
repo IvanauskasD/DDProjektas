@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Car;
-use App\Entity\Order;
+use App\Entity\Job;
 use App\Entity\Service;
 use App\Form\ServiceForm;
 use App\Form\OrderForm;
@@ -27,30 +27,32 @@ class OrderController extends Controller
 
         $user = $this->getUser();
         $cars = $user->getCars();
-        $newCar = new Car();
+        $em = $this->getDoctrine()->getManager();
         $newService = new Service();
-        $newOrder = new Order();
+        $newJob = new Job();
+        $newCar = $this->getDoctrine()->getRepository(Car::class)->findAll();
         $service = $this->getDoctrine()->getRepository(Service::class)->findAll();
 
-        $form = $this->createForm(OrderForm::class, $newOrder);
+        $form = $this->createForm(OrderForm::class, $newJob);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
 
+            foreach ($service as $ser)
+                foreach ($newCar as $car)
+                    if ($ser->getServiceName() == $car->getServiceName() && $ser->getServiceCategory() == $car->getServiceCategory()) {
+                        $newJob->setServiceName($ser->getServiceName());
+                        $newJob->setServiceCategory($ser->getServiceCategory());
+                        $newJob->setUser($user);
+                        $newJob->setCar($car);
+                        $em->persist($newJob);
+                        $em->flush();
 
-            $em = $this->getDoctrine()->getManager();
-            $newOrder->setUser($user);
-            foreach($cars as $temp)
-            $newOrder->setCar($temp);
-            $em->persist($newOrder);
+                    }
+        return $this->redirectToRoute('homepage');
 
-
-            $em->flush();
-
-            echo "what";
-
-            return $this->redirectToRoute('homepage');
         }
+
 
         return $this->render('order/index.html.twig', [
             'order' => $form->createView()

@@ -46,10 +46,19 @@ class CarForm extends AbstractType
             ->add('city', TextType::class, array(
                 'label' => 'city'
             ))
+            ->add('serviceCategory', ChoiceType::class, array(
+                'choices' => array(
+                    'Varikliai' => 'Varikliai',
+                    'Salonas' => 'Salonas',
+                    'Padangos' => 'Padangos'),
+                'label' => 'serviceCategory'
+            ))
+            ->add('serviceName', TextType::class, array(
+                'label' => 'serviceName'
+            ))
             ->add('submit', SubmitType::class, array(
                 'label' => 'Save car'
-            ))
-        ;
+            ));
 
     }
 

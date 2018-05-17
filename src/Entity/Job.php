@@ -7,12 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OrderRepository")
  */
-class Order
+class Job
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(name="id", type="integer", unique=true)
+     * @ORM\Column(name="id", type="integer", unique=true, nullable=false)
      */
     private $id;
 
@@ -33,24 +33,24 @@ class Order
 
     /**
      * @var string
-     * @ORM\Column(name="orderCat",type="string", length=255, nullable=false)
+     * @ORM\Column(name="orderCat",type="string", length=255, nullable=true)
      */
     private $serviceCategory;
 
     /**
      * @var string
-     * @ORM\Column(name="orderName",type="string", length=255, nullable=false)
+     * @ORM\Column(name="orderName",type="string", length=255, nullable=true)
      */
     private $serviceName;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="orders")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Car", inversedBy="orders")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Car")
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
