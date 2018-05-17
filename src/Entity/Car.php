@@ -51,9 +51,22 @@ class Car
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="car")
+     * @ORM\OneToMany(targetEntity="App\Entity\Job", mappedBy="car")
      */
     private $orders;
+
+
+    /**
+     * @var string
+     * @ORM\Column(name="orderCat",type="string", length=255, nullable=false)
+     */
+    private $serviceCategory;
+
+    /**
+     * @var string
+     * @ORM\Column(name="orderName",type="string", length=255, nullable=false)
+     */
+    private $serviceName;
 
     /**
      * @return mixed
@@ -215,5 +228,39 @@ class Car
     {
         $this->orders = $orders;
     }
+
+    /**
+     * @return string
+     */
+    public function getServiceCategory()
+    {
+        return $this->serviceCategory;
+    }
+
+    /**
+     * @param string $serviceCategory
+     */
+    public function setServiceCategory($serviceCategory)
+    {
+        $this->serviceCategory = $serviceCategory;
+    }
+
+    /**
+     * @return string
+     */
+    public function getServiceName()
+    {
+        return $this->serviceName;
+    }
+
+    /**
+     * @param string $serviceName
+     */
+    public function setServiceName($serviceName)
+    {
+        $this->serviceName = $serviceName;
+    }
+
+
 
 }
