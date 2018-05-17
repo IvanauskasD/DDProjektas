@@ -25,7 +25,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ path('profile_index') }}">Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Log out</a>
+                                    <a class="dropdown-item" href="/logout">Log out</a>
                                 </div>
                             </li>
                             <div id="mySidenav" class="sidenav">
@@ -36,7 +36,14 @@
 
                             {% elseif is_granted('ROLE_COMPANY') %}
                                 <li class="nav-item">
-                                    <a class="btn btn-secondary" href="{{ path('companyProfile') }}">Profile</a>
+                                    <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.email  }}</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ path('companyProfile') }}">Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/logout">Log out</a>
+                                </div>
+                            </li>
                                 </li>
                                     <div id="mySidenav" class="sidenav">
                                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
