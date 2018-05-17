@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+    <h1 style="text-align: center"> My services </h1>
+    <br>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Pavadinimas</th>
+      <th scope="col">Kategorija</th>
+    </tr>
+  </thead>
+  <tbody>
+         {% set i = 0 %}
+        {% for service in services %}
+            <tr>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{service.serviceName}}</td>
+                <td>{{service.serviceCategory}}</td>
+                {% set i = i + 1 %}
+            </tr>
+            
+        {% endfor %}
+  </tbody>
+</table>
+        
+    </div>
+{% endblock %}

@@ -19,16 +19,15 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Service::class);
     }
 
-    /*
-    public function findBySomething($value)
+    
+    public function findByCompanyId($value)
     {
-        return $this->createQueryBuilder('s')
-            ->where('s.something = :value')->setParameter('value', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('service')
+            ->where('service.companyId LIKE :value')
+            ->setParameter('value', "%{$value}%")
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 }
