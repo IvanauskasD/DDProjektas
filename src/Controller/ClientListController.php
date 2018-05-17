@@ -22,4 +22,5 @@ class ClientListController extends Controller
             'users' => $users,
         ]);
     }
+    
 }

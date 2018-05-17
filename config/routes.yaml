@@ -25,3 +25,13 @@ signupCompany:
     controller: App\Controller\SignupCompanyController::index
     defaults:
         template: registrationCompanies.html.twig
+deleteService:
+    path: /company/services/delete/{id}
+    controller: App\Controller\ServiceListController::Delete
+    defaults:
+        template: serviceList.html.twig
+editService:
+    path: /company/services/edit/{id}
+    controller: App\Controller\ServiceListController::Edit
+    defaults:
+        template: serviceList.html.twig

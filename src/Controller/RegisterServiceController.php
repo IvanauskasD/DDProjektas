@@ -34,7 +34,11 @@ class RegisterServiceController extends Controller
             $em->persist($service);
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            $user = $this->getUser();
+            $services = $this->getDoctrine()->getManager()->getRepository(Service::class)->findByCompanyId($user->getId());
+            return $this->render('serviceList.html.twig',[
+                'services' => $services
+            ]);
         }
         return $this->render('ServiceRegistration/serviceRegistration.html.twig', array(
             'services'=>$form->createView(),
