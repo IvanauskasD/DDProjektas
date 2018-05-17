@@ -2,9 +2,11 @@
 namespace App\Controller;
 
 use App\Entity\Service;
+use App\Form\ServiceForm;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class ServiceListController extends Controller
 {
@@ -42,6 +44,38 @@ class ServiceListController extends Controller
         $services = $this->getDoctrine()->getManager()->getRepository(Service::class)->findByCompanyId($user->getId());
         return $this->render('serviceList.html.twig',[
             'services' => $services
+        ]);
+    }
+
+    /**
+     * @Route("/company/services/edit/{id}", name="editService")
+     */
+    public function Edit (int $id, AuthorizationCheckerInterface $authorizationChecker, Request $request)
+    {
+        if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('homepage');
+        }
+        $em = $this->getDoctrine()->getManager();
+        $service = $em->getRepository(Service::class)->find($id);
+
+        $form = $this->createForm(ServiceForm::class, $service);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em->persist($service);
+            $em->flush();
+            $user = $this->getUser();
+            $services = $this->getDoctrine()->getManager()->getRepository(Service::class)->findByCompanyId($user->getId());
+            return $this->render('serviceList.html.twig',[
+            'services' => $services
+            ]);
+        }
+
+        $user = $this->getUser();
+        $services = $this->getDoctrine()->getManager()->getRepository(Service::class)->findByCompanyId($user->getId());
+        return $this->render('ServiceRegistration/serviceRegistration.html.twig', [
+            'services' =>$form->createView()
         ]);
     }
 }

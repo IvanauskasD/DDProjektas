@@ -30,3 +30,8 @@ deleteService:
     controller: App\Controller\ServiceListController::Delete
     defaults:
         template: serviceList.html.twig
+editService:
+    path: /company/services/edit/{id}
+    controller: App\Controller\ServiceListController::Edit
+    defaults:
+        template: serviceList.html.twig

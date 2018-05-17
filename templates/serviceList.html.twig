@@ -20,7 +20,7 @@
                 <td>{{service.serviceName}}</td>
                 <td>{{service.serviceCategory}} </td>
                 <td style="text-align: right"> 
-                <button type="button" class="btn btn-warning" >Edit</button>
+                <button type="button" class="btn btn-warning" onclick="location.href = '{{ path('editService', {id: service.id}) }}'" >Edit</button>
                 <button type="button" class="btn btn-danger" onclick="location.href = '{{ path('deleteService', {id: service.id}) }}'">Delete</button>
                 </td>
                 
