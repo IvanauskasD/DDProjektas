@@ -22,4 +22,26 @@ class ServiceListController extends Controller
             'services' => $services
         ]);
     }
+
+    /**
+     * @Route("/company/services/delete/{id}", name="deleteService")
+     */
+    public function Delete (int $id, AuthorizationCheckerInterface $authorizationChecker)
+    {
+        if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('homepage');
+        }
+        $em = $this->getDoctrine()->getManager();
+        $service = $em->getRepository(Service::class)->find($id);
+        if ($service)
+        {
+            $em->remove($service);
+            $em->flush();
+        }
+        $user = $this->getUser();
+        $services = $this->getDoctrine()->getManager()->getRepository(Service::class)->findByCompanyId($user->getId());
+        return $this->render('serviceList.html.twig',[
+            'services' => $services
+        ]);
+    }
 }

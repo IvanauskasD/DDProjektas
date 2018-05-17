@@ -9,6 +9,7 @@
       <th scope="col">#</th>
       <th scope="col">Pavadinimas</th>
       <th scope="col">Kategorija</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +18,12 @@
             <tr>
                 <th scope="row">{{i + 1}}</th>
                 <td>{{service.serviceName}}</td>
-                <td>{{service.serviceCategory}}</td>
+                <td>{{service.serviceCategory}} </td>
+                <td style="text-align: right"> 
+                <button type="button" class="btn btn-warning" >Edit</button>
+                <button type="button" class="btn btn-danger" onclick="location.href = '{{ path('deleteService', {id: service.id}) }}'">Delete</button>
+                </td>
+                
                 {% set i = i + 1 %}
             </tr>
             
