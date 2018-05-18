@@ -4,12 +4,10 @@
     <h1>Edit Profile</h1>
     <div id ="user">
         {{ form_start(form) }}
-        <label>First name:</label>  {{ form_widget(form.firstname, {'value' : app.user.firstName }) }}<br/>
+        <label>First name:</label> {{ form_widget(form.firstname, {'value' : app.user.firstName }) }}<br/>
         <label>Last name:</label>  {{ form_widget(form.lastname, {'value' : app.user.lastName }) }}<br/>
         <label>Email:</label>  {{ form_widget(form.email, {'value' : app.user.email }) }}<br/>
         <label>PhoneNumber:</label>  {{ form_widget(form.phoneNumber, {'value' : app.user.phoneNumber }) }}<br/>
-        <label>Password:</label> {{ form_widget(form.plainPassword.first, {'attr': {'class':'User'}}) }}<br/>
-        <label>Repeat password:</label> {{ form_widget(form.plainPassword.second, {'attr': {'class':'User'}}) }}<br/>
         {{ form_widget(form.submit, { 'label': 'Edit' }) }}
     </div>
     {{ form_end(form) }}
