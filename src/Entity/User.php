@@ -236,8 +236,6 @@ class User implements UserInterface, \Serializable
         $this->orders = $orders;
     }
 
-
-
     public function getRoles()
     {
         return [

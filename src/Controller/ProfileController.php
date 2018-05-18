@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller;
+use App\Entity\Profile;
 use App\Entity\User;
+use App\Form\ProfileForm;
 use App\Form\UserForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,12 +34,15 @@ class ProfileController extends Controller
     public function edit(Request $request, User $user)
     {
         $form = $this->createForm(UserForm::class, $user);
+        $form->remove('plainPassword');
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em ->flush();
             return $this->redirectToRoute('profile_index', ['id' => $user->getId()]);
         }
+
         return $this->render('profile/edit.html.twig', [
             'profile' => $user,
             'form' => $form->createView(),
