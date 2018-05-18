@@ -55,7 +55,7 @@ class ProfileController extends Controller
     /**
      * @Route("/{id}/editCar", name="editCar")
      */
-    public function editCar(string $id, Request $request)
+    public function editCar($id, Request $request)
     {
         $car = $this->getDoctrine()->getRepository(Car::class)->find($id);
         $form = $this->createForm(CarForm::class, $car);
@@ -76,5 +76,18 @@ class ProfileController extends Controller
         return $this->render('profile/editCar.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}/deleteCar", name="deleteCar")
+     */
+    public function deleteCar($id)
+    {
+        $car = $this->getDoctrine()->getRepository(Car::class)->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($car);
+        $em->flush();
+
+        return $this->redirectToRoute('profile_index');
     }
 }

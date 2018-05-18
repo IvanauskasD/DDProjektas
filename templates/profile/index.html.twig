@@ -9,6 +9,12 @@
         <b>Phone number:</b> {{ app.user.phoneNumber }}<br/>
         <button type="button" id="Edit-profile" onclick="location.href = '{{ path('profile_edit', {id: app.user.id}) }}'" >Edit profile</button>
         <br/>
+        <br/>
+        <br/>
+        <button type="button" id="Edit-profile" onclick="location.href = '{{ path('CarRegistration') }}'" >Add your car</button>
+        <br/>
+        <br/>
+        <b>Your owned car list:</b>
         <table class="table">
             <tr>
                 <th scope="col">Car ID</th>
@@ -29,14 +35,13 @@
                     <td>{{ car.transmission}}</td>
                     <td>{{ car.engineVolume}}</td>
                     <td style="text-align: right">
-                        <a href = "{{ path('editCar', {id: car.carId}) }}" >Edit</a>
+                        <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
+                        <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
                     </td>
-
                 </tr>
             {% endfor %}
             </tbody>
         </table>
         <br/>
     </div>
-
 {% endblock %}

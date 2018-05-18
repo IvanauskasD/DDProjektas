@@ -26,14 +26,11 @@ class CarRegistrationController extends Controller
         if($form->isSubmitted() && $form->isValid())
         {
             $newCar->setUser($user);
-
-            $car = $this->getDoctrine()->getRepository(Car::class)->find($newCar->getCarId());
-
             $newCar->setUser($user);
             $em->persist($newCar);
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('profile_index');
         }
 
         return $this->render('CarRegistration/carRegistration.html.twig', [
