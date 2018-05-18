@@ -1,7 +1,9 @@
 <?php
 namespace App\Controller;
+use App\Entity\Car;
 use App\Entity\Profile;
 use App\Entity\User;
+use App\Form\CarForm;
 use App\Form\ProfileForm;
 use App\Form\UserForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -37,7 +39,8 @@ class ProfileController extends Controller
         $form->remove('plainPassword');
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid())
+        {
             $em = $this->getDoctrine()->getManager();
             $em ->flush();
             return $this->redirectToRoute('profile_index', ['id' => $user->getId()]);
@@ -45,6 +48,32 @@ class ProfileController extends Controller
 
         return $this->render('profile/edit.html.twig', [
             'profile' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/editCar", name="editCar")
+     */
+    public function editCar(string $id, Request $request)
+    {
+        $car = $this->getDoctrine()->getRepository(Car::class)->find($id);
+        $form = $this->createForm(CarForm::class, $car);
+        $form->remove('city');
+        $form->remove('serviceCategory');
+        $form->remove('serviceName');
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->render('profile/index.html.twig',
+                ['error' => null]);
+        }
+
+        return $this->render('profile/editCar.html.twig', [
             'form' => $form->createView(),
         ]);
     }
