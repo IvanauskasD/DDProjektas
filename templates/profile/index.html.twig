@@ -7,9 +7,35 @@
         <b>Last name:</b> {{ app.user.lastName }}<br/>
         <b>Email:</b> {{ app.user.email }} <br/>
         <b>Phone number:</b> {{ app.user.phoneNumber }}<br/>
-        <button type="button" id="Edit-profile"><a id="Edit-profile" href="{{ path('profile_edit', {'id': app.user.id}) }}">Edit profile</a><br/></button>
-        <a href="{{ path('profile_edit', {'id': app.user.id}) }}">Edit profile</a><br/>
+        <button type="button" id="Edit-profile" onclick="location.href = '{{ path('profile_edit', {id: app.user.id}) }}'" >Edit profile</button>
         <br/>
+        <table class="table">
+            <tr>
+                <th scope="col">Car ID</th>
+                <th scope="col">Maker</th>
+                <th scope="col">Model</th>
+                <th scope="col">Car year</th>
+                <th scope="col">Transmission</th>
+                <th scope="col">Engine volume</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for car in app.user.cars %}
+                <tr>
+                    <td>{{ car.carId }}</td>
+                    <td>{{ car.maker}}</td>
+                    <td>{{ car.model}}</td>
+                    <td>{{ car.carYear}}</td>
+                    <td>{{ car.transmission}}</td>
+                    <td>{{ car.engineVolume}}</td>
+                    <td style="text-align: right">
+                        <a href = "{{ path('editCar', {id: car.carId}) }}" >Edit</a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
         <br/>
     </div>
 

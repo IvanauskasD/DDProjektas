@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Edit Car</h1>
+    <div id ="profile">
+        {{ form_start(form) }}
+        <label>Car ID:</label> {{ form_widget(form.carId) }}<br/>
+        <label>Maker:</label>  {{ form_widget(form.maker) }}<br/>
+        <label>Model:</label>  {{ form_widget(form.model) }}<br/>
+        <label>Car year:</label>  {{ form_widget(form.carYear) }}<br/>
+        <label>Transmission:</label>  {{ form_widget(form.transmission) }}<br/>
+        <label>Engine volume:</label>  {{ form_widget(form.engineVolume) }}<br/>
+        {{ form_widget(form.submit, { 'label': 'Edit' }) }}
+    </div>
+    {{ form_end(form) }}
+
+    <a href="{{ path('profile_index') }}">Back to list</a>
+
+{% endblock %}
