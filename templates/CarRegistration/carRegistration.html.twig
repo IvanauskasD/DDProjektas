@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     {{ form_start(car_form) }}
+    <div id="default">
     Car ID: {{ form_widget(car_form.carId, {'attr': {'class': 'Car'}}) }}</br>
     Maker: {{ form_widget(car_form.maker, {'attr': {'class': 'Car'}}) }}</br>
     Model: {{ form_widget(car_form.model, {'attr': {'class': 'Car'}}) }}</br>
@@ -10,6 +11,7 @@
     City: {{ form_widget(car_form.city, {'attr': {'class': 'Car'}}) }}</br>
     Service name: {{ form_widget(car_form.serviceName, {'attr': {'class': 'Car'}}) }}</br>
     </br>
-    {{ form_widget(car_form.submit, { 'label': 'Register car' }) }}
+        <button class="btn btn-primary">Register car</button>
+    </div>
     {{ form_end(car_form) }}
 {% endblock %}

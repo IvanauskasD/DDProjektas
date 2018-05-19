@@ -32,9 +32,7 @@ class UserForm extends AbstractType
                     'label' => 'Repeat Password'
                     ]
             ])
-            ->add('submit', SubmitType::class, array(
-                'label' => 'Save'
-            ));
+            ;
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

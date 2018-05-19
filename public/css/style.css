@@ -398,3 +398,11 @@ button[id=Delete-car]:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     transition-duration: 0.4s;
 }
+div[id=serviceRegister]{
+    color: black;
+    font-weight: bold;
+}
+div[id=default]{
+    color: black;
+    font-weight: bold;
+}
