@@ -90,6 +90,7 @@ class ProfileController extends Controller
     {
         $car = $this->getDoctrine()->getRepository(Car::class)->find($id);
         $em = $this->getDoctrine()->getManager();
+        $em->remove($car->getOrders());
         $em->remove($car);
         $em->flush();
 
