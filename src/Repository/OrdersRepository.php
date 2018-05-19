@@ -24,6 +24,8 @@ class OrdersRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->addSelect('r') // to make Doctrine actually use the join
             ->leftJoin('c.car', 'r')
+            ->addSelect('u') // to make Doctrine actually use the join
+            ->leftJoin('r.user', 'u')
             ->where('c.status = :Wait')->setParameter('Wait', 'Waiting')
             ->andwhere('c.company = :id')->setParameter('id', $id)
             ->getQuery()
