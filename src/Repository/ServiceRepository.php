@@ -43,11 +43,15 @@ class ServiceRepository extends ServiceEntityRepository
     {
         dump($name);
         return $this->createQueryBuilder('service')
-            ->addSelect('r') // to make Doctrine actually use the join
+        
+            ->addSelect('r')->distinct() // to make Doctrine actually use the join
+            
             ->join('service.company', 'r')
+            
             ->where('service.serviceCategory = :category')->setParameter('category', $category)
             ->andwhere('service.serviceName = :name')
             ->setParameters(['category'=> $category,'name'=> $name])
+            ->groupBy('service.serviceName')
             ->getQuery()
             ->getResult()
         ;
