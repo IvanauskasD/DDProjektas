@@ -97,10 +97,10 @@
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-2" style="text-align: center;">
-                <button type="button" class="btn btn-success" >Accept</button>
+                <button type="button" class="btn btn-success" onclick="location.href = '{{ path('orderAccept', {id: order.id}) }}'">Accept</button>
                 </div>
                 <div class="col-2" style="text-align: center;">
-                <button type="button" class="btn btn-danger" >Dismiss</button>
+                <button type="button" class="btn btn-danger" onclick="location.href = '{{ path('orderDeny', {id: order.id}) }}'" >Dismiss</button>
                 </div>
                 <div class="col-4"></div>
             </div>

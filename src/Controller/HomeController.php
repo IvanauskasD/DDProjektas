@@ -27,9 +27,15 @@ class HomeController extends AbstractController
             dump($user->getId());
             $pendingOrders = $em->getRepository(Orders::class)->findWaitingByCompany($user->getId());
             dump($pendingOrders);
+            return $this->render('homepage.html.twig', [
+                'pendingOrders' => $pendingOrders
+            ]);
         }
-        return $this->render('homepage.html.twig', [
-            'pendingOrders' => $pendingOrders
-        ]);
+        else
+        {
+            return $this->render('homepage.html.twig', [
+            ]);
+        }
+        
     }
 }
