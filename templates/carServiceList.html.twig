@@ -1,16 +1,31 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-    <h5 style="text-align: left"> Your car: </h5>
-    ID: {{car.carId}}
-    <br>
-    Manufacturer: {{car.maker}}
-    <br>
-    Model: {{car.model}}
-    <br>
-    Year: {{car.carYear}}
+    <div class="row">
+        <div class="col-2">
+        <h5 style="text-align: left"> Your car: </h5>
+            ID: {{car.carId}}
+            <br>
+            Manufacturer: {{car.maker}}
+            <br>
+            Model: {{car.model}}
+            <br>
+            Year: {{car.carYear}}
+            
+        </div>
+        <div class="col-4">
+        <h5 style="text-align: left"> Malfunction: </h5>
+            Category: {{car.serviceCategory}}
+            <br>
+            Service: {{car.serviceName}}
+            <br>
+        </div>
+        <div class="col-6">
+        
+        </div>
+    </div>
     <h1 style="text-align: center"> Companies that can fix your problem </h1>
-    <br>
+            <br>
     
     <table class="table">
   <thead>
@@ -19,7 +34,7 @@
       <th scope="col">Company</th>
       <th scope="col">Email</th>
       <th scope="col">Phone Number</th>
-      <th> </th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -30,9 +45,7 @@
                 <td>{{company.company.companyName}}</td>
                 <td>{{company.company.email}}</td>
                 <td>{{company.company.phoneNumber}}</td>
-                <td style="text-align: right"> 
-                
-                </td>
+                <td style="text-align: right"><button type="button" class="btn btn-info"  >Book car</button></td>
                 
                 {% set i = i + 1 %}
             </tr>
