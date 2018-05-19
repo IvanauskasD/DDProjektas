@@ -2,7 +2,7 @@
 namespace App\Form;
 
 use App\Entity\Car;
-
+use App\Entity\Service;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -15,6 +15,8 @@ class CarForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
+        $this->serviceChoices = $options['service_choices'];
         $builder
             ->add('carId', TextType::class, array(
                 'label' => 'carId'
@@ -46,16 +48,24 @@ class CarForm extends AbstractType
             ->add('city', TextType::class, array(
                 'label' => 'city'
             ))
-            ->add('serviceCategory', ChoiceType::class, array(
-                'choices' => array(
-                    'Varikliai' => 'Varikliai',
-                    'Salonas' => 'Salonas',
-                    'Padangos' => 'Padangos'),
-                'label' => 'serviceCategory'
+            ->add('serviceName', ChoiceType::class, array(
+                'label' => 'serviceName',
+                'choices' =>$this->serviceChoices,
+                'choice_label' => function($service, $key, $index) {
+                    /** @var Service $service */
+                    return $service->getServiceName();
+                },
+                'choice_value' => function ($entity = null) {
+                    return $entity ? $entity->getServiceName() : '';
+                },
+                'group_by' => function($service, $key, $index) {
+                    if ($service->getServiceCategory() == 'Varikliai')  return 'Varikliai';
+                    if ($service->getServiceCategory() == 'Salonas')  return 'Salonas';
+                    if ($service->getServiceCategory() == 'Padangos')  return 'Padangos';
+                },
+                
             ))
-            ->add('serviceName', TextType::class, array(
-                'label' => 'serviceName'
-            ))
+            
             ->add('submit', SubmitType::class, array(
                 'label' => 'Save car'
             ));
@@ -66,6 +76,7 @@ class CarForm extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => Car::class,
+            'service_choices' => null
         ));
     }
 }

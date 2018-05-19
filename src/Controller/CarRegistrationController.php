@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Car;
+use App\Entity\Service;
 use App\Form\CarForm;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,13 +20,18 @@ class CarRegistrationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $newCar = new Car();
-
-        $form = $this->createForm(CarForm::class, $newCar);
+        $services = $em->getRepository(Service::class)->findAll();
+        
+        $form = $this->createForm(CarForm::class, $newCar, array(
+            'service_choices' => $services));
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $newCar->setUser($user);
+            
+            $service = $newCar->getServiceName();
+            $newCar->setServiceCategory($service->getServiceCategory());
+            $newCar->setServiceName($service->getServiceName());
             $newCar->setUser($user);
             $em->persist($newCar);
             $em->flush();

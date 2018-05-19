@@ -29,5 +29,16 @@ class ServiceRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function getServiceNames()
+    {
+        return $this->createQueryBuilder('service')
+             ->select('service.serviceName')
+             ->getQuery()
+             ->getArrayResult();
+
+    }
+
+    
     
 }
