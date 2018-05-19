@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{{ form(services) }}
+    {{ form_start(services) }}
+    <div id="default">
+        Service category: {{ form_widget(services.serviceCategory, {'attr': {'class': 'Service'}}) }}</br>
+        </br>
+        Service name: {{ form_widget(services.ServiceName, {'attr': {'class': 'Service'}}) }}</br>
+        </br>
+        <button class="btn btn-primary">Register service</button>
+        {{ form_end(services) }}
+    </div>
 
 {% endblock %}

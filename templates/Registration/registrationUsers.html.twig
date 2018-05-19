@@ -9,6 +9,17 @@
             <div class="col">
                 <h1>User registration</h1>
                 <div style="color: red">{{ error }} </div>
+                <div id="default">
+                    {{ form_start(registration_form) }}
+                    Firstname: {{ form_widget(registration_form.firstname, {'attr': {'class': 'User'}}) }}</br>
+                    Lastname: {{ form_widget(registration_form.lastname, {'attr': {'class': 'User'}}) }}</br>
+                    E-mail: {{ form_widget(registration_form.email, {'attr': {'class': 'User'}}) }}</br>
+                    Phone number: {{ form_widget(registration_form.phoneNumber, {'attr': {'class': 'User'}}) }}</br>
+                    Password: {{ form_widget(registration_form.plainPassword.first, {'attr': {'class': 'User'}}) }}</br>
+                    Repeat password: {{ form_widget(registration_form.plainPassword.second, {'attr': {'class': 'User'}}) }}</br>
+                    <button class="btn btn-primary">Save</button>
+                    {{ form_end(registration_form) }}
+                </div>
                 {{ form(registration_form) }}
             </div>
             <div class="col"></div>

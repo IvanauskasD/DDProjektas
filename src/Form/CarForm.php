@@ -63,9 +63,7 @@ class CarForm extends AbstractType
                 
             ))
             
-            ->add('submit', SubmitType::class, array(
-                'label' => 'Save car'
-            ));
+            ;
 
     }
 

@@ -2,15 +2,15 @@
 
 {% block body %}
             <h1>Client list</h1>
-            <table align="center" bgcolor= "gray">
+            <table align="center">
                 <tr>
-                    <th>User ID</th>
+                    <th width="80px">User ID</th>
                     <th></th>
-                    <th>Username</th>
+                    <th width="120px">Username</th>
                     <th></th>
-                    <th>Email</th>
+                    <th width="200px">Email</th>
                     <th></th>
-                    <th>Phone Number</th>
+                    <th width="200px">Phone Number</th>
                 </tr>
                 {% for user in users %}
                         <tr>
@@ -24,5 +24,4 @@
                         </tr>
                 {% endfor %}
             </table>
-    </div>
 {% endblock %}

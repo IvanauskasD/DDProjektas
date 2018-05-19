@@ -23,9 +23,7 @@ class ServiceForm extends AbstractType
                 'label' => 'serviceCategory'
             ))
             ->add('ServiceName', TextType::class)
-            ->add('submit', SubmitType::class, array(
-                'label' => 'Submit service'
-            ))
+
         ;
     }
     public function configureOptions(OptionsResolver $resolver)
