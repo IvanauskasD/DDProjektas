@@ -9,10 +9,32 @@
             <div class="col"></div>
 
         </div>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col"></div>
-            
-    </div>
+        
+            {% if (is_granted('ROLE_COMPANY')) == true %}
+            <h1> Pending Jobs </h1>
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Car Id</th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% set i = 0 %}
+                    {% for order in pendingOrders %}
+                        <tr>
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{order.car.carId}}</td>
+                            
+                            {% set i = i + 1 %}
+                        </tr>
+                        
+                    {% endfor %}
+            </tbody>
+            </table>
+            {% endif %}
+
+    
     </div>
 {% endblock %}

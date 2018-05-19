@@ -19,16 +19,15 @@ class OrdersRepository extends ServiceEntityRepository
         parent::__construct($registry, Orders::class);
     }
 
-    /*
-    public function findBySomething($value)
+    public function findWaitingByCompany($id)
     {
-        return $this->createQueryBuilder('j')
-            ->where('j.something = :value')->setParameter('value', $value)
-            ->OrderBy('j.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('c')
+            ->addSelect('r') // to make Doctrine actually use the join
+            ->leftJoin('c.car', 'r')
+            ->where('c.status = :Wait')->setParameter('Wait', 'Waiting')
+            ->andwhere('c.company = :id')->setParameter('id', $id)
             ->getQuery()
-            ->getResult()
+            ->getResult();
         ;
     }
-    */
 }
