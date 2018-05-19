@@ -55,9 +55,6 @@ class CarForm extends AbstractType
                     /** @var Service $service */
                     return $service->getServiceName();
                 },
-                'choice_value' => function ($entity = null) {
-                    return $entity ? $entity->getServiceName() : '';
-                },
                 'group_by' => function($service, $key, $index) {
                     if ($service->getServiceCategory() == 'Varikliai')  return 'Varikliai';
                     if ($service->getServiceCategory() == 'Salonas')  return 'Salonas';
