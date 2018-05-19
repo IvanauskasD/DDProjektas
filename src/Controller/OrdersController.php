@@ -3,17 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\Car;
-use App\Entity\Order;
+use App\Entity\Orders;
 use App\Entity\Service;
 use App\Form\ServiceForm;
-use App\Form\OrderForm;
+use App\Form\OrdersForm;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-class OrderController extends Controller
+class OrdersController extends Controller
 {
     /**
      * @Route("/order", name="order")
@@ -29,11 +29,11 @@ class OrderController extends Controller
         $cars = $user->getCars();
         $em = $this->getDoctrine()->getManager();
         $newService = new Service();
-        $newOrder = new Order();
+        $newOrders = new Orders();
         $newCar = $this->getDoctrine()->getRepository(Car::class)->findAll();
         $service = $this->getDoctrine()->getRepository(Service::class)->findAll();
 
-        $form = $this->createForm(OrderForm::class, $newOrder);
+        $form = $this->createForm(OrdersForm::class, $newOrders);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -41,11 +41,11 @@ class OrderController extends Controller
             foreach ($service as $ser)
                 foreach ($newCar as $car)
                     if ($ser->getServiceName() == $car->getServiceName() && $ser->getServiceCategory() == $car->getServiceCategory()) {
-                        $newOrder->setServiceName($ser->getServiceName());
-                        $newOrder->setServiceCategory($ser->getServiceCategory());
-                        $newOrder->setUser($user);
-                        $newOrder->setCar($car);
-                        $em->persist($newOrder);
+                        $newOrders->setServiceName($ser->getServiceName());
+                        $newOrders->setServiceCategory($ser->getServiceCategory());
+                        $newOrders->setUser($user);
+                        $newOrders->setCar($car);
+                        $em->persist($newOrders);
                         $em->flush();
 
                     }
@@ -55,7 +55,7 @@ class OrderController extends Controller
 
 
         return $this->render('order/index.html.twig', [
-            'order' => $form->createView()
+            'Orders' => $form->createView()
         ]);
     }
 }

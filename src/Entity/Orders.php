@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\OrderRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\OrdersRepository")
  */
-class Order
+class Orders
 {
     /**
      * @ORM\Id()
@@ -149,17 +149,17 @@ class Order
     /**
      * @return string
      */
-    public function getState()
+    public function getStatus()
     {
-        return $this->state;
+        return $this->status;
     }
 
     /**
      * @param string $serviceCategory
      */
-    public function setState($state)
+    public function setStatus($status)
     {
-        $this->state = $state;
+        $this->status = $status;
     }
 
 

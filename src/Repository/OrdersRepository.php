@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Order;
+use App\Entity\Orders;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Order|null find($id, $lockMode = null, $lockVersion = null)
- * @method Order|null findOneBy(array $criteria, array $orderBy = null)
- * @method Order[]    findAll()
- * @method Order[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Orders|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Orders|null findOneBy(array $criteria, array $OrdersBy = null)
+ * @method Orders[]    findAll()
+ * @method Orders[]    findBy(array $criteria, array $OrdersBy = null, $limit = null, $offset = null)
  */
-class OrderRepository extends ServiceEntityRepository
+class OrdersRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Order::class);
+        parent::__construct($registry, Orders::class);
     }
 
     /*
@@ -24,7 +24,7 @@ class OrderRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('j')
             ->where('j.something = :value')->setParameter('value', $value)
-            ->orderBy('j.id', 'ASC')
+            ->OrderBy('j.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
