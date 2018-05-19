@@ -65,11 +65,11 @@ class OrdersController extends Controller
 
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
-
-
+        $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
+        
 
         return $this->render('orderDetails.html.twig', [
-
+            'order' => $order
         ]);
     }
 }

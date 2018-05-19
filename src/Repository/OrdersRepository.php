@@ -32,4 +32,16 @@ class OrdersRepository extends ServiceEntityRepository
             ->getResult();
         ;
     }
+    public function findByOrderId($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->addSelect('r') // to make Doctrine actually use the join
+            ->leftJoin('c.car', 'r')
+            ->addSelect('u') // to make Doctrine actually use the join
+            ->leftJoin('r.user', 'u')
+            ->where('c.id = :id')->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+        ;
+    }
 }
