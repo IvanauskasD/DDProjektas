@@ -1,9 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-            <h1>Client list</h1>
+    <h1>Profile</h1>
+    <div id="default">
+        Company name: {{ app.user.companyName  }}<br/>
+        Company e-mail: {{ app.user.email  }}<br/>
+        Company phone: {{ app.user.companyName  }}<br/>
+        Company address: {{ app.user.adress  }}<br/>
+    <br/>
+    <br/>
+            <h2>Client list</h2>
             <table align="center">
-                <tr>
+                <tr style="border-bottom: 3px solid #ddd;">
                     <th width="80px">User ID</th>
                     <th></th>
                     <th width="120px">Username</th>
@@ -24,4 +32,6 @@
                         </tr>
                 {% endfor %}
             </table>
+    </div>
+
 {% endblock %}
