@@ -94,6 +94,7 @@
                 </div>
             </div>
             <div style="height: 30px;"></div>
+            {% if order.status == "Waiting" %}
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-2" style="text-align: center;">
@@ -105,7 +106,17 @@
                 <div class="col-4"></div>
             </div>
             <div style="height: 50px;"></div>
-            
+            {% elseif order.status == "Accepted" %}
+                <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4" style="text-align: center;">
+                <button type="button" class="btn btn-success" >Finish</button>
+                </div>
+                
+                <div class="col-4"></div>
+            </div>
+            <div style="height: 50px;"></div>
+            {% endif %}
             {% endif %}
 
     
