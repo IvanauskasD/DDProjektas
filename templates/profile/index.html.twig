@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container">
     <h3>User Profile</h3>
     <div id = "user">
         <b>First name:</b> {{ app.user.firstName  }}<br/>
@@ -24,6 +25,7 @@
                 <th scope="col">Transmission</th>
                 <th scope="col">Engine volume</th>
                 <th scope="col">Status</th>
+                <th> </th>
             </tr>
             </thead>
             <tbody>
@@ -36,14 +38,21 @@
                     <td>{{ car.transmission}}</td>
                     <td>{{ car.engineVolume}}</td>
                     {% if car.orders %}
-                        <td>{{  car.orders.status}}</td>
+                    {% if car.orders.status == "Accepted" %}
+                        <td style="color: green;">{{  car.orders.status}}</td>
+                        {% elseif car.orders.status == "Waiting" %}
+                        <td style="color: #ffbf00;">{{  car.orders.status}}</td>
+                        {% elseif car.orders.status == "Dismissed" %}
+                        <td style="color: red;">{{  car.orders.status}}</td>
+                    {% endif %}
+                        
                         {% else %}
                         <td>Not registered</td>
                     {% endif %}
                     
                     <td style="text-align: right">
                     {% if car.orders %}
-                        {% if car.orders != "Dismissed" %}
+                        {% if car.orders.status != "Dismissed" %}
                             <button type="button" id="Service-car" disabled onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
                             {% else %}
                             <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
@@ -60,5 +69,6 @@
             </tbody>
         </table>
         <br/>
+    </div>
     </div>
 {% endblock %}
