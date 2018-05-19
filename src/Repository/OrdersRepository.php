@@ -41,7 +41,7 @@ class OrdersRepository extends ServiceEntityRepository
             ->leftJoin('r.user', 'u')
             ->where('c.id = :id')->setParameter('id', $id)
             ->getQuery()
-            ->getResult();
+            ->getOneOrNullResult();
         ;
     }
 }

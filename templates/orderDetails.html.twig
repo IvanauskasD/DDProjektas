@@ -3,7 +3,35 @@
     <div class="container">
         
             {% if (is_granted('ROLE_COMPANY')) == true %}
-            <h1> Job details </h1>
+            <div style="text-align:center;"><h1> Job details </h1> </div>
+                <h3> Client <h3>
+                <h6> Full name </h6>
+                {{order.car.user.firstname}} 
+                <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                <table class="table">
+                <thead>
+                    <div style="text-align: center;"><h5> Car information </h5> </div>
+
+                </thead>
+                <tbody>
+                            <tr>
+                            <th> Car ID </th>
+                            <td>{{order.car.carId}}</td>
+                            </tr>
+                            <tr>
+                            <th> Manufacturer </th>
+                            <td>{{order.car.maker}}</td>
+                            </tr>
+                            
+                </tbody>
+                </table>
+                </div>
+                <div class="col-4"></div>
+                </div>
+            </div>
+            
             
             {% endif %}
 
