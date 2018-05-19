@@ -107,4 +107,22 @@ class OrdersController extends Controller
 
         return $this->redirectToRoute('homepage');
     }
+
+    /**
+     * @Route("/order/{id}/finish", name="orderFinish")
+     */
+    public function Finish(Request $request, AuthorizationCheckerInterface $authorizationChecker, int $id)
+    {
+        if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('homepage');
+        }
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
+        $order->setStatus("Finished");
+        $em->persist($order);
+        $em->flush();
+
+        return $this->redirectToRoute('homepage');
+    }
 }
