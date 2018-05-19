@@ -25,9 +25,14 @@ class ProfileController extends Controller
         if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')){
             return $this->redirectToRoute('homepage');
         }
-
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $cars = $em->getRepository(Car::class)->findAllByUserId($user->getId());
+        dump($cars);
         return $this->render('profile/index.html.twig',
-            ['error' => null]);
+            ['error' => null,
+            'cars' => $cars
+            ]);
     }
 
     /**

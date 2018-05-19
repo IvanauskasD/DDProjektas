@@ -27,7 +27,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for car in app.user.cars %}
+            {% for car in cars %}
                 <tr>
                     <td>{{ car.carId }}</td>
                     <td>{{ car.maker}}</td>
@@ -35,6 +35,12 @@
                     <td>{{ car.carYear}}</td>
                     <td>{{ car.transmission}}</td>
                     <td>{{ car.engineVolume}}</td>
+                    {% if car.orders %}
+                        <td>{{  car.orders.status}}</td>
+                        {% else %}
+                        <td>Not registered</td>
+                    {% endif %}
+                    
                     <td style="text-align: right">
                     <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
                         <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>

@@ -23,6 +23,7 @@ class CarServiceListController extends Controller
             return $this->redirectToRoute('homepage');
         }
         $em = $this->getDoctrine()->getManager();
+        
         $car = $em->getRepository(Car::class)->findById($id);
         //$companies = $em->getRepository(Service::class)->findBy(['serviceCategory' => $car->getServiceCategory(),'serviceName' => $car->getServiceName()]);
         $companies = $em->getRepository(Service::class)->findByOrder($car->getServiceCategory(), $car->getServiceName());
@@ -54,8 +55,14 @@ class CarServiceListController extends Controller
         dump($newOrder);
         $em->persist($newOrder);
         $em->flush();
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $cars = $em->getRepository(Car::class)->findAllByUserId($user->getId());
         return $this->render('profile/index.html.twig',
-            ['error' => null]);
+            ['error' => null,
+             'cars' => $cars
+            ]);
     }
     
 }

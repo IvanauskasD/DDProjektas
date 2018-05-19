@@ -28,5 +28,16 @@ class CarRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
         ;
     }
+    public function findAllByUserId($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->addSelect('r') // to make Doctrine actually use the join
+            
+            ->leftJoin('c.orders', 'r')
+            ->where('c.user = :id')->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+        ;
+    }
     
 }
