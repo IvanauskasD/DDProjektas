@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        
+            {% if (is_granted('ROLE_COMPANY')) == true %}
+            <h1> Job details </h1>
+            
+            {% endif %}
+
+    
+    </div>
+{% endblock %}

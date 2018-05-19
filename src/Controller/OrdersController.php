@@ -52,10 +52,24 @@ class OrdersController extends Controller
         return $this->redirectToRoute('homepage');
 
         }
+    }
+    /**
+     * @Route("/order/{id}", name="orderDetails")
+     */
+    public function Details(Request $request, AuthorizationCheckerInterface $authorizationChecker, int $id)
+    {
+        if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('homepage');
+        }
 
 
-        return $this->render('order/index.html.twig', [
-            'Orders' => $form->createView()
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+
+
+        return $this->render('orderDetails.html.twig', [
+
         ]);
     }
 }

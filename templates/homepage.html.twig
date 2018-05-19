@@ -32,6 +32,7 @@
                             <td>{{order.car.carId}}</td>
                             <td>{{order.car.serviceCategory}}</td>
                             <td>{{order.car.serviceName}}</td>
+                            <td><button type="button" class="btn btn-info" onclick="location.href = '{{ path('orderDetails', {id: order.id}) }}'" >Details</button> </td>
                             {% set i = i + 1 %}
                         </tr>
                         
