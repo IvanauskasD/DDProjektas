@@ -39,6 +39,39 @@
                     {% endfor %}
             </tbody>
             </table>
+            <div style="height:50px;"></div>
+
+
+
+
+            <h1> Current Jobs </h1>
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Client</th>
+                <th scope="col">Car Id</th>
+                <th scope="col">Service category</th>
+                <th scope="col">Service</th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% set i = 0 %}
+                    {% for order in acceptedOrders %}
+                        <tr>
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{order.car.user.firstName}}  {{order.car.user.lastName}}</td>
+                            <td>{{order.car.carId}}</td>
+                            <td>{{order.car.serviceCategory}}</td>
+                            <td>{{order.car.serviceName}}</td>
+                            <td><button type="button" class="btn btn-info" onclick="location.href = '{{ path('orderDetails', {id: order.id}) }}'" >Details</button> </td>
+                            {% set i = i + 1 %}
+                        </tr>
+                        
+                    {% endfor %}
+            </tbody>
+            </table>
             {% endif %}
 
     
