@@ -36,7 +36,7 @@ class CarRegistrationController extends Controller
             $em->persist($newCar);
             $em->flush();
 
-            return $this->redirectToRoute('/user/carServices/' . $newCar->getCarId());
+            return $this->redirectToRoute('carServices', ['id' => $newCar->getCarId()]);
         }
 
         return $this->render('CarRegistration/carRegistration.html.twig', [
