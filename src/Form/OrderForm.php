@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use App\Entity\Job;
+use App\Entity\Order;
 
 class OrderForm extends AbstractType
 {
@@ -34,7 +34,7 @@ class OrderForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Job::class,
+            'data_class' => Order::class,
         ));
     }
 }

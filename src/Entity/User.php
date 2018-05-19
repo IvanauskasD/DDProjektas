@@ -72,7 +72,7 @@ class User implements UserInterface, \Serializable
     private $cars;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Job", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="user")
      */
     private $orders;
 

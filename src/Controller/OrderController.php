@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Car;
-use App\Entity\Job;
+use App\Entity\Order;
 use App\Entity\Service;
 use App\Form\ServiceForm;
 use App\Form\OrderForm;
@@ -29,11 +29,11 @@ class OrderController extends Controller
         $cars = $user->getCars();
         $em = $this->getDoctrine()->getManager();
         $newService = new Service();
-        $newJob = new Job();
+        $newOrder = new Order();
         $newCar = $this->getDoctrine()->getRepository(Car::class)->findAll();
         $service = $this->getDoctrine()->getRepository(Service::class)->findAll();
 
-        $form = $this->createForm(OrderForm::class, $newJob);
+        $form = $this->createForm(OrderForm::class, $newOrder);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -41,11 +41,11 @@ class OrderController extends Controller
             foreach ($service as $ser)
                 foreach ($newCar as $car)
                     if ($ser->getServiceName() == $car->getServiceName() && $ser->getServiceCategory() == $car->getServiceCategory()) {
-                        $newJob->setServiceName($ser->getServiceName());
-                        $newJob->setServiceCategory($ser->getServiceCategory());
-                        $newJob->setUser($user);
-                        $newJob->setCar($car);
-                        $em->persist($newJob);
+                        $newOrder->setServiceName($ser->getServiceName());
+                        $newOrder->setServiceCategory($ser->getServiceCategory());
+                        $newOrder->setUser($user);
+                        $newOrder->setCar($car);
+                        $em->persist($newOrder);
                         $em->flush();
 
                     }

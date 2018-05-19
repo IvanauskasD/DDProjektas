@@ -51,7 +51,7 @@ class Car
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Job", mappedBy="car")
+     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="car")
      */
     private $orders;
 

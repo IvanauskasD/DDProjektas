@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OrderRepository")
  */
-class Job
+class Order
 {
     /**
      * @ORM\Id()
@@ -15,6 +15,13 @@ class Job
      * @ORM\Column(name="id", type="integer", unique=true, nullable=false)
      */
     private $id;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Company")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     */
+    private $company;
 
     /**
      * @ORM\Column(name="startDate", type="datetime", nullable=true)
@@ -31,26 +38,14 @@ class Job
      */
     private $duration;
 
-    /**
-     * @var string
-     * @ORM\Column(name="orderCat",type="string", length=255, nullable=true)
-     */
-    private $serviceCategory;
 
     /**
-     * @var string
-     * @ORM\Column(name="orderName",type="string", length=255, nullable=true)
+     * @ORM\Column(name="status", type="string", length=255)
      */
-    private $serviceName;
+    private $status;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Car")
+     * @ORM\OneToOne(targetEntity="App\Entity\Car")
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
@@ -122,17 +117,17 @@ class Job
     /**
      * @return mixed
      */
-    public function getUser()
+    public function getCompany()
     {
-        return $this->user;
+        return $this->company;
     }
 
     /**
      * @param mixed $user
      */
-    public function setUser($user)
+    public function setCompany($company)
     {
-        $this->user = $user;
+        $this->company = $company;
     }
 
     /**
@@ -154,34 +149,19 @@ class Job
     /**
      * @return string
      */
-    public function getServiceCategory()
+    public function getState()
     {
-        return $this->serviceCategory;
+        return $this->state;
     }
 
     /**
      * @param string $serviceCategory
      */
-    public function setServiceCategory($serviceCategory)
+    public function setState($state)
     {
-        $this->serviceCategory = $serviceCategory;
+        $this->state = $state;
     }
 
-    /**
-     * @return string
-     */
-    public function getServiceName()
-    {
-        return $this->serviceName;
-    }
-
-    /**
-     * @param string $serviceName
-     */
-    public function setServiceName($serviceName)
-    {
-        $this->serviceName = $serviceName;
-    }
 
 
 }
