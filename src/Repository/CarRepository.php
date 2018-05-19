@@ -19,16 +19,14 @@ class CarRepository extends ServiceEntityRepository
         parent::__construct($registry, Car::class);
     }
 
-    /*
-    public function findBySomething($value)
+    
+    public function findById($value)
     {
         return $this->createQueryBuilder('c')
-            ->where('c.something = :value')->setParameter('value', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->where('c.carId = :value')->setParameter('value', $value)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult();
         ;
     }
-    */
+    
 }

@@ -35,6 +35,7 @@
                     <td>{{ car.transmission}}</td>
                     <td>{{ car.engineVolume}}</td>
                     <td style="text-align: right">
+                    <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
                         <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
                         <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
                     </td>

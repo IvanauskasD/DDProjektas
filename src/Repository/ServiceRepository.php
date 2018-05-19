@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Service|null find($id, $lockMode = null, $lockVersion = null)
  * @method Service|null findOneBy(array $criteria, array $orderBy = null)
  * @method Service[]    findAll()
+ * @method Service[]    findByOrder($category, $name)
  * @method Service[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ServiceRepository extends ServiceEntityRepository
@@ -37,6 +38,19 @@ class ServiceRepository extends ServiceEntityRepository
              ->getQuery()
              ->getArrayResult();
 
+    }
+    public function findByOrder($category, $name)
+    {
+        dump($name);
+        return $this->createQueryBuilder('service')
+            ->addSelect('r') // to make Doctrine actually use the join
+            ->join('service.company', 'r')
+            ->where('service.serviceCategory = :category')->setParameter('category', $category)
+            ->andwhere('service.serviceName = :name')
+            ->setParameters(['category'=> $category,'name'=> $name])
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     
