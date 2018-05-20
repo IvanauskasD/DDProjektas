@@ -21,21 +21,25 @@ class Company implements UserInterface
     private $id;
 
     /**
-     * @var string
-     *
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z ]$/",
+     *     match = false,
+     * )
      * @ORM\Column(name="companyName", type="string", length=255, nullable=false)
      */
     private $companyName;
 
     /**
-     * @var string
-     *
+     * @Assert\Email()
      * @ORM\Column(name="email", type="string", length=255, nullable=false, unique=true)
      */
     private $email;
+
     /**
-     * @var string
-     *
+     * @Assert\Length(
+     *     min = 6,
+     *     minMessage = "Password has to be {{ min }} characters long"
+     * )
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
@@ -44,15 +48,19 @@ class Company implements UserInterface
     private $plainPassword;
 
     /**
-     * @var string
-     *
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z0-9 ]$/",
+     *     match = false,
+     * )
      * @ORM\Column(name="address", type="string", length=255)
      */
     private $adress;
     /**
-     * @var string
-     *
-     * @ORM\Column(name="phoneNumber", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern = "/^[0-9]*$/",
+     *     match = false,
+     * )
+     * @ORM\Column(name="phoneNumber", type="integer")
      */
     private $phoneNumber;
 

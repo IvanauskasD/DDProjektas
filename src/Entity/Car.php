@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CarRepository")
@@ -10,23 +11,38 @@ use Doctrine\ORM\Mapping as ORM;
 class Car
 {
     /**
-     *
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z0-9]$/",
+     *     match = false,
+     * )
      * @ORM\Column(name="id", type="string", length=255)
      * @ORM\Id
      */
     private $carId;
 
     /**
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z0-9]$/",
+     *     match = false,
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $maker;
 
     /**
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z0-9 ]$/",
+     *     match = false,
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $model;
 
     /**
+     * @Assert\Regex(
+     *     pattern = "/^[0-9]$/",
+     *     match = false,
+     * )
      * @ORM\Column(type="integer")
      */
     private $carYear;
@@ -35,11 +51,19 @@ class Car
      */
     private $transmission;
     /**
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z0-9]$/",
+     *     match = false,
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $engineVolume;
 
     /**
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z ]$/",
+     *     match = false,
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $city;
@@ -58,18 +82,20 @@ class Car
 
 
     /**
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z0-9 ]$/",
+     *     match = false,
+     * )
      * @ORM\Column(name="comment",type="string", length=255)
      */
     private $comment;
 
     /**
-     * @var string
      * @ORM\Column(name="orderCat",type="string", length=255, nullable=false)
      */
     private $serviceCategory;
 
     /**
-     * @var string
      * @ORM\Column(name="orderName",type="string", length=255, nullable=false)
      */
     private $serviceName;
