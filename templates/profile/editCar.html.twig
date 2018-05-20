@@ -10,7 +10,7 @@
         <label>Car year:</label>  {{ form_widget(form.carYear) }}<br/>
         <label>Transmission:</label>  {{ form_widget(form.transmission) }}<br/>
         <label>Engine volume:</label>  {{ form_widget(form.engineVolume) }}<br/>
-        {{ form_widget(form.submit, { 'label': 'Edit' }) }}
+        <button class="btn btn-primary">Edit</button>
     </div>
     {{ form_end(form) }}
 
