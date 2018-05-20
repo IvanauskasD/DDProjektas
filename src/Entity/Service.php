@@ -24,13 +24,11 @@ class Service
     private $companyId;
 
     /**
-     * @Assert\Type("string")
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $serviceCategory;
 
     /**
-     * @Assert\Type("string")
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $serviceName;
