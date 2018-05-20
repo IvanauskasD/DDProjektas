@@ -1,4 +1,4 @@
-Datadogs semseter project made by
+Datadogs semester project made by
 Domantas Ivanauskas, 
 Dalius Jacinkevičius, 
 Osvaldas Žitlinskas,

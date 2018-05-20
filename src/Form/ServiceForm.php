@@ -22,9 +22,10 @@ class ServiceForm extends AbstractType
                     'Padangos' => 'Padangos'),
                 'label' => 'serviceCategory'
             ))
-            ->add('ServiceName', TextType::class)
+            ->add('ServiceName', TextType::class);
 
-        ;
+
+
     }
     public function configureOptions(OptionsResolver $resolver)
     {
