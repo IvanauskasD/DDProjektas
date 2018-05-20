@@ -76,10 +76,14 @@
                     <td>{{ car.carId }}</td>
                     <td>{{ car.maker}}</td>
                     <td>{{ car.model}}</td>
+                    {% if car.orders %}
                     {% if car.orders.status == "Accepted" or car.orders.status == "Finished" %}
                     <td>{{ car.orders.startDate|date('Y-m-d h:m')}}</td>
                         {% else %}
                             <td>{{ car.orders.startDate|date('')}}</td>
+                            {% endif %}
+                            {% else %}
+                            <td></td>
                             {% endif %}
                         <td>{{ car.orders.cost|default('N/A')}}</td>
 
