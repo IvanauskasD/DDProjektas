@@ -24,6 +24,9 @@ class ChangePasswordForm extends AbstractType
                     'label' => 'Repeat new password'
                 ]
             ])
+            ->add('submit', SubmitType::class, array(
+                'label' => 'Change password'
+            ))
             ;
     }
 
