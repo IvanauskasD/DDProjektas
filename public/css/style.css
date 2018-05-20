@@ -405,8 +405,10 @@ div[id=serviceRegister]{
 div[id=default]{
     color: black;
     font-weight: bold;
-    text-align: right;
-    position: fixed;
+    text-align: left;
+    position: absolute;
+    margin-left: 20px;
+    top:100px;
 }
 tr{
     border-bottom: 1px solid #ddd;

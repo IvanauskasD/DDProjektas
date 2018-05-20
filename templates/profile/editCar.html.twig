@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Edit Car</h2>
+    
     <div id ="default">
+    <h2>Edit Car</h2>
         {{ form_start(form) }}
         <label>Car ID:</label> {{ form_widget(form.carId) }}<br/>
         <label>Maker:</label>  {{ form_widget(form.maker,{'attr':{'style' : 'width: 60.3%'}}) }}<br/>
@@ -11,10 +12,14 @@
         <label>Transmission:</label>  {{ form_widget(form.transmission,{'attr':{'style' : 'width: 60.3%'}}) }}<br/>
         <label>Engine volume:</label>  {{ form_widget(form.engineVolume) }}<br/>
         <label>Comment</label>{{ form_widget(form.comment) }}
+        <br>
+    <button style="width: 200px;" class="btn btn-primary">Edit</button>
+    <br>
+    <a href="{{ path('profile_index') }}">Back to list</a>
     </div>
-        <button style="position: fixed;bottom: 40%;left: 8%;width: 11.8%" class="btn btn-primary">Edit</button>
+        
         {{ form_end(form) }}
 
-    <a style="position: fixed; bottom: 37%" href="{{ path('profile_index') }}">Back to list</a>
+    
 
 {% endblock %}
