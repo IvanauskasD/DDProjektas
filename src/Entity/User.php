@@ -74,6 +74,11 @@ class User implements UserInterface, \Serializable
     private $plainPassword;
 
     /**
+     * @ORM\Column(name="passwordResetToken", type="string", length=255, nullable=true)
+     */
+    private $passwordResetToken;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Car", mappedBy="user")
      */
     private $cars;
@@ -83,6 +88,22 @@ class User implements UserInterface, \Serializable
      */
     private $orders;
 
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordResetToken()
+    {
+        return $this->passwordResetToken;
+    }
+
+    /**
+     * @param mixed $passwordResetToken
+     */
+    public function setPasswordResetToken($passwordResetToken)
+    {
+        $this->passwordResetToken = $passwordResetToken;
+    }
     /**
      * @return string
      */

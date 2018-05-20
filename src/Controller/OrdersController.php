@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Car;
 use App\Entity\Orders;
 use App\Entity\Service;
+use App\Entity\User;
+use App\Form\ServiceForm;
 use App\Form\DurationForm;
 use App\Form\OrdersForm;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -164,17 +166,33 @@ class OrdersController extends Controller
     /**
      * @Route("/order/{id}/finish", name="orderFinish")
      */
-    public function Finish(Request $request, AuthorizationCheckerInterface $authorizationChecker, int $id)
+    public function Finish(Request $request, AuthorizationCheckerInterface $authorizationChecker, int $id, \Swift_Mailer $mailer)
     {
         if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('homepage');
         }
         $user = $this->getUser();
+       // $company = $this->getCompany();
         $em = $this->getDoctrine()->getManager();
         $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
         $order->setStatus("Finished");
         $em->persist($order);
         $em->flush();
+
+        $message = (new \Swift_Message('Your car was fixed'))
+            ->setFrom('motocars@example.com')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'email/confirmation.html.twig',
+                    array(
+                        'firstname' => $user->getUsername()
+                    )
+                ),
+                'text/html'
+            );
+
+        $mailer->send($message);
 
         return $this->redirectToRoute('homepage');
     }
