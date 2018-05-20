@@ -6,11 +6,13 @@ use App\Entity\Car;
 use App\Entity\Service;
 use App\Entity\Orders;
 use App\Entity\Company;
+use App\Form\OrdersForm;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class CarServiceListController extends Controller
 {
@@ -36,7 +38,7 @@ class CarServiceListController extends Controller
     /**
      * @Route("/user/carServices/car={car_id}&&company={company_id}", name="RegisterCarService")
      */
-    public function Register(AuthorizationCheckerInterface $authorizationChecker, string $car_id, int $company_id)
+    public function Register(Request $request, AuthorizationCheckerInterface $authorizationChecker, string $car_id, int $company_id)
     {
         if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return $this->redirectToRoute('homepage');
@@ -44,13 +46,11 @@ class CarServiceListController extends Controller
         $em = $this->getDoctrine()->getManager();
         $company = $em->getRepository(Company::class)->find($company_id);
         $car = $em->getRepository(Car::class)->find($car_id);
-        
         $newOrder = new Orders();
+
+
         $newOrder->setCompany($company);
         $newOrder->setCar($car);
-        $newOrder->setDuration(4);
-        $newOrder->setStartDate(new \DateTime('tomorrow'));
-        $newOrder->setFinishDate(new \DateTime('tomorrow'));
         $newOrder->setStatus('Waiting');
         dump($newOrder);
         $em->persist($newOrder);
@@ -59,6 +59,7 @@ class CarServiceListController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $cars = $em->getRepository(Car::class)->findAllByUserId($user->getId());
+
         return $this->render('profile/index.html.twig',
             ['error' => null,
              'cars' => $cars

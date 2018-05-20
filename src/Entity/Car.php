@@ -46,15 +46,21 @@ class Car
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=false)
      */
     private $user;
+
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Orders", mappedBy="car")
      */
     public $orders;
 
+
+    /**
+     * @ORM\Column(name="comment",type="string", length=255)
+     */
+    private $comment;
 
     /**
      * @var string
@@ -259,6 +265,22 @@ class Car
     public function setServiceName($serviceName)
     {
         $this->serviceName = $serviceName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param mixed $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
     }
 
 

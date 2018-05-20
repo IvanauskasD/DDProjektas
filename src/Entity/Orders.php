@@ -34,7 +34,7 @@ class Orders
     private $finishDate;
 
     /**
-     * @ORM\Column(name="duration", type="integer", nullable=true)
+     * @ORM\Column(name="duration", type="string", length=255, nullable=true)
      */
     private $duration;
 
@@ -49,6 +49,11 @@ class Orders
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
+
+    /**
+     * @ORM\Column(name="cost", type="string", length=255, nullable=true)
+     */
+    private $cost;
 
     /**
      * @return mixed
@@ -161,6 +166,24 @@ class Orders
     {
         $this->status = $status;
     }
+
+    /**
+     * @return int
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+
+    /**
+     * @param int $cost
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+    }
+
+
 
 
 
