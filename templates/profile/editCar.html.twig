@@ -11,9 +11,10 @@
         <label>Transmission:</label>  {{ form_widget(form.transmission,{'attr':{'style' : 'width: 60.3%'}}) }}<br/>
         <label>Engine volume:</label>  {{ form_widget(form.engineVolume) }}<br/>
         <label>Comment</label>{{ form_widget(form.comment) }}
-    {{ form_end(form) }}
     </div>
-    <button style="position: fixed;bottom: 40%;left: 8%;width: 11.8%" class="btn btn-primary">Edit</button>
+        <button style="position: fixed;bottom: 40%;left: 8%;width: 11.8%" class="btn btn-primary">Edit</button>
+        {{ form_end(form) }}
+
     <a style="position: fixed; bottom: 37%" href="{{ path('profile_index') }}">Back to list</a>
 
 {% endblock %}

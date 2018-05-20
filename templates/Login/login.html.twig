@@ -19,8 +19,9 @@
                    placeholder="Password"
                    required>
 
-            <button class="btn btn-sm btn-primary" style="position: absolute;top: 50%" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary" style="position: absolute;top: 47%;width: 20%;left: 42%" type="submit">Sign in</button>
+            <a style="position: absolute;top: 55%;left: 42%" href='{{ path('resetPassword') }}'>Reset password?</a>
         </form>
     </div>
-    <button type="button" id="Edit-profile" onclick="location.href = '{{ path('resetPassword') }}'" >Reset password</button>
+
 {% endblock %}
