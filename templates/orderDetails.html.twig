@@ -26,6 +26,10 @@
                             <th> Phone Number </th>
                             <td>{{order.car.user.phoneNumber}}</td>
                             </tr>
+                            <tr class="table-light">
+                                <th> Visit time </th>
+                                <td>{{order.startDate|date('Y-m-d h:m')}}</td>
+                            </tr>
                             
                 </tbody>
                 </table>

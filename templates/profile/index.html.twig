@@ -23,9 +23,9 @@
                 <th scope="col">Car ID</th>
                 <th scope="col">Maker</th>
                 <th scope="col">Model</th>
-                <th scope="col">Car year</th>
-                <th scope="col">Transmission</th>
-                <th scope="col">Engine volume</th>
+                <th scope="col">Visit time</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Duration</th>
                 <th scope="col">Status</th>
                 <th> </th>
             </tr>
@@ -38,8 +38,10 @@
                     <td>{{ car.maker}}</td>
                     <td>{{ car.model}}</td>
                     <td>{{ car.carYear}}</td>
-                    <td>{{ car.transmission}}</td>
-                    <td>{{ car.engineVolume}}</td>
+                    {% if car.orders.cost and car.orders.duration != null %}
+                    <td>{{ car.orders.cost}}</td>
+                    <td>{{ car.orders.duration}}</td>
+                        {% endif %}
                     {% if car.orders %}
                     {% if car.orders.status == "Accepted" %}
                         <td style="color: green;">{{  car.orders.status}}</td>
@@ -54,7 +56,6 @@
                         {% else %}
                         <td>Not registered</td>
                     {% endif %}
-                    
                     <td style="text-align: right">
                     {% if car.orders %}
                         {% if car.orders.status != "Dismissed" %}
@@ -65,7 +66,7 @@
                         {% else %}
                             <button type="button" id="Service-car" onclick="location.href = '{{ path('carServices', {id: car.carId}) }}'" >Services</button>
                     {% endif %}
-                    
+
                         <button type="button" id="Edit-car" onclick="location.href = '{{ path('editCar', {id: car.carId}) }}'" >Edit</button>
                         <button type="button" id="Delete-car" onclick="location.href = '{{ path('deleteCar', {id: car.carId}) }}'" >Delete</button>
                     </td>
@@ -75,9 +76,15 @@
                     <td>{{ car.carId }}</td>
                     <td>{{ car.maker}}</td>
                     <td>{{ car.model}}</td>
-                    <td>{{ car.carYear}}</td>
-                    <td>{{ car.transmission}}</td>
-                    <td>{{ car.engineVolume}}</td>
+                    {% if car.orders.status == "Accepted" %}
+                    <td>{{ car.orders.startDate|date('Y-m-d h:m')}}</td>
+                        {% else %}
+                            <td>{{ car.orders.startDate|date('')}}</td>
+                            {% endif %}
+                        <td>{{ car.orders.cost|default('N/A')}}</td>
+
+                        <td>{{ car.orders.duration|default('N/A')}}</td>
+
                     {% if car.orders %}
                     {% if car.orders.status == "Accepted" %}
                         <td style="color: green;">{{  car.orders.status}}</td>
