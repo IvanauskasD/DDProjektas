@@ -30,36 +30,43 @@ class User implements UserInterface, \Serializable
 
 
     /**
-     * @var string
-     *
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z0-9]$/",
+     *     match = false,
+     * )
      * @ORM\Column(name="username", type="string", length=255, nullable=true)
      */
     private $username;
 
     /**
-     * @var string
-     *
+     * @Assert\Regex(
+     *     pattern = "/^[a-zA-Z0-9]$/",
+     *     match = false,
+     * )
      * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
      */
     private $lastname;
 
     /**
-     * @var string
-     *
+     * @Assert\Email()
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="phoneNumber", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern = "/^[0-9]$/",
+     *     match = false,
+     * )
+     * @ORM\Column(name="phoneNumber", type="integer")
      */
     private $phoneNumber;
 
     /**
-     * @var string
-     *
+     * @Assert\Length(
+     *     min = 6,
+     *     minMessage = "Password has to be {{ min }} characters long"
+     * )
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;

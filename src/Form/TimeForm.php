@@ -11,15 +11,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Orders;
 
-class OrdersForm extends AbstractType
+class TimeForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cost', TextType::class, array(
-                'label' => 'cost'
-            ))
-        ;
+            ->add('startDate', DateTimeType::class, array(
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y')+100),
+                'months' => range(date('m'), 12),
+                'days' => range(date('d'), 31)
+            ));
     }
     public function configureOptions(OptionsResolver $resolver)
     {

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ServiceRepository")
@@ -17,18 +18,19 @@ class Service
     private $id;
 
     /**
+     * @Assert\Type("integer")
      * @ORM\Column(name="company_id", type="integer", nullable=false)
      */
     private $companyId;
 
     /**
-     * @var string
+     * @Assert\Type("string")
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $serviceCategory;
 
     /**
-     * @var string
+     * @Assert\Type("string")
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $serviceName;
@@ -113,5 +115,8 @@ class Service
     {
         $this->company = $company;
     }
+
+
+
 
 }

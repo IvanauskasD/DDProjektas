@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Edit Car</h1>
-    <div id ="profile">
+    <h2>Edit Car</h2>
+    <div id ="default">
         {{ form_start(form) }}
         <label>Car ID:</label> {{ form_widget(form.carId) }}<br/>
-        <label>Maker:</label>  {{ form_widget(form.maker) }}<br/>
+        <label>Maker:</label>  {{ form_widget(form.maker,{'attr':{'style' : 'width: 60.3%'}}) }}<br/>
         <label>Model:</label>  {{ form_widget(form.model) }}<br/>
-        <label>Car year:</label>  {{ form_widget(form.carYear) }}<br/>
-        <label>Transmission:</label>  {{ form_widget(form.transmission) }}<br/>
+        <label>Car year:</label>  {{ form_widget(form.carYear,{'attr':{'style' : 'width: 60.3%'}}) }}<br/>
+        <label>Transmission:</label>  {{ form_widget(form.transmission,{'attr':{'style' : 'width: 60.3%'}}) }}<br/>
         <label>Engine volume:</label>  {{ form_widget(form.engineVolume) }}<br/>
-        {{ form_widget(form.submit, { 'label': 'Edit' }) }}
-    </div>
+        <label>Comment</label>{{ form_widget(form.comment) }}
     {{ form_end(form) }}
-
-    <a href="{{ path('profile_index') }}">Back to list</a>
+    </div>
+    <button style="position: fixed;bottom: 40%;left: 8%;width: 11.8%" class="btn btn-primary">Edit</button>
+    <a style="position: fixed; bottom: 37%" href="{{ path('profile_index') }}">Back to list</a>
 
 {% endblock %}

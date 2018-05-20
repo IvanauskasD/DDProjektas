@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OrdersRepository")
@@ -25,22 +26,21 @@ class Orders
 
     /**
      * @ORM\Column(name="startDate", type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $startDate;
 
-    /**
-     * @ORM\Column(name="finishDate", type="datetime", nullable=true)
-     */
-    private $finishDate;
 
     /**
-     * @ORM\Column(name="duration", type="integer", nullable=true)
+     * @ORM\Column(name="duration", type="string", length=255, nullable=true)
+     * @Assert\Type("string")
      */
     private $duration;
 
 
     /**
      * @ORM\Column(name="status", type="string", length=255)
+     * @Assert\Type("string")
      */
     private $status;
 
@@ -49,6 +49,12 @@ class Orders
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
+
+    /**
+     * @ORM\Column(name="cost", type="string", length=255, nullable=true)
+     * @Assert\Type("string")
+     */
+    private $cost;
 
     /**
      * @return mixed
@@ -161,6 +167,24 @@ class Orders
     {
         $this->status = $status;
     }
+
+    /**
+     * @return int
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+
+    /**
+     * @param int $cost
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+    }
+
+
 
 
 

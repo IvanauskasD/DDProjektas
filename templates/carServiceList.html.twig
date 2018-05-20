@@ -46,7 +46,6 @@
                 <td>{{company.company.email}}</td>
                 <td>{{company.company.phoneNumber}}</td>
                 <td style="text-align: right"><button type="button" class="btn btn-info" onclick="location.href = '{{ path('RegisterCarService', {car_id: car.carId, company_id: company.company.id}) }}'"  >Book car</button></td>
-                
                 {% set i = i + 1 %}
             </tr>
             

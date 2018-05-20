@@ -7,6 +7,7 @@ use App\Entity\Orders;
 use App\Entity\Service;
 use App\Entity\User;
 use App\Form\ServiceForm;
+use App\Form\DurationForm;
 use App\Form\OrdersForm;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -73,6 +74,59 @@ class OrdersController extends Controller
             'order' => $order
         ]);
     }
+
+
+
+    /**
+     * @Route("/order/{id}/duration", name="orderDuration")
+     */
+    public function Duration(Request $request, AuthorizationCheckerInterface $authorizationChecker, int $id)
+    {
+        if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('homepage');
+        }
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
+        $form = $this->createForm(DurationForm::class, $order);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+
+            $em->persist($order);
+            $em ->flush();
+            return $this->redirectToRoute('homepage');
+        }
+        return $this->render('duration.html.twig', array(
+            'duration_form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/order/{id}/charge", name="orderCost")
+     */
+    public function Charge(Request $request, AuthorizationCheckerInterface $authorizationChecker, int $id)
+    {
+        if (!$authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('homepage');
+        }
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $order = $this->getDoctrine()->getRepository(Orders::class)->findByOrderId($id);
+        $form = $this->createForm(OrdersForm::class, $order);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+
+            $em->persist($order);
+            $em ->flush();
+            return $this->redirectToRoute('homepage');
+        }
+        return $this->render('cost.html.twig', array(
+            'cost_form' => $form->createView()));
+    }
+
 
     /**
      * @Route("/order/{id}/accept", name="orderAccept")

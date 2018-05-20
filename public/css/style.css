@@ -405,10 +405,17 @@ div[id=serviceRegister]{
 div[id=default]{
     color: black;
     font-weight: bold;
+    text-align: right;
+    position: fixed;
 }
 tr{
     border-bottom: 1px solid #ddd;
 }
 tr:hover {
     background-color: lightgrey;
+}
+button[id=Service-car]{
+    background-color: #557BE4;
+    border-radius: 8px;
+    font-weight: bold;
 }

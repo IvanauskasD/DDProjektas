@@ -3,12 +3,12 @@
 {% block body %}
     {{ form_start(services) }}
     <div id="default">
-        Service category: {{ form_widget(services.serviceCategory, {'attr': {'class': 'Service'}}) }}</br>
+        <label style="position: fixed;left: 0">Service category:</label> {{ form_widget(services.serviceCategory, {'attr': {'class': 'Service','style' : 'width: 53%'}}) }}</br>
         </br>
-        Service name: {{ form_widget(services.ServiceName, {'attr': {'class': 'Service'}}) }}</br>
+        Service name: {{ form_widget(services.ServiceName, {'attr': {'class': 'Service','style' : 'width: 53%'}}) }}</br>
         </br>
-        <button class="btn btn-primary">Register service</button>
         {{ form_end(services) }}
     </div>
+    <button style="position: fixed;bottom: 62%;left: 3%" class="btn btn-primary">Register service</button>
 
 {% endblock %}
