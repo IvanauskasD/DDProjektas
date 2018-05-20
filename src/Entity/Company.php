@@ -57,7 +57,7 @@ class Company implements UserInterface
     private $adress;
     /**
      * @Assert\Regex(
-     *     pattern = "/^[0-9]*$/",
+     *     pattern = "/^[0-9]$/",
      *     match = false,
      * )
      * @ORM\Column(name="phoneNumber", type="integer")
