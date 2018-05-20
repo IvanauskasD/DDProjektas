@@ -7,12 +7,11 @@ use App\Entity\User;
 use App\Form\ChangePasswordForm;
 use App\Form\ResetPasswordForm;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-//use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ResetPasswordController extends Controller
@@ -66,27 +65,26 @@ class ResetPasswordController extends Controller
      */
     public function newPassword(Request $request,$token, UserPasswordEncoderInterface $encoder)
     {
-        $user = $this->getDoctrine()->getRepository(User::class)->findBy(['passwordResetToken' => $token]);
-       // if($user == null)
-     //   {
-      //      return $this->redirectToRoute('homepage');
-     //   }
-        $password = new User();
-       // $user = $this->getUser();
-
-        $form = $this->createForm(ChangePasswordForm::class, $password);
-        $form->remove('password');
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['passwordResetToken' => $token]);
+        if($user == null)
         {
-            $newPassword = $encoder->encodePassword($user, $password->getPlainPassword());
-          //  $newPassword = $encoder->encodePassword($user, $password->getPlainPassword());
-            $user->setPassword($newPassword);
-            $em = $this->getDoctrine()->getManager();
-            $user->setPasswordToken(NULL);
-            $em->persist($user);
-            $em->flush();
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('homepage');
+        } else {
+            $password = new User();
+
+            $form = $this->createForm(ChangePasswordForm::class, $password);
+            $form->remove('password');
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $newPassword = $encoder->encodePassword($user, $password->getPlainPassword());
+                $user->setPassword($newPassword);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                return $this->redirectToRoute('login');
+            }
         }
         return $this->render('resetPassword.html.twig', [
             'form' => $form->createView(),

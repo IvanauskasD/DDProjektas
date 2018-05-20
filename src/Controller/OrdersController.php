@@ -180,7 +180,7 @@ class OrdersController extends Controller
         $em->flush();
 
         $message = (new \Swift_Message('Your car was fixed'))
-            ->setFrom('motocars@example.com')
+            ->setFrom('admin@example.com')
             ->setTo($user->getEmail())
             ->setBody(
                 $this->renderView(
