@@ -9,9 +9,11 @@
         <b>Phone number:</b> {{ app.user.phoneNumber }}<br/>
         <button type="button" id="Edit-profile" onclick="location.href = '{{ path('profile_edit', {id: app.user.id}) }}'" >Edit profile</button>
         <br/>
+        <button type="button" id="Edit-profile" onclick="location.href = '{{ path('changePassword') }}'" >Change password</button>
         <br/>
         <br/>
         <button type="button" id="Edit-profile" onclick="location.href = '{{ path('CarRegistration') }}'" >Add your car</button>
+        <br/>
         <br/>
         <br/>
         <b>Your owned car list:</b>
