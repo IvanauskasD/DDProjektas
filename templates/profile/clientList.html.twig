@@ -14,21 +14,21 @@
                 <tr style="border-bottom: 3px solid #ddd;">
                     <th width="80px">User ID</th>
                     <th></th>
-                    <th width="120px">Username</th>
+                    <th width="120px">Fullname</th>
                     <th></th>
                     <th width="200px">Email</th>
                     <th></th>
                     <th width="200px">Phone Number</th>
                 </tr>
-                {% for user in users %}
+                {% for order in orders %}
                         <tr>
-                            <td>{{ user.id }}</td>
+                            <td>{{ order.car.user.id }}</td>
                             <td></td>
-                            <td>{{ user.firstName }}</td>
+                            <td>{{order.car.user.firstName}} {{order.car.user.lastName}}</td>
                             <td></td>
-                            <td>{{ user.email}}</td>
+                            <td>{{order.car.user.email}}</td>
                             <td></td>
-                            <td>{{ user.phoneNumber }}</td>
+                            <td>{{order.car.user.phoneNumber}}</td>
                         </tr>
                 {% endfor %}
             </table>
