@@ -20,8 +20,8 @@ class CarRegistrationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $newCar = new Car();
-        $services = $em->getRepository(Service::class)->findAll();
-        
+        $services = $em->getRepository(Service::class)->findAllUnique();
+        dump($services);
         $form = $this->createForm(CarForm::class, $newCar, array(
             'service_choices' => $services));
         $form->handleRequest($request);

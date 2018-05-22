@@ -41,7 +41,6 @@ class ServiceRepository extends ServiceEntityRepository
     }
     public function findByOrder($category, $name)
     {
-        dump($name);
         return $this->createQueryBuilder('service')
         
             ->addSelect('r')->distinct() // to make Doctrine actually use the join
@@ -52,6 +51,14 @@ class ServiceRepository extends ServiceEntityRepository
             ->andwhere('service.serviceName = :name')
             ->setParameters(['category'=> $category,'name'=> $name])
             ->groupBy('service.serviceName')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    public function findAllUnique()
+    {
+        return $this->createQueryBuilder('service')
+            ->groupBy('service.serviceName', 'service.serviceCategory')
             ->getQuery()
             ->getResult()
         ;
