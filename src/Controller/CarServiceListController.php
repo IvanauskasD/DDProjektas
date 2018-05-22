@@ -28,7 +28,7 @@ class CarServiceListController extends Controller
         
         $car = $em->getRepository(Car::class)->findById($id);
         //$companies = $em->getRepository(Service::class)->findBy(['serviceCategory' => $car->getServiceCategory(),'serviceName' => $car->getServiceName()]);
-        $companies = $em->getRepository(Service::class)->findByOrder($car->getServiceCategory(), $car->getServiceName());
+        $companies = $em->getRepository(Service::class)->findByOrderNotGrouped($car->getServiceCategory(), $car->getServiceName());
         dump($companies);
         return $this->render('carServiceList.html.twig', [
             'car' => $car,

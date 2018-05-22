@@ -56,6 +56,22 @@ class ServiceRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    public function findByOrderNotGrouped($category, $name)
+    {
+        dump($name);
+        return $this->createQueryBuilder('service')
+        
+            ->addSelect('r')->distinct() // to make Doctrine actually use the join
+            
+            ->join('service.company', 'r')
+            
+            ->where('service.serviceCategory = :category')->setParameter('category', $category)
+            ->andwhere('service.serviceName = :name')
+            ->setParameters(['category'=> $category,'name'=> $name])
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     
     
